@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.CalendarView;
 import android.widget.TextView;
 
 public class HomePage extends AppCompatActivity {
@@ -59,6 +60,9 @@ public class HomePage extends AppCompatActivity {
             }
         });
 
+
+
+
     }
 
 
@@ -88,6 +92,9 @@ public class HomePage extends AppCompatActivity {
      * A placeholder fragment containing a simple view.
      */
     public static class PlaceholderFragment extends Fragment {
+
+        CalendarView calendarView;
+
         /**
          * The fragment argument representing the section number for this
          * fragment.
@@ -113,8 +120,12 @@ public class HomePage extends AppCompatActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_home_page, container, false);
-            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-            textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
+
+            calendarView = rootView.findViewById(R.id.calendarView);
+
+            calendarView.setDate(System.currentTimeMillis());
+
+
             return rootView;
         }
     }
