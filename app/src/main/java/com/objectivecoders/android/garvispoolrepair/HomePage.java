@@ -109,9 +109,10 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
             // Handle the camera action
         } else if (id == R.id.nav_work_order) {
 
-        }  else if (id == R.id.nav_share) {
+        }   else if (id == R.id.nav_send) {
 
-        } else if (id == R.id.nav_send) {
+        }
+        else if(id == R.id.nav_calendar) {
 
         }
 
