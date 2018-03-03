@@ -14,7 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.objectivecoders.android.garvispoolrepair.MainActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,12 +22,15 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.objectivecoders.android.garvispoolrepair.LoginActivity"
+            android:name=".LoginActivity"
             android:label="@string/title_activity_login" />
         <activity
-            android:name="com.objectivecoders.android.garvispoolrepair.HomePage"
+            android:name=".HomePage"
             android:label="@string/title_activity_home_page"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".WorkOrder"
+            android:parentActivityName=".HomePage">
+        </activity>
     </application>
 
 </manifest>
