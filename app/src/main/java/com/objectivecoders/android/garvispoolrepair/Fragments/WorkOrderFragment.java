@@ -39,11 +39,11 @@ public class WorkOrderFragment extends Fragment {
                     ///Dummy Data///
         /////////////////////////////////////
         workOrderList.add(new WorkOrder(12312,new Date(System.currentTimeMillis()),
-                "3412 20th st w Fort Myers, Fl","Just Do It!","Fix It"));
+                "3412 20th st w Fort Myers, Fl","Just Do It!","Make You're Dreams Come True!"));
         workOrderList.add(new WorkOrder(12312,new Date(System.currentTimeMillis()),
-                "3412 20th st w Fort Myers, Fl","Just Do It!","Fix It"));
+                "3412 20th st w Fort Myers, Fl","Just Do It!","Make You're Dreams Come True!"));
         workOrderList.add(new WorkOrder(12312,new Date(System.currentTimeMillis()),
-                "3412 20th st w Fort Myers, Fl","Just Do It!","Fix It"));
+                "3412 20th st w Fort Myers, Fl","Just Do It!","Make You're Dreams Come True!"));
         /////////////////////////////////////
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(fragmentActivity);
