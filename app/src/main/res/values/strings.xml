@@ -24,17 +24,17 @@
     <string name="title_activity_home_page">HomePage</string>
 
     <!-- Strings related to work orders -->
-    <string name="work_order_date_title">Date: </string>
-    <string name="work_order_number_title">Order Number: </string>
-    <string name="work_order_job_type_title">Job: </string>
-    <string name="work_order_address_title">Address: </string>
-    <string name="work_order_description_title">Description: </string>
+    <string name="work_order_date_title">Date:  </string>
+    <string name="work_order_number_title">Order Number:  </string>
+    <string name="work_order_job_type_title">Job:  </string>
+    <string name="work_order_address_title">Address:  </string>
+    <string name="work_order_description_title">Description:  </string>
 
     <!-- Strings related to clients -->
-    <string name="client_name_title">Name: </string>
-    <string name="client_phone_title">Phone Number: </string>
-    <string name="client_address_title">Address: </string>
-    <string name="client_email_title">Email: </string>
+    <string name="client_name_title">Name:  </string>
+    <string name="client_phone_title">Phone Number:  </string>
+    <string name="client_address_title">Address:  </string>
+    <string name="client_email_title">Email:  </string>
 
 
 </resources>

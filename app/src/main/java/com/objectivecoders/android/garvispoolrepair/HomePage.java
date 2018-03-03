@@ -20,6 +20,8 @@ import android.view.ViewGroup;
 
 import android.widget.CalendarView;
 
+import com.objectivecoders.android.garvispoolrepair.Fragments.HomePageFragment;
+
 public class HomePage extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
@@ -29,9 +31,7 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
 
         Toolbar toolbar = findViewById(R.id.toolbar);
 
-
         setSupportActionBar(toolbar);
-
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 
@@ -43,12 +43,14 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
             }
         });
 
-        PlaceholderFragment fragment = new PlaceholderFragment();
+        //Connect a fragment to the layout in activity_home_page.xml
+        HomePageFragment fragment = new HomePageFragment();
         FragmentManager manager = getSupportFragmentManager();
         manager.beginTransaction().replace(R.id.fragment,fragment,fragment.getTag()).commit();
 
 
 
+        //For the navigation drawer implementation
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -119,40 +121,6 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
-    }
-
-    /**
-     * A placeholder fragment containing a simple view.
-     */
-    public static class PlaceholderFragment extends Fragment {
-
-        CalendarView calendarView;
-
-
-
-
-        public PlaceholderFragment() {
-        }
-
-        @Override
-        public void setArguments(Bundle args) {
-            super.setArguments(args);
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_home_page, container, false);
-
-            calendarView = rootView.findViewById(R.id.calendarView);
-
-            calendarView.setDate(System.currentTimeMillis());
-
-
-
-
-            return rootView;
-        }
     }
 
 
