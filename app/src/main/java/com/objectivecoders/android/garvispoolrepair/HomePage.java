@@ -21,6 +21,7 @@ import android.view.ViewGroup;
 import android.widget.CalendarView;
 
 import com.objectivecoders.android.garvispoolrepair.Fragments.HomePageFragment;
+import com.objectivecoders.android.garvispoolrepair.Fragments.WorkOrderFragment;
 
 public class HomePage extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -108,10 +109,14 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
         int id = item.getItemId();
 
         if (id == R.id.nav_client) {
-            // Handle the camera action
-        } else if (id == R.id.nav_work_order) {
 
-        }   else if (id == R.id.nav_send) {
+        }
+        else if (id == R.id.nav_work_order) {
+            WorkOrderFragment fragment = new WorkOrderFragment();
+            FragmentManager manager = getSupportFragmentManager();
+            manager.beginTransaction().replace(R.id.fragment,fragment,fragment.getTag()).commit();
+        }
+        else if (id == R.id.nav_send) {
 
         }
         else if(id == R.id.nav_calendar) {
