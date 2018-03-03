@@ -1,4 +1,4 @@
-package com.example.jeffr.garvispoolrepair;
+package com.objectivecoders.android.garvispoolrepair;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;

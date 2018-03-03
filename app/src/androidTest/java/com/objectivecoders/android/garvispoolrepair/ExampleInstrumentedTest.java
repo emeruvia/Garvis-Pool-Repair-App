@@ -1,4 +1,4 @@
-package com.example.jeffr.garvispoolrepair;
+package com.objectivecoders.android.garvispoolrepair;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

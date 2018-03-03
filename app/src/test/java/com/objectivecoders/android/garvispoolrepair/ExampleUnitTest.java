@@ -1,4 +1,4 @@
-package com.example.jeffr.garvispoolrepair;
+package com.objectivecoders.android.garvispoolrepair;
 
 import org.junit.Test;
 
