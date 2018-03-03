@@ -16,6 +16,7 @@ import com.objectivecoders.android.garvispoolrepair.R;
 public class WorkOrderFragment extends Fragment {
 
     private RecyclerView workOrderList;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
