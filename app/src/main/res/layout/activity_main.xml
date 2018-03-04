@@ -21,12 +21,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/login_button"
+        android:id="@+id/loginButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="80dp"
-        android:text="Login" />
+        android:layout_marginBottom="81dp"
+        android:onClick="loginButton"
+        android:text="@string/action_sign_in"/>
 
 </RelativeLayout>
