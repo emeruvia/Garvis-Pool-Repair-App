@@ -20,12 +20,14 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.CalendarView;
+import android.widget.Toast;
 
 import com.objectivecoders.android.garvispoolrepair.Fragments.ClientFragment;
 import com.objectivecoders.android.garvispoolrepair.Fragments.HomePageFragment;
 import com.objectivecoders.android.garvispoolrepair.Fragments.WorkOrderFragment;
 
 public class HomePage extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+    static Fragment fragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,16 +40,8 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
         //Connect a fragment to the layout in activity_home_page.xml
-        HomePageFragment fragment = new HomePageFragment();
+        fragment = new HomePageFragment();
         FragmentManager manager = getSupportFragmentManager();
         manager.beginTransaction().replace(R.id.fragment,fragment,fragment.getTag()).commit();
 
@@ -65,6 +59,23 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
         navigationView.setNavigationItemSelectedListener(this);
     }
 
+    public void floatingButtonAction(View view){
+
+        //TODO Add code for intent that opens the create new client window
+        if(fragment instanceof ClientFragment){
+
+        }
+
+        //TODO Add code for intent that opens the create new work order window
+        else if (fragment instanceof HomePageFragment) {
+
+        }
+
+        //TODO Add code for intent that opens the create new work order window
+        else if(fragment instanceof WorkOrderFragment){
+
+        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -107,12 +118,12 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
         int id = item.getItemId();
 
         if (id == R.id.nav_work_order) {
-            WorkOrderFragment fragment = new WorkOrderFragment();
+            fragment = new WorkOrderFragment();
             FragmentManager manager = getSupportFragmentManager();
             manager.beginTransaction().replace(R.id.fragment,fragment,fragment.getTag()).commit();
         }
         else if (id == R.id.nav_client) {
-            ClientFragment fragment = new ClientFragment();
+            fragment = new ClientFragment();
             FragmentManager manager = getSupportFragmentManager();
             manager.beginTransaction().replace(R.id.fragment, fragment, fragment.getTag()).commit();
         }
@@ -120,7 +131,9 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
 
         }
         else if(id == R.id.nav_calendar) {
-
+            fragment = new HomePageFragment();
+            FragmentManager manager = getSupportFragmentManager();
+            manager.beginTransaction().replace(R.id.fragment,fragment,fragment.getTag()).commit();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

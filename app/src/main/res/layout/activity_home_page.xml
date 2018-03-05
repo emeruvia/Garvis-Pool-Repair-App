@@ -8,14 +8,6 @@
     android:fitsSystemWindows="true"
     tools:context="com.objectivecoders.android.garvispoolrepair.HomePage">
 
-    <RelativeLayout
-        android:id="@+id/fragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    </RelativeLayout>
-
-
     <android.support.v4.widget.DrawerLayout
         android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
@@ -28,6 +20,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
+        <RelativeLayout
+            android:id="@+id/fragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </RelativeLayout>
+
         <android.support.design.widget.NavigationView
             android:id="@+id/nav_view"
             android:layout_width="wrap_content"
@@ -39,14 +37,14 @@
 
     </android.support.v4.widget.DrawerLayout>
 
+
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
         android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
-
-
+        app:srcCompat="@android:drawable/ic_dialog_email"
+        android:onClick="floatingButtonAction"/>
 
 </android.support.design.widget.CoordinatorLayout>
