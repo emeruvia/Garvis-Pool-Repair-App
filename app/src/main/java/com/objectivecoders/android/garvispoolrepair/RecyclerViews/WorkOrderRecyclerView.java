@@ -21,14 +21,16 @@ import java.util.List;
 
 public class WorkOrderRecyclerView extends RecyclerView.Adapter<WorkOrderRecyclerView.WorkOrderRecyclerViewHolder> {
 
+    RecyclerViewOnClick recyclerViewOnClick;
     List<WorkOrder> workOrderList = new ArrayList<>();
 
-    public  WorkOrderRecyclerView(List<WorkOrder> workOrderList){
+    public WorkOrderRecyclerView(List<WorkOrder> workOrderList, RecyclerViewOnClick recyclerViewOnClick) {
+        this.recyclerViewOnClick = recyclerViewOnClick;
         this.workOrderList = workOrderList;
     }
 
     @Override
-    public WorkOrderRecyclerView.WorkOrderRecyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
+    public WorkOrderRecyclerView.WorkOrderRecyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         Context context = parent.getContext();
 
         int layoutIdForListItem = R.layout.fragment_work_order_list_item;
@@ -42,12 +44,17 @@ public class WorkOrderRecyclerView extends RecyclerView.Adapter<WorkOrderRecycle
     }
 
     @Override
-    public void onBindViewHolder(WorkOrderRecyclerViewHolder holder, int position) {
+    public void onBindViewHolder(final WorkOrderRecyclerViewHolder holder, final int position) {
         holder.workOrderNumber.setText(String.valueOf(workOrderList.get(position).getOrderNumber()));
         holder.workOrderJob.setText(workOrderList.get(position).getJobType());
         holder.workOrderDate.setText(workOrderList.get(position).getDate().toString());
         holder.completionIcon.setImageResource(R.drawable.ic_action_name);
         holder.workOrderIcon.setImageResource(R.drawable.ic_work_order);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                recyclerViewOnClick.rowSelected(holder.getAdapterPosition());
+            }});
     }
 
     @Override
@@ -57,11 +64,11 @@ public class WorkOrderRecyclerView extends RecyclerView.Adapter<WorkOrderRecycle
 
     public class WorkOrderRecyclerViewHolder extends RecyclerView.ViewHolder {
 
-            ImageView workOrderIcon;
-            ImageView completionIcon;
-            TextView workOrderNumber;
-            TextView workOrderDate;
-            TextView workOrderJob;
+        ImageView workOrderIcon;
+        ImageView completionIcon;
+        TextView workOrderNumber;
+        TextView workOrderDate;
+        TextView workOrderJob;
 
         public WorkOrderRecyclerViewHolder(View view) {
             super(view);

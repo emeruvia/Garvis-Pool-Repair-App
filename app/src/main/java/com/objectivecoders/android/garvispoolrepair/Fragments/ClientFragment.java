@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import com.objectivecoders.android.garvispoolrepair.DataObjects.Client;
 import com.objectivecoders.android.garvispoolrepair.R;
 import com.objectivecoders.android.garvispoolrepair.RecyclerViews.ClientRecyclerView;
+import com.objectivecoders.android.garvispoolrepair.RecyclerViews.RecyclerViewOnClick;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +22,7 @@ import java.util.List;
  * Created by emeruvia on 3/4/2018.
  */
 
-public class ClientFragment extends Fragment {
+public class ClientFragment extends Fragment implements RecyclerViewOnClick{
 
     private List<Client> clientList = new ArrayList<>();
     private Client client;
@@ -52,5 +53,12 @@ public class ClientFragment extends Fragment {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
         return rootView;
+    }
+
+    //TODO make an Intent with extras as Strings that comprise the Client object based on the index
+     //TODO "row" of the clientList object
+    @Override
+    public void rowSelected(int row) {
+
     }
 }

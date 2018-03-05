@@ -41,9 +41,13 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 
         //Connect a fragment to the layout in activity_home_page.xml
-        fragment = new HomePageFragment();
+        if(fragment == null){
+            fragment = new HomePageFragment();
+        }
+
         FragmentManager manager = getSupportFragmentManager();
         manager.beginTransaction().replace(R.id.fragment,fragment,fragment.getTag()).commit();
+
 
         //For the navigation drawer implementation
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

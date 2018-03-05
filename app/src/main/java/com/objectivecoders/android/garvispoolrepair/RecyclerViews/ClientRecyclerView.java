@@ -19,6 +19,7 @@ import java.util.List;
 
 public class ClientRecyclerView extends RecyclerView.Adapter<ClientRecyclerView.ClientRecyclerViewHolder> {
 
+    RecyclerViewOnClick recyclerViewOnClick;
     List<Client> clientList = new ArrayList<>();
 
     public ClientRecyclerView(List<Client> clientList) {
@@ -37,11 +38,17 @@ public class ClientRecyclerView extends RecyclerView.Adapter<ClientRecyclerView.
     }
 
     @Override
-    public void onBindViewHolder(ClientRecyclerViewHolder holder, int position) {
+    public void onBindViewHolder(final ClientRecyclerViewHolder holder, int position) {
         holder.firstNameTextView.setText("First Name: " + clientList.get(position).getFirstName());
         holder.lastNameTextView.setText("Last Name: " + clientList.get(position).getLastName());
         holder.addressTextView.setText("Address: " + clientList.get(position).getAddress());
         holder.emailTextView.setText("Email: " + clientList.get(position).getEmail());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                recyclerViewOnClick.rowSelected(holder.getAdapterPosition());
+            }
+        });
     }
 
     @Override
