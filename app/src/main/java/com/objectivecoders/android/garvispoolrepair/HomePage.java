@@ -20,6 +20,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.CalendarView;
+import android.widget.Toast;
 
 import com.objectivecoders.android.garvispoolrepair.Fragments.ClientFragment;
 import com.objectivecoders.android.garvispoolrepair.Fragments.HomePageFragment;
@@ -38,14 +39,6 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
         setSupportActionBar(toolbar);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         //Connect a fragment to the layout in activity_home_page.xml
         fragment = new HomePageFragment();
@@ -66,6 +59,23 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
         navigationView.setNavigationItemSelectedListener(this);
     }
 
+    public void floatingButtonAction(View view){
+
+        //TODO Add code for intent that opens the create new client window
+        if(fragment instanceof ClientFragment){
+
+        }
+
+        //TODO Add code for intent that opens the create new work order window
+        else if (fragment instanceof HomePageFragment) {
+
+        }
+
+        //TODO Add code for intent that opens the create new work order window
+        else if(fragment instanceof WorkOrderFragment){
+
+        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
