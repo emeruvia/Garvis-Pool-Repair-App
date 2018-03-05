@@ -63,7 +63,7 @@ public class WorkOrderFragment extends Fragment implements RecyclerViewOnClick {
     public void rowSelected(int row) {
         Intent workOrderIntent = new Intent(getActivity(), WorkOrderActivity.class);
         workOrderIntent.putExtra("Date", workOrderList.get(row).getDate().toString());
-        workOrderIntent.putExtra("OrderNumber", workOrderList.get(row).getOrderNumber());
+        workOrderIntent.putExtra("OrderNumber", String.valueOf(workOrderList.get(row).getOrderNumber()));
         workOrderIntent.putExtra("Description", workOrderList.get(row).getDescription());
         workOrderIntent.putExtra("Address", workOrderList.get(row).getAddress());
         workOrderIntent.putExtra("JobType", workOrderList.get(row).getJobType());
