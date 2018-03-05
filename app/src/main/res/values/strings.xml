@@ -36,5 +36,11 @@
     <string name="client_address_title">Address:  </string>
     <string name="client_email_title">Email:  </string>
 
+    <!-- String for the client fragment-->
+    <string name="client_first_name">First Name: </string>
+    <string name="client_last_name">Last Name: </string>
+    <string name="client_address">Address: </string>
+    <string name="client_email">Email: </string>
+
 
 </resources>

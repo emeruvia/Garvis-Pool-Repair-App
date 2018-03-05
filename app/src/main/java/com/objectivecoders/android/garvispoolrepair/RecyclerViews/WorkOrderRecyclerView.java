@@ -70,8 +70,6 @@ public class WorkOrderRecyclerView extends RecyclerView.Adapter<WorkOrderRecycle
             workOrderJob = view.findViewById(R.id.work_order_job_textview);
             completionIcon = view.findViewById(R.id.completion_icon);
             workOrderNumber = view.findViewById(R.id.work_order_number_textview);
-
         }
-
     }
 }

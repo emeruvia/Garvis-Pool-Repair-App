@@ -30,4 +30,20 @@
         android:onClick="loginButton"
         android:text="@string/action_sign_in"/>
 
+    <!--TODO Remove this button once the app is finished, this is for fast
+    login when working/debugging the app. That way we don't have to login every time-->
+    <Button
+        android:id="@+id/tempButton"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="27dp"
+        android:layout_marginRight="27dp"
+        android:layout_marginTop="16dp"
+        android:layout_toLeftOf="@+id/loginButton"
+        android:layout_toStartOf="@+id/loginButton"
+        android:onClick="tempButton"
+        android:text="Fast Login"/>
+
 </RelativeLayout>

@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Method implements onClick on the login button, it creates a new intent which
      * redirects the user to a new activity
+     *
      * @param view
      */
     public void loginButton(View view) {
@@ -24,4 +25,10 @@ public class MainActivity extends AppCompatActivity {
         startActivity(loginIntent);
     }
 
+    /*TODO Remove this method when the app is ready for deploy, this is a temporary
+    * button to make it easier when coding/debugging the app.*/
+    public void tempButton(View view) {
+        Intent tempIntent = new Intent(this, HomePage.class);
+        startActivity(tempIntent);
+    }
 }

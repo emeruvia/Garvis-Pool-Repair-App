@@ -12,6 +12,7 @@ import android.support.v7.widget.Toolbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -20,6 +21,7 @@ import android.view.ViewGroup;
 
 import android.widget.CalendarView;
 
+import com.objectivecoders.android.garvispoolrepair.Fragments.ClientFragment;
 import com.objectivecoders.android.garvispoolrepair.Fragments.HomePageFragment;
 import com.objectivecoders.android.garvispoolrepair.Fragments.WorkOrderFragment;
 
@@ -49,8 +51,6 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
         FragmentManager manager = getSupportFragmentManager();
         manager.beginTransaction().replace(R.id.fragment,fragment,fragment.getTag()).commit();
 
-
-
         //For the navigation drawer implementation
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 
@@ -63,8 +63,6 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
 
         navigationView.setNavigationItemSelectedListener(this);
-
-
     }
 
 
@@ -108,13 +106,15 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_client) {
-
-        }
-        else if (id == R.id.nav_work_order) {
+        if (id == R.id.nav_work_order) {
             WorkOrderFragment fragment = new WorkOrderFragment();
             FragmentManager manager = getSupportFragmentManager();
             manager.beginTransaction().replace(R.id.fragment,fragment,fragment.getTag()).commit();
+        }
+        else if (id == R.id.nav_client) {
+            ClientFragment fragment = new ClientFragment();
+            FragmentManager manager = getSupportFragmentManager();
+            manager.beginTransaction().replace(R.id.fragment, fragment, fragment.getTag()).commit();
         }
         else if (id == R.id.nav_send) {
 

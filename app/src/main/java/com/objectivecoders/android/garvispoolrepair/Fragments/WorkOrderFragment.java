@@ -32,10 +32,10 @@ public class WorkOrderFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_work_orders_list, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_work_order_list, container, false);
         final FragmentActivity fragmentActivity = getActivity();
 
-
+        //TODO Get rid of the dummy data once the database is impleted
                     ///Dummy Data///
         /////////////////////////////////////
         workOrderList.add(new WorkOrder(12312,new Date(System.currentTimeMillis()),

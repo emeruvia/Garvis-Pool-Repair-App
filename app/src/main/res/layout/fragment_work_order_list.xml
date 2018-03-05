@@ -3,12 +3,13 @@
     android:layout_marginTop="60dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <!--TODO check if there is another way of having the list display under
+    the custombar created, other than setting it to 60dp margin. This could cause
+    layout issues when using other devices that have smaller/bigger screens.-->
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/work_order_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+        android:layout_height="match_parent"/>
 
-    </android.support.v7.widget.RecyclerView>
 </LinearLayout>
