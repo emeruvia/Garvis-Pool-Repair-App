@@ -26,6 +26,7 @@ import com.objectivecoders.android.garvispoolrepair.Fragments.HomePageFragment;
 import com.objectivecoders.android.garvispoolrepair.Fragments.WorkOrderFragment;
 
 public class HomePage extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+    static Fragment fragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +48,7 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
         });
 
         //Connect a fragment to the layout in activity_home_page.xml
-        HomePageFragment fragment = new HomePageFragment();
+        fragment = new HomePageFragment();
         FragmentManager manager = getSupportFragmentManager();
         manager.beginTransaction().replace(R.id.fragment,fragment,fragment.getTag()).commit();
 
@@ -107,12 +108,12 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
         int id = item.getItemId();
 
         if (id == R.id.nav_work_order) {
-            WorkOrderFragment fragment = new WorkOrderFragment();
+            fragment = new WorkOrderFragment();
             FragmentManager manager = getSupportFragmentManager();
             manager.beginTransaction().replace(R.id.fragment,fragment,fragment.getTag()).commit();
         }
         else if (id == R.id.nav_client) {
-            ClientFragment fragment = new ClientFragment();
+            fragment = new ClientFragment();
             FragmentManager manager = getSupportFragmentManager();
             manager.beginTransaction().replace(R.id.fragment, fragment, fragment.getTag()).commit();
         }
@@ -120,7 +121,9 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
 
         }
         else if(id == R.id.nav_calendar) {
-
+            fragment = new HomePageFragment();
+            FragmentManager manager = getSupportFragmentManager();
+            manager.beginTransaction().replace(R.id.fragment,fragment,fragment.getTag()).commit();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

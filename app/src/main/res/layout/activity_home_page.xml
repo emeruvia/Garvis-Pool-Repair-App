@@ -8,14 +8,6 @@
     android:fitsSystemWindows="true"
     tools:context="com.objectivecoders.android.garvispoolrepair.HomePage">
 
-    <RelativeLayout
-        android:id="@+id/fragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    </RelativeLayout>
-
-
     <android.support.v4.widget.DrawerLayout
         android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
@@ -38,6 +30,13 @@
             app:menu="@menu/activity_main2_drawer" />
 
     </android.support.v4.widget.DrawerLayout>
+
+    <RelativeLayout
+        android:id="@+id/fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </RelativeLayout>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
