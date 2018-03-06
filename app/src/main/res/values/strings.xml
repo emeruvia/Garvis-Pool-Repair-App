@@ -42,5 +42,9 @@
     <string name="client_address">Address: </string>
     <string name="client_email">Email: </string>
 
+    <!-- String for the search menu-->
+    <string name="search_title">Search </string>
+
+
 
 </resources>
