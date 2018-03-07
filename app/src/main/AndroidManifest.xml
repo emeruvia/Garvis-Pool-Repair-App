@@ -23,28 +23,24 @@
         </activity>
         <activity
             android:name=".LoginActivity"
-            android:label="@string/title_activity_login"
-            />
+            android:label="@string/title_activity_login" />
         <activity
             android:name=".HomePage"
             android:label="@string/title_activity_home_page"
-            android:theme="@style/AppTheme.NoActionBar"
-            >
-            <meta-data android:name="android.app.searchable"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
         </activity>
-
-
-        <activity android:name=".WorkOrderActivity"
-            android:parentActivityName=".HomePage">
-        </activity>
-
+        <activity
+            android:name=".WorkOrderActivity"
+            android:parentActivityName=".HomePage"></activity>
         <activity android:name=".SearchResultActivity">
-        <intent-filter>
-            <action android:name="android.intent.action.SEARCH" />
-        </intent-filter>
-    </activity>
-
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".CreateWorkOrderActivity"></activity>
     </application>
 
 </manifest>
