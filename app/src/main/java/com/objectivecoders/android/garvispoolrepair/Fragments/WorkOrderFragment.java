@@ -12,11 +12,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.objectivecoders.android.garvispoolrepair.DataObjects.WorkOrder;
+import com.objectivecoders.android.garvispoolrepair.DataObjects.WorkOrderDate;
 import com.objectivecoders.android.garvispoolrepair.R;
 import com.objectivecoders.android.garvispoolrepair.RecyclerViews.RecyclerViewOnClick;
 import com.objectivecoders.android.garvispoolrepair.RecyclerViews.WorkOrderRecyclerView;
 import com.objectivecoders.android.garvispoolrepair.WorkOrderActivity;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -38,14 +40,16 @@ public class WorkOrderFragment extends Fragment implements RecyclerViewOnClick {
         View rootView = inflater.inflate(R.layout.fragment_work_order_list, container, false);
         final FragmentActivity fragmentActivity = getActivity();
 
+
+
         //TODO Get rid of the dummy data once the database is impleted
                     ///Dummy Data///
         /////////////////////////////////////
-        workOrderList.add(new WorkOrder(12312,new Date(System.currentTimeMillis()),
+        workOrderList.add(new WorkOrder(12312,new WorkOrderDate(System.currentTimeMillis()),
                 "3412 20th st w Fort Myers, Fl","Just Do It!","Make You're Dreams Come True!"));
-        workOrderList.add(new WorkOrder(12312,new Date(System.currentTimeMillis()),
+        workOrderList.add(new WorkOrder(12312,new WorkOrderDate(System.currentTimeMillis()),
                 "3412 20th st w Fort Myers, Fl","Just Do It!","Make You're Dreams Come True!"));
-        workOrderList.add(new WorkOrder(12312,new Date(System.currentTimeMillis()),
+        workOrderList.add(new WorkOrder(12312,new WorkOrderDate(System.currentTimeMillis()),
                 "3412 20th st w Fort Myers, Fl","Just Do It!","Make You're Dreams Come True!"));
         /////////////////////////////////////
 

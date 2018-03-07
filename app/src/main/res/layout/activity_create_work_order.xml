@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CreateWorkOrderActivity">
+    tools:context=".CreateWorkOrderActivity">\
 
     <LinearLayout
         android:id="@+id/LinearLayout1"
@@ -150,6 +150,8 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+
+
     </LinearLayout>
 
 </RelativeLayout>
