@@ -2,6 +2,7 @@ package com.objectivecoders.android.garvispoolrepair;
 
 import android.app.SearchManager;
 import android.content.Context;
+import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -69,12 +70,15 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
 
         //TODO Add code for intent that opens the create new work order window
         else if (fragment instanceof HomePageFragment) {
+            Intent workOrderIntent = new Intent(this, CreateWorkOrderActivity.class);
+            startActivity(workOrderIntent);
 
         }
 
         //TODO Add code for intent that opens the create new work order window
         else if(fragment instanceof WorkOrderFragment){
-
+            Intent workOrderIntent = new Intent(this, CreateWorkOrderActivity.class);
+            startActivity(workOrderIntent);
         }
     }
 

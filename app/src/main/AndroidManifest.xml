@@ -40,7 +40,11 @@
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
         </activity>
-        <activity android:name=".CreateWorkOrderActivity"></activity>
+
+        <activity android:name=".CreateWorkOrderActivity"
+            android:parentActivityName ="HomePage"
+            ></activity>
+
     </application>
 
 </manifest>
