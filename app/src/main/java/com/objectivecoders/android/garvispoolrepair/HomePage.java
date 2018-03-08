@@ -59,6 +59,8 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
 
         navigationView.setNavigationItemSelectedListener(this);
+
+
     }
 
     public void floatingButtonAction(View view){
@@ -68,14 +70,14 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
 
         }
 
-        //TODO Add code for intent that opens the create new work order window
+
         else if (fragment instanceof HomePageFragment) {
             Intent workOrderIntent = new Intent(this, CreateWorkOrderActivity.class);
             startActivity(workOrderIntent);
 
         }
 
-        //TODO Add code for intent that opens the create new work order window
+
         else if(fragment instanceof WorkOrderFragment){
             Intent workOrderIntent = new Intent(this, CreateWorkOrderActivity.class);
             startActivity(workOrderIntent);

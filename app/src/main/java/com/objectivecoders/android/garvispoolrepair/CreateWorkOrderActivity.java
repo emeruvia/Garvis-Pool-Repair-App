@@ -2,6 +2,8 @@ package com.objectivecoders.android.garvispoolrepair;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -21,6 +23,7 @@ public class CreateWorkOrderActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_work_order);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
         dateButton = findViewById(R.id.edit_date_button);
         existingClientButton = findViewById(R.id.work_order_existing_client);
         newClientButton = findViewById(R.id.work_order_new_client);
@@ -29,9 +32,16 @@ public class CreateWorkOrderActivity extends AppCompatActivity {
         descriptionEditText = findViewById(R.id.work_order_description_eidt_text);
         jobTypeSpinner = findViewById(R.id.work_order_job_type_spinner);
 
+    }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.create_work_order_menu, menu);
+        return true;
+    }
 
-
-
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return super.onOptionsItemSelected(item);
     }
 }

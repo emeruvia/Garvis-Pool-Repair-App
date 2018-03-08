@@ -32,6 +32,8 @@
     <string name="work_order_existing_client">Existing Client  </string>
     <string name="work_order_new_client">New Client  </string>
     <string name="work_order_client_title">Client:  </string>
+    <string name="create_work_order">Create Work Order  </string>
+
 
 
 
