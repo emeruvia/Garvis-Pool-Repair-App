@@ -6,7 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".CreateWorkOrderActivity">
 
+    <TextView
+        android:id="@+id/create_work_order_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Create Work Order"
+        android:textSize="40sp"/>
+
     <LinearLayout
+        android:layout_below="@id/create_work_order_title"
         android:id="@+id/LinearLayout1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -16,13 +25,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/work_order_number_title"
-            android:textSize="30sp"
+            android:textSize="25sp"
             />
         <TextView
             android:id="@+id/work_order_number_textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="30sp"
+            android:textSize="25sp"
             android:text="1234"
             />
     </LinearLayout>
@@ -72,18 +81,22 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="horizontal">
+
     <Button
+        android:id="@+id/work_order_new_client"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
         android:text="@string/work_order_new_client"
-        android:textSize="10sp"/>
+        android:textSize="10sp" />
+
     <Button
+        android:id="@+id/work_order_existing_client"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
         android:text="@string/work_order_existing_client"
-        android:textSize="10sp"/>
+        android:textSize="10sp" />
 
 </LinearLayout>
     </LinearLayout>
@@ -102,10 +115,12 @@
             android:layout_gravity="center"
             android:text="@string/work_order_address_title"
             android:textSize="20sp" />
+
         <EditText
-            android:layout_width="wrap_content"
+            android:id="@+id/work_order_address_edit_text"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:hint="@string/work_order_address_title"/>
+            android:hint="1234 4th st Fort Myers, Fl" />
     </LinearLayout>
 
     <LinearLayout
@@ -122,12 +137,13 @@
             android:layout_gravity="center"
             android:text="@string/work_order_job_type_title"
             android:textSize="20sp" />
+
         <Spinner
-            android:id="@+id/spinner1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:id="@+id/work_order_job_type_spinner"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
             android:background="@android:drawable/btn_dropdown"
-            android:spinnerMode="dropdown"/>
+            android:spinnerMode="dropdown" />
 
 
 
@@ -147,9 +163,13 @@
             android:layout_gravity="center"
             android:text="@string/work_order_description_title"
             android:textSize="20sp" />
+
         <EditText
-            android:layout_width="match_parent"
+            android:id="@+id/work_order_description_eidt_text"
+            android:layout_width="300dp"
             android:layout_height="wrap_content" />
+
+
     </LinearLayout>
 
 </RelativeLayout>

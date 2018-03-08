@@ -28,10 +28,12 @@
     <string name="work_order_number_title">Order Number:  </string>
     <string name="work_order_job_type_title">Job:  </string>
     <string name="work_order_address_title">Address:  </string>
-    <string name="work_order_description_title">Description:  </string>
+    <string name="work_order_description_title">Notes:  </string>
     <string name="work_order_existing_client">Existing Client  </string>
     <string name="work_order_new_client">New Client  </string>
     <string name="work_order_client_title">Client:  </string>
+    <string name="create_work_order">Create Work Order  </string>
+
 
 
 

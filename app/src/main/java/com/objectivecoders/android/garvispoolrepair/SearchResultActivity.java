@@ -14,6 +14,7 @@ public class SearchResultActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         handleIntent(getIntent());
+
     }
 
     @Override
