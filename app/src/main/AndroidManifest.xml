@@ -43,7 +43,7 @@
         <activity
             android:name=".CreateWorkOrderActivity"
             android:parentActivityName=".HomePage" />
-        <activity android:name=".MiniCalendarActivity"></activity>
+        <activity android:name=".AuxillaryFragmentHolderActivity"></activity>
     </application>
 
 </manifest>

@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.objectivecoders.android.garvispoolrepair.DataObjects.Client;
 import com.objectivecoders.android.garvispoolrepair.DataObjects.WorkOrder;
 import com.objectivecoders.android.garvispoolrepair.DataObjects.WorkOrderDate;
 import com.objectivecoders.android.garvispoolrepair.R;
@@ -46,11 +47,14 @@ public class WorkOrderFragment extends Fragment implements RecyclerViewOnClick {
                     ///Dummy Data///
         /////////////////////////////////////
         workOrderList.add(new WorkOrder(12312,new WorkOrderDate(System.currentTimeMillis()),
-                "3412 20th st w Fort Myers, Fl","Just Do It!","Make You're Dreams Come True!"));
+                "3412 20th st w Fort Myers, Fl","Just Do It!","Make You're Dreams Come True!"
+        ,new Client("Shia ","LaBeouf","whatever st","DoIt@yahoo.com")));
         workOrderList.add(new WorkOrder(12312,new WorkOrderDate(System.currentTimeMillis()),
-                "3412 20th st w Fort Myers, Fl","Just Do It!","Make You're Dreams Come True!"));
+                "3412 20th st w Fort Myers, Fl","Just Do It!","Make You're Dreams Come True!"
+                ,new Client("Shia ","LaBeouf","whatever st","DoIt@yahoo.com")));
         workOrderList.add(new WorkOrder(12312,new WorkOrderDate(System.currentTimeMillis()),
-                "3412 20th st w Fort Myers, Fl","Just Do It!","Make You're Dreams Come True!"));
+                "3412 20th st w Fort Myers, Fl","Just Do It!","Make You're Dreams Come True!"
+                ,new Client("Shia ","LaBeouf","whatever st","DoIt@yahoo.com")));
         /////////////////////////////////////
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(fragmentActivity);

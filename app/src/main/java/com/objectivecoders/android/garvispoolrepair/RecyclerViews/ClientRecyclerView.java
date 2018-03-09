@@ -22,7 +22,8 @@ public class ClientRecyclerView extends RecyclerView.Adapter<ClientRecyclerView.
     RecyclerViewOnClick recyclerViewOnClick;
     List<Client> clientList = new ArrayList<>();
 
-    public ClientRecyclerView(List<Client> clientList) {
+    public ClientRecyclerView(List<Client> clientList,RecyclerViewOnClick recyclerViewOnClick) {
+        this.recyclerViewOnClick = recyclerViewOnClick;
         this.clientList = clientList;
     }
 

@@ -14,6 +14,8 @@ import com.objectivecoders.android.garvispoolrepair.CreateWorkOrderActivity;
 import com.objectivecoders.android.garvispoolrepair.DataObjects.WorkOrderDate;
 import com.objectivecoders.android.garvispoolrepair.R;
 
+import java.sql.Date;
+
 /**
  * Created by jeffr on 3/3/2018.
  */
@@ -40,14 +42,15 @@ public class HomePageFragment extends android.support.v4.app.Fragment {
         calendarView.setDate(System.currentTimeMillis());
 
 
-        if(getArguments() != null && getArguments().getBoolean("CreateWorkOrderActivity")){
+        if(getArguments() != null && getArguments().getString("CreateWorkOrderActivity").equals("Date")){
 
             calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
                 @Override
                 public void onSelectedDayChange(@NonNull CalendarView calendarView, int i, int i1, int i2) {
                     String month = i1+1 > 10 ? String.valueOf(i1+1) : "0"+ String.valueOf(i1+1);
                     String day = i2 > 10 ? String.valueOf(i2) : "0"+ String.valueOf(i2);
-                        CreateWorkOrderActivity.getDateButton().setText(month+"-"+day+"-"+String.valueOf(i));
+                        CreateWorkOrderActivity.date  = month+"-"+day+"-"+String.valueOf(i);
+
 
 
                 }

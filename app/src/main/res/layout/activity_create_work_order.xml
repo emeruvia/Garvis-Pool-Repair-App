@@ -90,6 +90,7 @@
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
         android:text="@string/work_order_new_client"
+        android:onClick="onClickNewClient"
         android:textSize="10sp" />
 
     <Button
@@ -98,6 +99,7 @@
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
         android:text="@string/work_order_existing_client"
+        android:onClick="onClickExistingClient"
         android:textSize="10sp" />
 
 </LinearLayout>
@@ -142,10 +144,11 @@
 
         <Spinner
             android:id="@+id/work_order_job_type_spinner"
-            android:layout_width="100dp"
-            android:layout_height="30dp"
+            android:layout_width="180dp"
+            android:layout_height="50dp"
             android:background="@android:drawable/btn_dropdown"
-            android:spinnerMode="dropdown" />
+            android:spinnerMode="dropdown"
+            android:entries="@array/job_types"/>
 
 
 
