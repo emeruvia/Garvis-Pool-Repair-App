@@ -3,13 +3,17 @@ package com.objectivecoders.android.garvispoolrepair.Fragments;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import com.objectivecoders.android.garvispoolrepair.AuxillaryFragmentHolderActivity;
+import com.objectivecoders.android.garvispoolrepair.CreateWorkOrderActivity;
 import com.objectivecoders.android.garvispoolrepair.DataObjects.Client;
 import com.objectivecoders.android.garvispoolrepair.R;
 import com.objectivecoders.android.garvispoolrepair.RecyclerViews.ClientRecyclerView;
@@ -46,7 +50,7 @@ public class ClientFragment extends Fragment implements RecyclerViewOnClick{
 
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(fragmentActivity);
-        clientRecyclerView = new ClientRecyclerView(clientList);
+        clientRecyclerView = new ClientRecyclerView(clientList,this);
         RecyclerView recyclerView = rootView.findViewById(R.id.client_list);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(clientRecyclerView);
@@ -55,10 +59,24 @@ public class ClientFragment extends Fragment implements RecyclerViewOnClick{
         return rootView;
     }
 
-    //TODO make an Intent with extras as Strings that comprise the Client object based on the index
-     //TODO "row" of the clientList object
+
     @Override
     public void rowSelected(int row) {
+        //Used for CreateWorkOrderScreen
+        if(getActivity() instanceof AuxillaryFragmentHolderActivity){
+            CreateWorkOrderActivity.getBundle().putString("FirstName", clientList.get(row).getFirstName());
+            CreateWorkOrderActivity.getBundle().putString("LastName", clientList.get(row).getLastName());
+            CreateWorkOrderActivity.getBundle().putString("Email", clientList.get(row).getEmail());
+            CreateWorkOrderActivity.getBundle().putString("Address", clientList.get(row).getAddress());
+            getActivity().finish();
+        }
+        //TODO make an Intent with extras as Strings that comprise the Client object based on the index
+        //TODO "row" of the clientList object
+        else{
+
+        }
 
     }
+
+
 }

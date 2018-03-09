@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="job_types">
+        <item>Clean Water</item>
+        <item>Fix Filter</item>
+        <item>Repair Pumps</item>
+        <item>Add Chlorine</item>
+
+    </string-array>
+</resources>

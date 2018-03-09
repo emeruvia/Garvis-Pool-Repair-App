@@ -35,8 +35,6 @@
     <string name="create_work_order">Create Work Order  </string>
 
 
-
-
     <!-- Strings related to clients -->
     <string name="client_name_title">Name:  </string>
     <string name="client_phone_title">Phone Number:  </string>

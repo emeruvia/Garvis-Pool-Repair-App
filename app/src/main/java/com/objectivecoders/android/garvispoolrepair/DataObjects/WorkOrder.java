@@ -13,8 +13,10 @@ public class WorkOrder {
     private String address;
     private String description;
     private String jobType;
+    private Client client;
 
-    public WorkOrder(int orderNumber,Date date, String address,String description, String jobType){
+    public WorkOrder(int orderNumber,Date date, String address,String description, String jobType,Client client){
+        this.client = client;
         this.address = address;
         this.date = date;
         this.description = description;
