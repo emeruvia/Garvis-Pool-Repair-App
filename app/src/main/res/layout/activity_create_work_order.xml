@@ -58,6 +58,7 @@
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
         android:text="03-10-2018"
+        android:onClick="onClickDate"
         android:textSize="20sp"/>
 </LinearLayout>
 

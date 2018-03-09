@@ -2,11 +2,13 @@ package com.objectivecoders.android.garvispoolrepair;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -17,7 +19,7 @@ import com.objectivecoders.android.garvispoolrepair.Fragments.ClientCardViewFrag
 
 public class CreateWorkOrderActivity extends AppCompatActivity {
 
-    private Button dateButton;
+    private static Button dateButton;
     private Button existingClientButton;
     private Button newClientButton;
     private TextView orderNumber;
@@ -61,5 +63,15 @@ public class CreateWorkOrderActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         return super.onOptionsItemSelected(item);
+    }
+
+    public void onClickDate(View view){
+        Intent miniCalendarIntent = new Intent(this, MiniCalendarActivity.class);
+        miniCalendarIntent.putExtra("CreateWorkOrderActivity", true);
+        startActivity(miniCalendarIntent);
+    }
+
+    static public Button getDateButton(){
+        return dateButton;
     }
 }
