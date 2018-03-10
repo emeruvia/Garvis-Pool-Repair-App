@@ -3,16 +3,14 @@ package com.objectivecoders.android.garvispoolrepair.Fragments;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
-import com.objectivecoders.android.garvispoolrepair.AuxillaryFragmentHolderActivity;
+import com.objectivecoders.android.garvispoolrepair.AuxiliaryFragmentHolderActivity;
 import com.objectivecoders.android.garvispoolrepair.CreateWorkOrderActivity;
 import com.objectivecoders.android.garvispoolrepair.DataObjects.Client;
 import com.objectivecoders.android.garvispoolrepair.R;
@@ -63,7 +61,7 @@ public class ClientFragment extends Fragment implements RecyclerViewOnClick{
     @Override
     public void rowSelected(int row) {
         //Used for CreateWorkOrderScreen
-        if(getActivity() instanceof AuxillaryFragmentHolderActivity){
+        if(getActivity() instanceof AuxiliaryFragmentHolderActivity){
             CreateWorkOrderActivity.getBundle().putString("FirstName", clientList.get(row).getFirstName());
             CreateWorkOrderActivity.getBundle().putString("LastName", clientList.get(row).getLastName());
             CreateWorkOrderActivity.getBundle().putString("Email", clientList.get(row).getEmail());
@@ -78,5 +76,10 @@ public class ClientFragment extends Fragment implements RecyclerViewOnClick{
 
     }
 
-
+    //Accounts for bundle in CreateWorkOrderActivity having data in it
+    @Override
+    public void onResume() {
+        CreateWorkOrderActivity.getBundle().clear();
+        super.onResume();
+    }
 }

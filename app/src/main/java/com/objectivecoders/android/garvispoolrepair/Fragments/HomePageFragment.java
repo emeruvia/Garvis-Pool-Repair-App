@@ -62,4 +62,11 @@ public class HomePageFragment extends android.support.v4.app.Fragment {
 
         return rootView;
     }
+
+    //Accounts for bundle in CreateWorkOrderActivity having data in it
+    @Override
+    public void onResume() {
+        CreateWorkOrderActivity.getBundle().clear();
+        super.onResume();
+    }
 }

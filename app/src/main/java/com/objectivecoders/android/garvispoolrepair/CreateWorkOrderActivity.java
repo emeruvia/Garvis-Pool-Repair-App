@@ -24,6 +24,7 @@ public class CreateWorkOrderActivity extends AppCompatActivity {
     private EditText descriptionEditText;
     private Spinner jobTypeSpinner;
     private LinearLayout clientLayout;
+
     private static Bundle bundle = new Bundle();
     public static String date = "01-01-2001";
 
@@ -48,9 +49,7 @@ public class CreateWorkOrderActivity extends AppCompatActivity {
             fragment.setArguments(bundle);
             android.support.v4.app.FragmentManager manager = getSupportFragmentManager();
             manager.beginTransaction().replace(R.id.client_linear_layout,fragment,fragment.getTag()).commit();
-
         }
-
     }
 
     @Override
@@ -69,21 +68,22 @@ public class CreateWorkOrderActivity extends AppCompatActivity {
     }
 
     public void onClickDate(View view){
-        Intent miniCalendarIntent = new Intent(this, AuxillaryFragmentHolderActivity.class);
+        Intent miniCalendarIntent = new Intent(this, AuxiliaryFragmentHolderActivity.class);
         miniCalendarIntent.putExtra("CreateWorkOrderActivity", "Date");
         startActivity(miniCalendarIntent);
     }
 
+
+    //TODO place code that would open the create new client page
     public void onClickNewClient(View view){
 
     }
 
     public void onClickExistingClient(View view){
-        Intent clientListIntent = new Intent(this,AuxillaryFragmentHolderActivity.class);
+        Intent clientListIntent = new Intent(this,AuxiliaryFragmentHolderActivity.class);
         clientListIntent.putExtra("CreateWorkOrderActivity","ExistingClient");
         startActivity(clientListIntent);
     }
-
 
     static public Bundle getBundle(){
         return bundle;
