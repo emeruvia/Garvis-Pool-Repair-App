@@ -7,7 +7,8 @@ import android.util.DisplayMetrics;
 import com.objectivecoders.android.garvispoolrepair.Fragments.ClientFragment;
 import com.objectivecoders.android.garvispoolrepair.Fragments.HomePageFragment;
 
-public class AuxillaryFragmentHolderActivity extends AppCompatActivity {
+//This class is used for holding various fragments when an activity is needed for functionality
+public class AuxiliaryFragmentHolderActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

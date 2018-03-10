@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.objectivecoders.android.garvispoolrepair.CreateWorkOrderActivity;
 import com.objectivecoders.android.garvispoolrepair.DataObjects.Client;
 import com.objectivecoders.android.garvispoolrepair.DataObjects.WorkOrder;
 import com.objectivecoders.android.garvispoolrepair.DataObjects.WorkOrderDate;
@@ -75,6 +76,18 @@ public class WorkOrderFragment extends Fragment implements RecyclerViewOnClick {
         workOrderIntent.putExtra("Description", workOrderList.get(row).getDescription());
         workOrderIntent.putExtra("Address", workOrderList.get(row).getAddress());
         workOrderIntent.putExtra("JobType", workOrderList.get(row).getJobType());
+        workOrderIntent.putExtra("FirstName",workOrderList.get(row).getClient().getFirstName());
+        workOrderIntent.putExtra("LastName",workOrderList.get(row).getClient().getLastName());
+        workOrderIntent.putExtra("Address",workOrderList.get(row).getClient().getAddress());
+        workOrderIntent.putExtra("Email",workOrderList.get(row).getClient().getEmail());
+
         startActivity(workOrderIntent);
+    }
+
+    //Accounts for bundle in CreateWorkOrderActivity having data in it
+    @Override
+    public void onResume() {
+        CreateWorkOrderActivity.getBundle().clear();
+        super.onResume();
     }
 }
