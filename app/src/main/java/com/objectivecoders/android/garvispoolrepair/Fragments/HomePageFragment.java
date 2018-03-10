@@ -2,6 +2,7 @@ package com.objectivecoders.android.garvispoolrepair.Fragments;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.CalendarView;
 import android.widget.Spinner;
 
+import com.objectivecoders.android.garvispoolrepair.AuxiliaryFragmentHolderActivity;
 import com.objectivecoders.android.garvispoolrepair.CreateWorkOrderActivity;
 import com.objectivecoders.android.garvispoolrepair.DataObjects.WorkOrderDate;
 import com.objectivecoders.android.garvispoolrepair.R;
@@ -42,7 +44,7 @@ public class HomePageFragment extends android.support.v4.app.Fragment {
         calendarView.setDate(System.currentTimeMillis());
 
 
-        if(getArguments() != null && getArguments().getString("CreateWorkOrderActivity").equals("Date")){
+        if(getArguments() != null && getArguments().getString("ToShow").equals("Date")){
 
             calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
                 @Override
@@ -55,6 +57,17 @@ public class HomePageFragment extends android.support.v4.app.Fragment {
 
                 }
 
+            });
+
+        }
+        else{
+            calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+                @Override
+                public void onSelectedDayChange(@NonNull CalendarView calendarView, int i, int i1, int i2) {
+                    Intent workOrdersIntent = new Intent(getActivity(), AuxiliaryFragmentHolderActivity.class);
+                    workOrdersIntent.putExtra("ToShow","WorkOrderOfTheDay");
+                    startActivity(workOrdersIntent);
+                }
             });
 
         }

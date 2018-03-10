@@ -34,7 +34,7 @@
         </activity>
         <activity
             android:name=".WorkOrderActivity"
-            android:parentActivityName=".HomePage" />
+            android:parentActivityName=".AuxiliaryFragmentHolderActivity" />
         <activity android:name=".SearchResultActivity">
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
@@ -43,7 +43,8 @@
         <activity
             android:name=".CreateWorkOrderActivity"
             android:parentActivityName=".HomePage" />
-        <activity android:name=".AuxiliaryFragmentHolderActivity"></activity>
+        <activity android:name=".AuxiliaryFragmentHolderActivity"
+            android:parentActivityName=".HomePage"></activity>
     </application>
 
 </manifest>

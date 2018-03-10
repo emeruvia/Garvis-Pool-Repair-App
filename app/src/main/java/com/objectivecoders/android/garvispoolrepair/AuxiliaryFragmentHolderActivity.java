@@ -6,6 +6,7 @@ import android.util.DisplayMetrics;
 
 import com.objectivecoders.android.garvispoolrepair.Fragments.ClientFragment;
 import com.objectivecoders.android.garvispoolrepair.Fragments.HomePageFragment;
+import com.objectivecoders.android.garvispoolrepair.Fragments.WorkOrderFragment;
 
 //This class is used for holding various fragments when an activity is needed for functionality
 public class AuxiliaryFragmentHolderActivity extends AppCompatActivity {
@@ -14,31 +15,42 @@ public class AuxiliaryFragmentHolderActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_auxillary_fragment_holder);
+        if (getIntent().getExtras() != null) {
+            if (getIntent().getExtras().getString("ToShow").equals("Date")) {
+                android.support.v4.app.Fragment fragment = new HomePageFragment();
 
-        if(getIntent().getExtras().getString("CreateWorkOrderActivity").equals("Date")){
-            android.support.v4.app.Fragment fragment = new HomePageFragment();
+                fragment.setArguments(getIntent().getExtras());
 
-            fragment.setArguments(getIntent().getExtras());
+                android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
 
-            android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
+                fragmentManager.beginTransaction().replace(R.id.mini_layout, fragment, fragment.getTag()).commit();
 
-            fragmentManager.beginTransaction().replace(R.id.mini_layout,fragment,fragment.getTag()).commit();
+                DisplayMetrics displayMetrics = new DisplayMetrics();
 
-            DisplayMetrics displayMetrics = new DisplayMetrics();
+                getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
 
-            getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+                int width = displayMetrics.widthPixels;
 
-            int width = displayMetrics.widthPixels;
+                int height = displayMetrics.heightPixels;
 
-            int height = displayMetrics.heightPixels;
+                getWindow().setLayout((int) (width * 0.5), (int) (height * 0.6));
+            } else if (getIntent().getExtras().getString("ToShow").equals("ExistingClient")) {
+                android.support.v4.app.Fragment fragment = new ClientFragment();
+                android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
+                fragmentManager.beginTransaction().replace(R.id.mini_layout, fragment, fragment.getTag()).commit();
+            }
+            //TODO Change the list of items based on the day that was clicked
+            else if (getIntent().getExtras().getString("ToShow").equals("WorkOrderOfTheDay")) {
+                android.support.v4.app.Fragment fragment = new WorkOrderFragment();
+                android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
+                fragmentManager.beginTransaction().replace(R.id.mini_layout, fragment, fragment.getTag()).commit();
+            }
 
-            getWindow().setLayout((int) (width * 0.5), (int) (height * 0.6));
         }
-        else if(getIntent().getExtras().getString("CreateWorkOrderActivity").equals("ExistingClient")){
-            android.support.v4.app.Fragment fragment = new ClientFragment();
+        else{
+            android.support.v4.app.Fragment fragment = new WorkOrderFragment();
             android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.mini_layout,fragment,fragment.getTag()).commit();
+            fragmentManager.beginTransaction().replace(R.id.mini_layout, fragment, fragment.getTag()).commit();
         }
-
     }
 }
