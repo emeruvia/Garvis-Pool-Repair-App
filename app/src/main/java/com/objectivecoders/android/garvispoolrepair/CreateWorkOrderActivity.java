@@ -69,7 +69,7 @@ public class CreateWorkOrderActivity extends AppCompatActivity {
 
     public void onClickDate(View view){
         Intent miniCalendarIntent = new Intent(this, AuxiliaryFragmentHolderActivity.class);
-        miniCalendarIntent.putExtra("CreateWorkOrderActivity", "Date");
+        miniCalendarIntent.putExtra("ToShow", "Date");
         startActivity(miniCalendarIntent);
     }
 
@@ -81,7 +81,7 @@ public class CreateWorkOrderActivity extends AppCompatActivity {
 
     public void onClickExistingClient(View view){
         Intent clientListIntent = new Intent(this,AuxiliaryFragmentHolderActivity.class);
-        clientListIntent.putExtra("CreateWorkOrderActivity","ExistingClient");
+        clientListIntent.putExtra("ToShow","ExistingClient");
         startActivity(clientListIntent);
     }
 
