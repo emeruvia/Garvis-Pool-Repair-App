@@ -24,6 +24,7 @@
             android:id="@+id/fragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
         </RelativeLayout>
 
         <android.support.design.widget.NavigationView
@@ -44,7 +45,10 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
         android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_input_add"
-        android:onClick="floatingButtonAction"/>
+        android:onClick="floatingButtonAction"
+        app:layout_anchor="@+id/drawer_layout"
+        app:layout_anchorGravity="right|bottom"
+        app:srcCompat="@drawable/ic_add_icon"
+        tools:layout_editor_absoluteX="308dp" />
 
 </android.support.design.widget.CoordinatorLayout>
