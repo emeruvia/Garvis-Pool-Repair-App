@@ -76,7 +76,8 @@ public class CreateWorkOrderActivity extends AppCompatActivity {
 
     //TODO place code that would open the create new client page
     public void onClickNewClient(View view){
-
+        Intent clientIntent = new Intent(this,CreateClientActivity.class);
+        startActivity(clientIntent);
     }
 
     public void onClickExistingClient(View view){

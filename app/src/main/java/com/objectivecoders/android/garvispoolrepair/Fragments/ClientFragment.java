@@ -1,5 +1,6 @@
 package com.objectivecoders.android.garvispoolrepair.Fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.objectivecoders.android.garvispoolrepair.AuxiliaryFragmentHolderActivity;
+import com.objectivecoders.android.garvispoolrepair.ClientActivity;
 import com.objectivecoders.android.garvispoolrepair.CreateWorkOrderActivity;
 import com.objectivecoders.android.garvispoolrepair.DataObjects.Client;
 import com.objectivecoders.android.garvispoolrepair.R;
@@ -71,6 +73,12 @@ public class ClientFragment extends Fragment implements RecyclerViewOnClick{
         //TODO make an Intent with extras as Strings that comprise the Client object based on the index
         //TODO "row" of the clientList object
         else{
+            Intent clientIntent = new Intent(getActivity(), ClientActivity.class);
+            clientIntent.putExtra("FirstName", clientList.get(row).getFirstName());
+            clientIntent.putExtra("LastName", clientList.get(row).getLastName());
+            clientIntent.putExtra("Email", clientList.get(row).getEmail());
+            clientIntent.putExtra("Address", clientList.get(row).getAddress());
+            startActivity(clientIntent);
 
         }
 

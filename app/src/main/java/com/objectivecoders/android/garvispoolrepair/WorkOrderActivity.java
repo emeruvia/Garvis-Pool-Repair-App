@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.objectivecoders.android.garvispoolrepair.DataObjects.Client;
@@ -34,7 +36,7 @@ public class WorkOrderActivity extends AppCompatActivity {
         description = findViewById(R.id.work_order_description_textview);
         clientCardView = findViewById(R.id.work_order_client_cardview);
 
-        //TODO Possibly make code to display a client profile with onClickgit
+        //TODO Possibly make code to display a client profile with onClick
         android.support.v4.app.Fragment fragment = new ClientCardViewFragment();
         fragment.setArguments(getIntent().getExtras());
         android.support.v4.app.FragmentManager manager = getSupportFragmentManager();
@@ -47,6 +49,20 @@ public class WorkOrderActivity extends AppCompatActivity {
         description.setText(workOrderIntent.getStringExtra("Description"));
 
     }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.edit_item, menu);
+        return true;
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if(id == R.id.edit_entity){
+            Intent editWorkOrderIntent = new Intent(this,CreateWorkOrderActivity.class);
+            startActivity(editWorkOrderIntent);
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
 }
