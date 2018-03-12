@@ -89,13 +89,10 @@ public class CreateWorkOrderActivity extends AppCompatActivity {
         return bundle;
     }
 
-    //TODO Fix this to account for additional work order adds after the initail one
+    //TODO Fix this to account for additional work order adds after the initial one
     @Override
     protected void onRestart() {
         recreate();
         super.onRestart();
     }
-
-
-
 }

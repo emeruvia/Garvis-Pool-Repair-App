@@ -70,13 +70,10 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
 
         }
 
-
         else if (fragment instanceof HomePageFragment) {
             Intent workOrderIntent = new Intent(this, CreateWorkOrderActivity.class);
             startActivity(workOrderIntent);
-
         }
-
 
         else if(fragment instanceof WorkOrderFragment){
             Intent workOrderIntent = new Intent(this, CreateWorkOrderActivity.class);
@@ -88,7 +85,6 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.search, menu);
-
         // Associate searchable configuration with the SearchView
         SearchManager searchManager =
                 (SearchManager) getSystemService(Context.SEARCH_SERVICE);
@@ -155,8 +151,4 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
-
-
-
 }

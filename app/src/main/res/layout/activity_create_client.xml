@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.objectivecoders.android.garvispoolrepair.CreateClientActivity">
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:columnCount="2"
+        android:rowCount="4"
+        android:padding="5dp">
+
+        <TextView
+            android:layout_column="0"
+            android:layout_row="0"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:text="@string/client_first_name"
+            android:textSize="30sp"/>
+
+        <EditText
+            android:layout_column="1"
+            android:layout_row="0"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:inputType="textPersonName"
+            android:hint="@string/edit_first_name"
+            android:textSize="25sp"/>
+        <TextView
+            android:layout_column="0"
+            android:layout_row="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:text="@string/client_last_name"
+            android:textSize="30sp"/>
+
+        <EditText
+            android:layout_column="1"
+            android:layout_row="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:hint="@string/edit_last_name"
+            android:textSize="25sp"/>
+        <TextView
+            android:layout_column="0"
+            android:layout_row="2"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:text="@string/client_address"
+            android:textSize="30sp"/>
+
+        <EditText
+            android:layout_column="1"
+            android:layout_row="2"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:hint="@string/edit_address"
+            android:textSize="25sp"/>
+        <TextView
+            android:layout_column="0"
+            android:layout_row="3"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:text="@string/client_email"
+            android:textSize="30sp"/>
+
+        <EditText
+            android:layout_column="1"
+            android:layout_row="3"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:inputType="textEmailAddress"
+            android:hint="@string/edit_email"
+            android:textSize="25sp"/>
+
+
+    </GridLayout>
+
+</RelativeLayout>
