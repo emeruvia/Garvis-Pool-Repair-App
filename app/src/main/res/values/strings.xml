@@ -47,6 +47,13 @@
     <string name="client_address">Address: </string>
     <string name="client_email">Email: </string>
 
+    <!--Strings for creating a new client-->
+    <string name="edit_first_name">Enter First Name</string>
+    <string name="edit_last_name">Enter Last Name</string>
+    <string name="edit_address">Enter Address</string>
+    <string name="edit_email">Enter Email</string>
+
+
     <!-- String for the search menu-->
     <string name="search_title">Search </string>
 
