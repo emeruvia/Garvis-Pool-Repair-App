@@ -17,6 +17,7 @@ public class AuxiliaryFragmentHolderActivity extends AppCompatActivity {
         setContentView(R.layout.activity_auxillary_fragment_holder);
         if (getIntent().getExtras() != null) {
             if (getIntent().getExtras().getString("ToShow").equals("Date")) {
+                getSupportActionBar().setDisplayHomeAsUpEnabled(false);
                 android.support.v4.app.Fragment fragment = new HomePageFragment();
 
                 fragment.setArguments(getIntent().getExtras());
