@@ -31,7 +31,7 @@ public class ClientCardViewFragment extends android.support.v4.app.Fragment {
 
         firstNameTextView.setText("First Name: " + getArguments().getString("FirstName"));
         lastNameTextView.setText("Last Name: " + getArguments().getString("LastName"));
-        addressTextView.setText("Address: " + getArguments().getString("Address"));
+        addressTextView.setText("Address: " + getArguments().getString("ClientAddress"));
         emailTextView.setText("Email: " + getArguments().getString("Email"));
 
 

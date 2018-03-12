@@ -48,14 +48,16 @@ public class WorkOrderFragment extends Fragment implements RecyclerViewOnClick {
                     ///Dummy Data///
         /////////////////////////////////////
         workOrderList.add(new WorkOrder(12312,new WorkOrderDate(System.currentTimeMillis()),
-                "3412 20th st w Fort Myers, Fl","Just Do It!","Make You're Dreams Come True!"
-        ,new Client("Shia ","LaBeouf","whatever st","DoIt@yahoo.com")));
-        workOrderList.add(new WorkOrder(12312,new WorkOrderDate(System.currentTimeMillis()),
-                "3412 20th st w Fort Myers, Fl","Just Do It!","Make You're Dreams Come True!"
-                ,new Client("Shia ","LaBeouf","whatever st","DoIt@yahoo.com")));
-        workOrderList.add(new WorkOrder(12312,new WorkOrderDate(System.currentTimeMillis()),
-                "3412 20th st w Fort Myers, Fl","Just Do It!","Make You're Dreams Come True!"
-                ,new Client("Shia ","LaBeouf","whatever st","DoIt@yahoo.com")));
+                "3412 20th st w Fort Myers, Fl","Do the job","Replace Filter"
+        ,new Client("Juan", "Gomez", "123 address",
+                "jgomez@gmail.com")));
+        workOrderList.add(new WorkOrder(12313,new WorkOrderDate(System.currentTimeMillis()),
+                "3412 20th st w Fort Myers, Fl","Do the job","Fix Pump"
+                ,new Client("Jeffey", "Fleurent", "123 IDK",
+                "jfleurent@gmail.com")));
+        workOrderList.add(new WorkOrder(12314,new WorkOrderDate(System.currentTimeMillis()),
+                "3412 20th st w Fort Myers, Fl","Do the job","Clean Pool",
+        new Client("Haley", "Ovenhouse", "123 IDK", "IDKEITHER@gmail.com")));
         /////////////////////////////////////
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(fragmentActivity);
@@ -78,8 +80,8 @@ public class WorkOrderFragment extends Fragment implements RecyclerViewOnClick {
         workOrderIntent.putExtra("JobType", workOrderList.get(row).getJobType());
         workOrderIntent.putExtra("FirstName",workOrderList.get(row).getClient().getFirstName());
         workOrderIntent.putExtra("LastName",workOrderList.get(row).getClient().getLastName());
-        workOrderIntent.putExtra("Address",workOrderList.get(row).getClient().getAddress());
         workOrderIntent.putExtra("Email",workOrderList.get(row).getClient().getEmail());
+        workOrderIntent.putExtra("ClientAddress",workOrderList.get(row).getClient().getAddress());
 
         startActivity(workOrderIntent);
     }
