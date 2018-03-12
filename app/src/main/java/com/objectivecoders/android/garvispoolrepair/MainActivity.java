@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
      * @param view
      */
     public void loginButton(View view) {
-        Intent loginIntent = new Intent(this, LoginActivity.class);
+        Intent loginIntent = new Intent(this, AuthenticatorActivity.class);
         startActivity(loginIntent);
     }
 
