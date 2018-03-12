@@ -34,7 +34,7 @@ public class WorkOrderActivity extends AppCompatActivity {
         description = findViewById(R.id.work_order_description_textview);
         clientCardView = findViewById(R.id.work_order_client_cardview);
 
-        //TODO Possibly make code to display a client profile with onClickgit
+        //TODO Possibly make code to display a client profile with onClick
         android.support.v4.app.Fragment fragment = new ClientCardViewFragment();
         fragment.setArguments(getIntent().getExtras());
         android.support.v4.app.FragmentManager manager = getSupportFragmentManager();

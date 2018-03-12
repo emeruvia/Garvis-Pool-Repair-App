@@ -65,9 +65,10 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
 
     public void floatingButtonAction(View view){
 
-        //TODO Add code for intent that opens the create new client window
-        if(fragment instanceof ClientFragment){
 
+        if(fragment instanceof ClientFragment){
+            Intent clientIntent = new Intent(this, CreateClientActivity.class);
+            startActivity(clientIntent);
         }
 
         else if (fragment instanceof HomePageFragment) {

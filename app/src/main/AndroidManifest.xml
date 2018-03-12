@@ -51,7 +51,8 @@
             android:name=".AuxiliaryFragmentHolderActivity"
             android:parentActivityName=".HomePage"/>
         <activity android:name=".AuthenticatorActivity"/>
-        <activity android:name=".CreateClientActivity">
+        <activity android:name=".CreateClientActivity"
+            android:parentActivityName=".HomePage">
         </activity>
     </application>
 
