@@ -40,6 +40,7 @@ public class AuxiliaryFragmentHolderActivity extends AppCompatActivity {
                 android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
                 fragmentManager.beginTransaction().replace(R.id.mini_layout, fragment, fragment.getTag()).commit();
             }
+
             //TODO Change the list of items based on the day that was clicked
             else if (getIntent().getExtras().getString("ToShow").equals("WorkOrderOfTheDay")) {
                 android.support.v4.app.Fragment fragment = new WorkOrderFragment();
