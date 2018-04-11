@@ -22,6 +22,7 @@ import android.widget.SearchView;
 
 import com.objectivecoders.android.garvispoolrepair.Fragments.ClientFragment;
 import com.objectivecoders.android.garvispoolrepair.Fragments.HomePageFragment;
+import com.objectivecoders.android.garvispoolrepair.Fragments.MapContainerFragment;
 import com.objectivecoders.android.garvispoolrepair.Fragments.WorkOrderFragment;
 
 public class HomePage extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -36,15 +37,15 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
 
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton fab = findViewById(R.id.fab);
 
         //Connect a fragment to the layout in activity_home_page.xml
-        if(fragment == null){
+        if (fragment == null) {
             fragment = new HomePageFragment();
         }
 
         FragmentManager manager = getSupportFragmentManager();
-        manager.beginTransaction().replace(R.id.fragment,fragment,fragment.getTag()).commit();
+        manager.beginTransaction().replace(R.id.fragment, fragment, fragment.getTag()).commit();
 
 
         //For the navigation drawer implementation
@@ -60,25 +61,22 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
 
         navigationView.setNavigationItemSelectedListener(this);
 
-
     }
 
-    public void floatingButtonAction(View view){
+    public void floatingButtonAction(View view) {
 
-
-        if(fragment instanceof ClientFragment){
+        if (fragment instanceof ClientFragment) {
             Intent clientIntent = new Intent(this, CreateClientActivity.class);
             startActivity(clientIntent);
-        }
-
-        else if (fragment instanceof HomePageFragment) {
+        } else if (fragment instanceof HomePageFragment) {
+            Intent workOrderIntent = new Intent(this, CreateWorkOrderActivity.class);
+            startActivity(workOrderIntent);
+        } else if (fragment instanceof WorkOrderFragment) {
             Intent workOrderIntent = new Intent(this, CreateWorkOrderActivity.class);
             startActivity(workOrderIntent);
         }
+        else{
 
-        else if(fragment instanceof WorkOrderFragment){
-            Intent workOrderIntent = new Intent(this, CreateWorkOrderActivity.class);
-            startActivity(workOrderIntent);
         }
     }
 
@@ -112,6 +110,7 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
 
 
     }
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -132,20 +131,28 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
         if (id == R.id.nav_work_order) {
             fragment = new WorkOrderFragment();
             FragmentManager manager = getSupportFragmentManager();
-            manager.beginTransaction().replace(R.id.fragment,fragment,fragment.getTag()).commit();
-        }
-        else if (id == R.id.nav_client) {
+            manager.beginTransaction().replace(R.id.fragment, fragment, fragment.getTag()).commit();
+        } else if (id == R.id.nav_client) {
             fragment = new ClientFragment();
             FragmentManager manager = getSupportFragmentManager();
             manager.beginTransaction().replace(R.id.fragment, fragment, fragment.getTag()).commit();
-        }
-        else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_send) {
+            Intent intent = new Intent(Intent.ACTION_SEND);
+            intent.setType("text/plain");
+            intent.putExtra(Intent.EXTRA_SUBJECT, "");
+            intent.putExtra(Intent.EXTRA_TEXT, "");
 
-        }
-        else if(id == R.id.nav_calendar) {
+            startActivity(intent);
+
+        } else if (id == R.id.nav_calendar) {
             fragment = new HomePageFragment();
             FragmentManager manager = getSupportFragmentManager();
-            manager.beginTransaction().replace(R.id.fragment,fragment,fragment.getTag()).commit();
+            manager.beginTransaction().replace(R.id.fragment, fragment, fragment.getTag()).commit();
+        }
+        else if(id == R.id.nav_map){
+            fragment = new MapContainerFragment();
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.fragment, fragment, fragment.getTag()).commit();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
