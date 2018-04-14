@@ -1,50 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.objectivecoders.android.garvispoolrepair.WorkOrderActivity">
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                tools:context="com.objectivecoders.android.garvispoolrepair.WorkOrderActivity">
 
     <LinearLayout
-        android:layout_below="@id/create_work_order_title"
         android:id="@+id/LinearLayout1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_below="@id/create_work_order_title"
         android:layout_centerHorizontal="true"
-        >
+        android:orientation="horizontal">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/work_order_number_title"
-            android:textSize="25sp"
             android:layout_marginRight="5sp"
-            />
+            android:text="@string/work_order_number_title"
+            android:textSize="25sp"/>
+
         <TextView
             android:id="@+id/work_order_number_textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="25sp"
             android:text="1234"
-            />
+            android:textSize="25sp"/>
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/LinearLayout2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/LinearLayout1"
         android:layout_centerHorizontal="false"
-        android:orientation="vertical"
         android:layout_marginLeft="10sp"
-        android:layout_below="@id/LinearLayout1">
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/work_order_date_title"
             android:layout_marginRight="60sp"
+            android:text="@string/work_order_date_title"
             android:textSize="20sp"
             android:textStyle="bold"/>
 
@@ -52,18 +51,18 @@
             android:id="@+id/work_order_date_textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:layout_marginLeft="10sp"/>
+            android:layout_marginLeft="10sp"
+            android:textSize="20sp"/>
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/LinearLayout3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:layout_below="@id/LinearLayout2"
         android:layout_centerHorizontal="false"
         android:layout_marginLeft="10sp"
-        android:layout_below="@id/LinearLayout2">
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
@@ -85,10 +84,10 @@
         android:id="@+id/LinearLayout4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:layout_below="@id/LinearLayout3"
         android:layout_centerHorizontal="false"
         android:layout_marginLeft="10sp"
-        android:layout_below="@id/LinearLayout3">
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
@@ -101,18 +100,18 @@
             android:id="@+id/work_order_address_textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:layout_marginLeft="10sp"/>
+            android:layout_marginLeft="10sp"
+            android:textSize="20sp"/>
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/LinearLayout5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:layout_below="@id/LinearLayout4"
         android:layout_centerHorizontal="false"
         android:layout_marginLeft="10sp"
-        android:layout_below="@id/LinearLayout4">
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
@@ -125,9 +124,8 @@
             android:id="@+id/work_order_job_type_textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:layout_marginLeft="10sp"/>
-
+            android:layout_marginLeft="10sp"
+            android:textSize="20sp"/>
 
 
     </LinearLayout>
@@ -136,10 +134,10 @@
         android:id="@+id/LinearLayout6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:layout_below="@id/LinearLayout5"
         android:layout_centerHorizontal="false"
         android:layout_marginLeft="10sp"
-        android:layout_below="@id/LinearLayout5">
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
@@ -150,10 +148,10 @@
 
         <TextView
             android:id="@+id/work_order_description_textview"
-            android:textSize="20sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10sp"/>
+            android:layout_marginLeft="10sp"
+            android:textSize="20sp"/>
 
 
     </LinearLayout>
