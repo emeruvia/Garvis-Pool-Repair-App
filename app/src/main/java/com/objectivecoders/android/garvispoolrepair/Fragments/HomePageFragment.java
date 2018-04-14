@@ -40,7 +40,6 @@ public class HomePageFragment extends android.support.v4.app.Fragment {
         View rootView = inflater.inflate(R.layout.fragment_home_page, container, false);
 
         calendarView = rootView.findViewById(R.id.calendarView);
-
         calendarView.setDate(System.currentTimeMillis());
 
         if(getArguments() != null && getArguments().getString("ToShow").equals("Date")){
@@ -48,7 +47,7 @@ public class HomePageFragment extends android.support.v4.app.Fragment {
             calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
                 @Override
                 public void onSelectedDayChange(@NonNull CalendarView calendarView, int i, int i1, int i2) {
-                    String month = i1+1 > 10 ? String.valueOf(i1+1) : "0"+ String.valueOf(i1+1);
+                    String month = i1+1 >= 10 ? String.valueOf(i1+1) : "0"+ String.valueOf(i1+1);
                     String day = i2 > 10 ? String.valueOf(i2) : "0"+ String.valueOf(i2);
                         CreateWorkOrderActivity.date  = month+"-"+day+"-"+String.valueOf(i);
                 }
@@ -57,11 +56,12 @@ public class HomePageFragment extends android.support.v4.app.Fragment {
 
         }
         else{
+            calendarView.setPadding(0,90,0,0);
             calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
                 @Override
                 public void onSelectedDayChange(@NonNull CalendarView calendarView, int i, int i1, int i2) {
                     Intent workOrdersIntent = new Intent(getActivity(), AuxiliaryFragmentHolderActivity.class);
-                    String month = i1+1 > 10 ? String.valueOf(i1+1) : "0"+ String.valueOf(i1+1);
+                    String month = i1+1 >= 10 ? String.valueOf(i1+1) : "0"+ String.valueOf(i1+1);
                     String day = i2 > 10 ? String.valueOf(i2) : "0"+ String.valueOf(i2);
                     workOrdersIntent.putExtra("ToShow","WorkOrderOfTheDay");
                     workOrdersIntent.putExtra("Date", month+"-"+day+"-"+String.valueOf(i));
