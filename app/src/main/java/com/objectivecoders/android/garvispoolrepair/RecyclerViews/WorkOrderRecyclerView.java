@@ -51,7 +51,8 @@ public class WorkOrderRecyclerView extends RecyclerView.Adapter<WorkOrderRecycle
         holder.workOrderDate.setText(workOrderList.get(position).getDate().toString());
 
         //TODO Link to database if a work order is complete or not
-        holder.completionCheckBox.setChecked(true);
+        //defaulted to false
+        holder.completionCheckBox.setChecked(false);
 
 
         holder.workOrderIcon.setImageResource(R.drawable.ic_work_order);
