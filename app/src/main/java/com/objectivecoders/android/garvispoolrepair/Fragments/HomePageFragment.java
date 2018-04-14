@@ -43,7 +43,6 @@ public class HomePageFragment extends android.support.v4.app.Fragment {
 
         calendarView.setDate(System.currentTimeMillis());
 
-
         if(getArguments() != null && getArguments().getString("ToShow").equals("Date")){
 
             calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
@@ -52,9 +51,6 @@ public class HomePageFragment extends android.support.v4.app.Fragment {
                     String month = i1+1 > 10 ? String.valueOf(i1+1) : "0"+ String.valueOf(i1+1);
                     String day = i2 > 10 ? String.valueOf(i2) : "0"+ String.valueOf(i2);
                         CreateWorkOrderActivity.date  = month+"-"+day+"-"+String.valueOf(i);
-
-
-
                 }
 
             });
@@ -65,14 +61,15 @@ public class HomePageFragment extends android.support.v4.app.Fragment {
                 @Override
                 public void onSelectedDayChange(@NonNull CalendarView calendarView, int i, int i1, int i2) {
                     Intent workOrdersIntent = new Intent(getActivity(), AuxiliaryFragmentHolderActivity.class);
+                    String month = i1+1 > 10 ? String.valueOf(i1+1) : "0"+ String.valueOf(i1+1);
+                    String day = i2 > 10 ? String.valueOf(i2) : "0"+ String.valueOf(i2);
                     workOrdersIntent.putExtra("ToShow","WorkOrderOfTheDay");
+                    workOrdersIntent.putExtra("Date", month+"-"+day+"-"+String.valueOf(i));
                     startActivity(workOrdersIntent);
                 }
             });
 
         }
-
-
         return rootView;
     }
 

@@ -10,11 +10,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.objectivecoders.android.garvispoolrepair.CreateWorkOrderActivity;
 import com.objectivecoders.android.garvispoolrepair.DataObjects.Client;
 import com.objectivecoders.android.garvispoolrepair.DataObjects.WorkOrder;
 import com.objectivecoders.android.garvispoolrepair.DataObjects.WorkOrderDate;
+import com.objectivecoders.android.garvispoolrepair.HomePage;
 import com.objectivecoders.android.garvispoolrepair.R;
 import com.objectivecoders.android.garvispoolrepair.RecyclerViews.RecyclerViewOnClick;
 import com.objectivecoders.android.garvispoolrepair.RecyclerViews.WorkOrderRecyclerView;
@@ -41,8 +43,9 @@ public class WorkOrderFragment extends Fragment implements RecyclerViewOnClick {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_work_order_list, container, false);
         final FragmentActivity fragmentActivity = getActivity();
-
-
+        if(HomePage.fragment instanceof WorkOrderFragment){
+            rootView.setPadding(0,100,0,0);
+        }
 
         //TODO Get rid of the dummy data once the database is impleted
                     ///Dummy Data///
@@ -59,6 +62,12 @@ public class WorkOrderFragment extends Fragment implements RecyclerViewOnClick {
                 "3412 20th st w Fort Myers, Fl","Do the job","Clean Pool",
         new Client("Haley", "Ovenhouse", "123 IDK", "IDKEITHER@gmail.com")));
         /////////////////////////////////////
+
+        TextView textView = rootView.findViewById(R.id.work_order_date_textview);
+        textView.setText("05-12-2000");
+        if(getArguments() != null){
+            textView.setText(getArguments().getString("Date"));
+        }
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(fragmentActivity);
         workOrderRecyclerView = new WorkOrderRecyclerView(workOrderList,this);
