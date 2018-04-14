@@ -1,9 +1,14 @@
 package com.objectivecoders.android.garvispoolrepair.Fragments;
 
 
+import android.content.pm.PackageManager;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +19,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.objectivecoders.android.garvispoolrepair.MainActivity;
 import com.objectivecoders.android.garvispoolrepair.R;
 
 
@@ -23,6 +29,8 @@ import com.objectivecoders.android.garvispoolrepair.R;
 public class MapContainerFragment extends Fragment implements OnMapReadyCallback {
 
     GoogleMap map;
+    LocationManager locationManager;
+    LocationListener locationListener;
 
     public MapContainerFragment() {
         // Required empty public constructor
@@ -48,11 +56,9 @@ public class MapContainerFragment extends Fragment implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         map = googleMap;
-        //TODO UPdate this part with the locations of the different places
-        LatLng usf = new LatLng(28.0587, 82.4139);
-        MarkerOptions options = new MarkerOptions();
-        options.position(usf).title("USF LAT LONG");
-        map.addMarker(options);
-        map.moveCamera(CameraUpdateFactory.newLatLng(usf));
+
+        // Add a marker in Sydney and move the camera
+        LatLng FortMyers = new LatLng(26.6406,-81.8723);
+        map.moveCamera(CameraUpdateFactory.newLatLngZoom(FortMyers, 11));
     }
 }
