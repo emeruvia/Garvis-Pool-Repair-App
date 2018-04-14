@@ -39,11 +39,6 @@
         <activity
             android:name=".WorkOrderActivity"
             android:parentActivityName=".AuxiliaryFragmentHolderActivity" />
-        <activity android:name=".SearchResultActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.SEARCH" />
-            </intent-filter>
-        </activity>
         <activity
             android:name=".CreateWorkOrderActivity"
             android:parentActivityName=".HomePage" />

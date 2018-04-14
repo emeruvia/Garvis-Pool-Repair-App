@@ -38,7 +38,7 @@ public class ClientFragment extends Fragment implements RecyclerViewOnClick{
 
         View rootView = inflater.inflate(R.layout.fragment_client_list, container, false);
         final FragmentActivity fragmentActivity = getActivity();
-        
+
         if(HomePage.fragment instanceof ClientFragment){
            rootView.setPadding(0,100,0,0);
         }
