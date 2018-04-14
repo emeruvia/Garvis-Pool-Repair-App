@@ -20,6 +20,7 @@
             android:layout_height="wrap_content"
             android:text="@string/work_order_number_title"
             android:textSize="25sp"
+            android:layout_marginRight="5sp"
             />
         <TextView
             android:id="@+id/work_order_number_textview"
@@ -34,22 +35,25 @@
         android:id="@+id/LinearLayout2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="false"
         android:orientation="vertical"
-        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="10sp"
         android:layout_below="@id/LinearLayout1">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:text="@string/work_order_date_title"
-            android:textSize="20sp" />
+            android:layout_marginRight="60sp"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/work_order_date_textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"/>
+            android:textSize="20sp"
+            android:layout_marginLeft="10sp"/>
     </LinearLayout>
 
     <LinearLayout
@@ -57,15 +61,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_centerHorizontal="true"
+        android:layout_centerHorizontal="false"
+        android:layout_marginLeft="10sp"
         android:layout_below="@id/LinearLayout2">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:text="@string/work_order_client_title"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:textStyle="bold"/>
 
         <android.support.v7.widget.CardView
             android:id="@+id/work_order_client_cardview"
@@ -81,21 +86,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_centerHorizontal="true"
+        android:layout_centerHorizontal="false"
+        android:layout_marginLeft="10sp"
         android:layout_below="@id/LinearLayout3">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:text="@string/work_order_address_title"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/work_order_address_textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:layout_marginLeft="10sp"/>
     </LinearLayout>
 
     <LinearLayout
@@ -103,21 +110,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_centerHorizontal="true"
+        android:layout_centerHorizontal="false"
+        android:layout_marginLeft="10sp"
         android:layout_below="@id/LinearLayout4">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:text="@string/work_order_job_type_title"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/work_order_job_type_textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:layout_marginLeft="10sp"/>
 
 
 
@@ -128,21 +137,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_centerHorizontal="true"
+        android:layout_centerHorizontal="false"
+        android:layout_marginLeft="10sp"
         android:layout_below="@id/LinearLayout5">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:text="@string/work_order_description_title"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/work_order_description_textview"
             android:textSize="20sp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10sp"/>
 
 
     </LinearLayout>
