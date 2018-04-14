@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -48,7 +49,12 @@ public class WorkOrderRecyclerView extends RecyclerView.Adapter<WorkOrderRecycle
         holder.workOrderNumber.setText(String.valueOf(workOrderList.get(position).getOrderNumber()));
         holder.workOrderJob.setText(workOrderList.get(position).getJobType());
         holder.workOrderDate.setText(workOrderList.get(position).getDate().toString());
-        holder.completionIcon.setImageResource(R.drawable.ic_action_name);
+
+        //TODO Link to database if a work order is complete or not
+        //defaulted to false
+        holder.completionCheckBox.setChecked(false);
+
+
         holder.workOrderIcon.setImageResource(R.drawable.ic_work_order);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,7 +71,7 @@ public class WorkOrderRecyclerView extends RecyclerView.Adapter<WorkOrderRecycle
     public class WorkOrderRecyclerViewHolder extends RecyclerView.ViewHolder {
 
         ImageView workOrderIcon;
-        ImageView completionIcon;
+        CheckBox completionCheckBox;
         TextView workOrderNumber;
         TextView workOrderDate;
         TextView workOrderJob;
@@ -73,9 +79,9 @@ public class WorkOrderRecyclerView extends RecyclerView.Adapter<WorkOrderRecycle
         public WorkOrderRecyclerViewHolder(View view) {
             super(view);
             workOrderDate = view.findViewById(R.id.work_order_date);
+            completionCheckBox = view.findViewById(R.id.completion_checkbox);
             workOrderIcon = view.findViewById(R.id.work_order_icon);
             workOrderJob = view.findViewById(R.id.work_order_job_textview);
-            completionIcon = view.findViewById(R.id.completion_icon);
             workOrderNumber = view.findViewById(R.id.work_order_number_textview);
         }
     }
