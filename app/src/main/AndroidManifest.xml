@@ -49,7 +49,7 @@
             android:parentActivityName=".HomePage" />
         <activity
             android:name=".AuxiliaryFragmentHolderActivity"
-            android:parentActivityName=".HomePage" />
+            android:parentActivityName=".CreateWorkOrderActivity" />
         <activity android:name=".AuthenticatorActivity" />
         <activity
             android:name=".CreateClientActivity"

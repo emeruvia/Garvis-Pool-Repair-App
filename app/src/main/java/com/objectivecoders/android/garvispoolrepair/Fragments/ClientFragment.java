@@ -15,6 +15,7 @@ import com.objectivecoders.android.garvispoolrepair.AuxiliaryFragmentHolderActiv
 import com.objectivecoders.android.garvispoolrepair.ClientActivity;
 import com.objectivecoders.android.garvispoolrepair.CreateWorkOrderActivity;
 import com.objectivecoders.android.garvispoolrepair.DataObjects.Client;
+import com.objectivecoders.android.garvispoolrepair.HomePage;
 import com.objectivecoders.android.garvispoolrepair.R;
 import com.objectivecoders.android.garvispoolrepair.RecyclerViews.ClientRecyclerView;
 import com.objectivecoders.android.garvispoolrepair.RecyclerViews.RecyclerViewOnClick;
@@ -37,6 +38,10 @@ public class ClientFragment extends Fragment implements RecyclerViewOnClick{
 
         View rootView = inflater.inflate(R.layout.fragment_client_list, container, false);
         final FragmentActivity fragmentActivity = getActivity();
+        
+        if(HomePage.fragment instanceof ClientFragment){
+           rootView.setPadding(0,100,0,0);
+        }
 
         //TODO Get rid of the dummy data once the database is impleted
         clientList.add(new Client("Juan", "Gomez", "123 address",

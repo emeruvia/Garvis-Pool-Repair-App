@@ -3,6 +3,8 @@ package com.objectivecoders.android.garvispoolrepair;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -20,13 +22,21 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.SearchView;
 
+import com.arlib.floatingsearchview.FloatingSearchView;
+import com.arlib.floatingsearchview.suggestions.model.SearchSuggestion;
+import com.objectivecoders.android.garvispoolrepair.DataObjects.GarvisSearchSuggestions;
 import com.objectivecoders.android.garvispoolrepair.Fragments.ClientFragment;
 import com.objectivecoders.android.garvispoolrepair.Fragments.HomePageFragment;
 import com.objectivecoders.android.garvispoolrepair.Fragments.MapContainerFragment;
 import com.objectivecoders.android.garvispoolrepair.Fragments.WorkOrderFragment;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class HomePage extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    static Fragment fragment;
+    public static Fragment fragment;
+    FloatingSearchView mSearchView;
+    final List list = new ArrayList<SearchSuggestion>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,9 +57,7 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
         FragmentManager manager = getSupportFragmentManager();
         manager.beginTransaction().replace(R.id.fragment, fragment, fragment.getTag()).commit();
 
-
-        //For the navigation drawer implementation
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -57,9 +65,18 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-
+        NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        list.add(new GarvisSearchSuggestions());
+        list.add(new GarvisSearchSuggestions());
+        list.add(new GarvisSearchSuggestions());
+        list.add(new GarvisSearchSuggestions());
+
+        mSearchView = findViewById(R.id.floating_search_view);
+        mSearchView.setOnQueryChangeListener(new MySearchListener());
+        mSearchView.setOnLeftMenuClickListener(new MySearchMenuListener());
+        mSearchView.attachNavigationDrawerToMenuButton(drawer);
 
     }
 
@@ -96,12 +113,7 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
         if (id == R.id.search) {
             return true;
         }
@@ -132,11 +144,13 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
             fragment = new WorkOrderFragment();
             FragmentManager manager = getSupportFragmentManager();
             manager.beginTransaction().replace(R.id.fragment, fragment, fragment.getTag()).commit();
-        } else if (id == R.id.nav_client) {
+        }
+        else if (id == R.id.nav_client) {
             fragment = new ClientFragment();
             FragmentManager manager = getSupportFragmentManager();
             manager.beginTransaction().replace(R.id.fragment, fragment, fragment.getTag()).commit();
-        } else if (id == R.id.nav_send) {
+        }
+        else if (id == R.id.nav_send) {
             Intent intent = new Intent(Intent.ACTION_SEND);
             intent.setType("text/plain");
             intent.putExtra(Intent.EXTRA_SUBJECT, "");
@@ -158,5 +172,29 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public class MySearchListener implements FloatingSearchView.OnQueryChangeListener{
+
+        @Override
+        public void onSearchTextChanged(String oldQuery, String newQuery) {
+            //get suggestions based on newQuery
+
+            //pass them on to the search view
+            mSearchView.swapSuggestions(list);
+        }
+    }
+
+    public class MySearchMenuListener implements FloatingSearchView.OnLeftMenuClickListener{
+
+        @Override
+        public void onMenuOpened() {
+
+        }
+
+        @Override
+        public void onMenuClosed() {
+
+        }
     }
 }
