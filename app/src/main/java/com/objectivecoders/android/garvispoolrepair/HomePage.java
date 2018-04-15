@@ -21,6 +21,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.SearchView;
+import android.widget.Toast;
 
 import com.arlib.floatingsearchview.FloatingSearchView;
 import com.arlib.floatingsearchview.suggestions.model.SearchSuggestion;
@@ -95,6 +96,7 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.search, menu);
+        //getMenuInflater().inflate(R.menu.menu, menu);
         // Associate searchable configuration with the SearchView
         SearchManager searchManager =
                 (SearchManager) getSystemService(Context.SEARCH_SERVICE);
@@ -103,12 +105,22 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
         searchView.setSearchableInfo(
                 searchManager.getSearchableInfo(getComponentName()));
         return true;
+
+
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.search) {
+            Toast toast = Toast.makeText(getApplicationContext(),"test1", Toast.LENGTH_SHORT);
+            toast.show();
+            return true;
+        }
+
+        if (id == R.id.menuMainLogout) {
+            Toast toast = Toast.makeText(getApplicationContext(),"test2", Toast.LENGTH_SHORT);
+            toast.show();
             return true;
         }
         return super.onOptionsItemSelected(item);

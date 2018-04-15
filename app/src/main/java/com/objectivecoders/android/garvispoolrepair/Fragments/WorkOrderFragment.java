@@ -52,15 +52,15 @@ public class WorkOrderFragment extends Fragment implements RecyclerViewOnClick {
         /////////////////////////////////////
         workOrderList.add(new WorkOrder(12312,new WorkOrderDate(System.currentTimeMillis()),
                 "3412 20th st w Fort Myers, Fl","Do the job","Replace Filter"
-        ,new Client("Juan", "Gomez", "123 address",
+        ,new Client("1","Juan", "Gomez", "123 address",
                 "jgomez@gmail.com")));
         workOrderList.add(new WorkOrder(12313,new WorkOrderDate(System.currentTimeMillis()),
                 "3412 20th st w Fort Myers, Fl","Do the job","Fix Pump"
-                ,new Client("Jeffey", "Fleurent", "123 IDK",
+                ,new Client("2","Jeffey", "Fleurent", "123 IDK",
                 "jfleurent@gmail.com")));
         workOrderList.add(new WorkOrder(12314,new WorkOrderDate(System.currentTimeMillis()),
                 "3412 20th st w Fort Myers, Fl","Do the job","Clean Pool",
-        new Client("Haley", "Ovenhouse", "123 IDK", "IDKEITHER@gmail.com")));
+        new Client("3","Haley", "Ovenhouse", "123 IDK", "IDKEITHER@gmail.com")));
         /////////////////////////////////////
 
         WorkOrderDate date = new WorkOrderDate(System.currentTimeMillis());
