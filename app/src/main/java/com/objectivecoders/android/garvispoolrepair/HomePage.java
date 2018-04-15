@@ -37,6 +37,8 @@ import java.util.List;
 public class HomePage extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     public static Fragment fragment;
     FloatingSearchView mSearchView;
+
+    FloatingActionButton fab;
     final List list = new ArrayList<SearchSuggestion>();
 
     @Override
@@ -46,7 +48,7 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
         setContentView(R.layout.activity_home_page);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        FloatingActionButton fab = findViewById(R.id.fab);
+        fab = findViewById(R.id.fab);
 
         //Connect a fragment to the layout in activity_home_page.xml
         if (fragment == null) {
@@ -88,7 +90,7 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
             Intent workOrderIntent = new Intent(this, CreateWorkOrderActivity.class);
             startActivity(workOrderIntent);
         } else {
-
+            
         }
     }
 
@@ -163,6 +165,10 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
             fragment = new MapContainerFragment();
             FragmentManager fragmentManager = getSupportFragmentManager();
             fragmentManager.beginTransaction().replace(R.id.fragment, fragment, fragment.getTag()).commit();
+        }
+        else if(id == R.id.nav_logout){
+            Intent intent = new Intent(this,MapsActivity.class);
+            finish();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
