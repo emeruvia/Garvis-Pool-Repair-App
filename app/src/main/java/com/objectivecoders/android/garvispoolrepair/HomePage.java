@@ -41,12 +41,10 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //the starting layout will be activity_home_page
         setContentView(R.layout.activity_home_page);
-
         Toolbar toolbar = findViewById(R.id.toolbar);
-
         setSupportActionBar(toolbar);
-
         FloatingActionButton fab = findViewById(R.id.fab);
 
         //Connect a fragment to the layout in activity_home_page.xml
@@ -58,10 +56,8 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
         manager.beginTransaction().replace(R.id.fragment, fragment, fragment.getTag()).commit();
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
-
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
@@ -81,7 +77,6 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
     }
 
     public void floatingButtonAction(View view) {
-
         if (fragment instanceof ClientFragment) {
             Intent clientIntent = new Intent(this, CreateClientActivity.class);
             startActivity(clientIntent);
@@ -91,8 +86,7 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
         } else if (fragment instanceof WorkOrderFragment) {
             Intent workOrderIntent = new Intent(this, CreateWorkOrderActivity.class);
             startActivity(workOrderIntent);
-        }
-        else{
+        } else {
 
         }
     }
@@ -117,10 +111,7 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
         if (id == R.id.search) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
-
-
     }
 
     @Override
@@ -133,37 +124,30 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
         }
     }
 
-
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-
         if (id == R.id.nav_work_order) {
             fragment = new WorkOrderFragment();
             FragmentManager manager = getSupportFragmentManager();
             manager.beginTransaction().replace(R.id.fragment, fragment, fragment.getTag()).commit();
-        }
-        else if (id == R.id.nav_client) {
+        } else if (id == R.id.nav_client) {
             fragment = new ClientFragment();
             FragmentManager manager = getSupportFragmentManager();
             manager.beginTransaction().replace(R.id.fragment, fragment, fragment.getTag()).commit();
-        }
-        else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_send) {
             Intent intent = new Intent(Intent.ACTION_SEND);
             intent.setType("text/plain");
             intent.putExtra(Intent.EXTRA_SUBJECT, "");
             intent.putExtra(Intent.EXTRA_TEXT, "");
-
             startActivity(intent);
-
         } else if (id == R.id.nav_calendar) {
             fragment = new HomePageFragment();
             FragmentManager manager = getSupportFragmentManager();
             manager.beginTransaction().replace(R.id.fragment, fragment, fragment.getTag()).commit();
-        }
-        else if(id == R.id.nav_map){
+        } else if (id == R.id.nav_map) {
             fragment = new MapContainerFragment();
             FragmentManager fragmentManager = getSupportFragmentManager();
             fragmentManager.beginTransaction().replace(R.id.fragment, fragment, fragment.getTag()).commit();
@@ -174,7 +158,7 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
         return true;
     }
 
-    public class MySearchListener implements FloatingSearchView.OnQueryChangeListener{
+    public class MySearchListener implements FloatingSearchView.OnQueryChangeListener {
 
         @Override
         public void onSearchTextChanged(String oldQuery, String newQuery) {
@@ -185,7 +169,7 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
         }
     }
 
-    public class MySearchMenuListener implements FloatingSearchView.OnLeftMenuClickListener{
+    public class MySearchMenuListener implements FloatingSearchView.OnLeftMenuClickListener {
 
         @Override
         public void onMenuOpened() {
