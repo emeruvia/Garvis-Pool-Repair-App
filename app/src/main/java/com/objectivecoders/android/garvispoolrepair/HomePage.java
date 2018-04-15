@@ -36,6 +36,8 @@ import java.util.List;
 public class HomePage extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     public static Fragment fragment;
     FloatingSearchView mSearchView;
+
+    FloatingActionButton fab;
     final List list = new ArrayList<SearchSuggestion>();
 
     @Override
@@ -45,7 +47,7 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
         setContentView(R.layout.activity_home_page);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        FloatingActionButton fab = findViewById(R.id.fab);
+        fab = findViewById(R.id.fab);
 
         //Connect a fragment to the layout in activity_home_page.xml
         if (fragment == null) {
@@ -87,7 +89,7 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
             Intent workOrderIntent = new Intent(this, CreateWorkOrderActivity.class);
             startActivity(workOrderIntent);
         } else {
-
+            f
         }
     }
 
