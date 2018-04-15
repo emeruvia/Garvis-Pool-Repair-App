@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="job_types">
-        <item>Clean Water</item>
-        <item>Fix Filter</item>
+        <item>Select...</item>
+        <item>Test Water</item>
+        <item>Replace Filter</item>
         <item>Repair Pumps</item>
         <item>Add Chlorine</item>
         <item>Other</item>
-
     </string-array>
 </resources>
