@@ -152,6 +152,10 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
             FragmentManager fragmentManager = getSupportFragmentManager();
             fragmentManager.beginTransaction().replace(R.id.fragment, fragment, fragment.getTag()).commit();
         }
+        else if(id == R.id.nav_logout){
+            Intent intent = new Intent(this,MapsActivity.class);
+            finish();
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
