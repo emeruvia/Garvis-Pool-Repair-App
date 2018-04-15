@@ -8,19 +8,19 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="369dp"
         android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:text="Create Client"
-            android:textSize="30sp"
-            android:layout_gravity="center"/>
+            android:textSize="30sp" />
 
         <GridLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:columnCount="2"
             android:padding="5dp"
             android:rowCount="4">
@@ -34,6 +34,7 @@
                 android:textSize="20sp" />
 
             <EditText
+                android:id="@+id/editTextFirstName"
                 android:layout_column="1"
                 android:layout_columnWeight="1"
                 android:layout_gravity="fill_horizontal"
@@ -51,6 +52,7 @@
                 android:textSize="20sp" />
 
             <EditText
+                android:id="@+id/editTextLastName"
                 android:layout_column="1"
                 android:layout_columnWeight="1"
                 android:layout_gravity="fill_horizontal"
@@ -67,6 +69,7 @@
                 android:textSize="20sp" />
 
             <EditText
+                android:id="@+id/editTextAddress"
                 android:layout_column="1"
                 android:layout_columnWeight="1"
                 android:layout_gravity="fill_horizontal"
@@ -83,6 +86,7 @@
                 android:textSize="20sp" />
 
             <EditText
+                android:id="@+id/editTextEmail"
                 android:layout_column="1"
                 android:layout_columnWeight="1"
                 android:layout_gravity="fill_horizontal"
@@ -92,5 +96,14 @@
                 android:textSize="20sp" />
 
         </GridLayout>
+
+        <Button
+            android:id="@+id/createClientButton"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="50dp"
+            android:text="Create" />
+
     </LinearLayout>
+
 </LinearLayout>

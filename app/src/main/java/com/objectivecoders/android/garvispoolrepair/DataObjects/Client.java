@@ -6,17 +6,27 @@ package com.objectivecoders.android.garvispoolrepair.DataObjects;
 
 public class Client {
 
+    String id;
     String firstName;
     String lastName;
     String address;
     String email;
 
-    public Client(String firstName, String lastName, String address, String email) {
+    public Client() {
+
+    }
+
+    public Client(String id, String firstName, String lastName, String address, String email) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
         this.email = email;
     }
+
+    public String getId() { return id; }
+
+    public void setId(String id) { this.id = id; }
 
     public String getFirstName() {
         return firstName;

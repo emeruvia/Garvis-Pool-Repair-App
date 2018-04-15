@@ -44,13 +44,13 @@ public class ClientFragment extends Fragment implements RecyclerViewOnClick{
         }
 
         //TODO Get rid of the dummy data once the database is impleted
-        clientList.add(new Client("Juan", "Gomez", "123 address",
+        clientList.add(new Client("1","Juan", "Gomez", "123 address",
                 "jgomez@gmail.com"));
-        clientList.add(new Client("Jeffey", "Fleurent", "123 IDK",
+        clientList.add(new Client("2","Jeffey", "Fleurent", "123 IDK",
                 "jfleurent@gmail.com"));
-        clientList.add(new Client("Haley", "Ovenhouse", "123 IDK", "IDKEITHER@gmail.com"));
-        clientList.add(new Client("David", "Murad", "1234 IDK", "IDKEITHER2@gmail.com"));
-        clientList.add(new Client("Edgar", "Meruvia", "2366 Crystal Drive",
+        clientList.add(new Client("3","Haley", "Ovenhouse", "123 IDK", "IDKEITHER@gmail.com"));
+        clientList.add(new Client("4","David", "Murad", "1234 IDK", "IDKEITHER2@gmail.com"));
+        clientList.add(new Client("5","Edgar", "Meruvia", "2366 Crystal Drive",
                 "emeruvia@gmail.com"));
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(fragmentActivity);

@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "694030184244-kt69h74a73asv899vus0eqmnd9s8nfdd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.objectivecoders.android.garvispoolrepair",
+            "certificate_hash": "119f1050a72e7f22a56481554723d8b173cfc412"
+          }
+        },
+        {
           "client_id": "694030184244-b8img7j480visok713kpavgjg8p1ao80.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
