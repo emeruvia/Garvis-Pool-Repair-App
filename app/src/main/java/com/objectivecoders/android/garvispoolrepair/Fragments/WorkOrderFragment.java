@@ -63,13 +63,11 @@ public class WorkOrderFragment extends Fragment implements RecyclerViewOnClick {
         new Client("3","Haley", "Ovenhouse", "123 IDK", "IDKEITHER@gmail.com")));
         /////////////////////////////////////
 
-        Date date = new Date(System.currentTimeMillis());
-        String month = convertMonth(date.toString().substring(4,7));
-        String day = date.toString().substring(8,10);
-        String year = date.toString().substring(24,28);
+        WorkOrderDate date = new WorkOrderDate(System.currentTimeMillis());
+
 
         TextView textView = rootView.findViewById(R.id.work_order_date_textview);
-        textView.setText(month +"-"+day+"-"+year);
+        textView.setText(date.toString());
         if(getArguments() != null){
             textView.setText(getArguments().getString("Date"));
         }
@@ -107,33 +105,5 @@ public class WorkOrderFragment extends Fragment implements RecyclerViewOnClick {
         super.onResume();
     }
 
-    public String convertMonth(String month){
-        switch(month){
-            case "Jan":
-                return "01";
-            case "Feb":
-                return "02";
-            case "Mar":
-                return "03";
-            case "Apr":
-                return "04";
-            case "May":
-                return "05";
-            case "Jun":
-                return "06";
-            case "Jul":
-                return "07";
-            case "Aug":
-                return "08";
-            case "Sep":
-                return "09";
-            case "Oct":
-                return "10";
-            case "Nov":
-                return "11";
-            case "Dec":
-                return "12";
-        }
-        return "" ;
-    }
+
 }

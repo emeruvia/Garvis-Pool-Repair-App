@@ -11,7 +11,9 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.amazonaws.services.cognitoidentityprovider.model.TooManyFailedAttemptsException;
 import com.objectivecoders.android.garvispoolrepair.Fragments.ClientCardViewFragment;
 
 public class CreateWorkOrderActivity extends AppCompatActivity {
@@ -26,7 +28,7 @@ public class CreateWorkOrderActivity extends AppCompatActivity {
     private LinearLayout clientLayout;
 
     private static Bundle bundle = new Bundle();
-    public static String date = "01-01-2001";
+    public static String date = "Select Date...";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +65,7 @@ public class CreateWorkOrderActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if(id == R.id.create_work_order){
+            Toast.makeText(this,"Work Order Created",Toast.LENGTH_LONG).show();
         }
         return super.onOptionsItemSelected(item);
     }

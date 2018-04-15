@@ -11,20 +11,23 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:text="Create Work Order"
-        android:textSize="40sp" />
+        android:textSize="30sp" />
 
     <LinearLayout
         android:id="@+id/LinearLayout1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10sp"
         android:layout_below="@id/create_work_order_title"
-        android:layout_centerHorizontal="true">
+        >
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/work_order_number_title"
-            android:textSize="25sp" />
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:layout_marginRight="10sp"/>
 
         <TextView
             android:id="@+id/work_order_number_textview"
@@ -38,41 +41,40 @@
         android:id="@+id/LinearLayout2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10sp"
         android:layout_below="@id/LinearLayout1"
-        android:layout_centerHorizontal="true"
         android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:text="@string/work_order_date_title"
+            android:textStyle="bold"
             android:textSize="20sp" />
 
         <Button
             android:id="@+id/edit_date_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
+            android:background="@drawable/button_borders"
             android:onClick="onClickDate"
             android:text="03-10-2018"
-            android:textSize="20sp" />
+            android:textSize="10sp" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/LinearLayout3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10sp"
         android:layout_below="@id/LinearLayout2"
-        android:layout_centerHorizontal="true"
         android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:textStyle="bold"
             android:text="@string/work_order_client_title"
-
             android:textSize="20sp" />
 
         <LinearLayout
@@ -85,16 +87,17 @@
                 android:id="@+id/work_order_new_client"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
+                android:background="@drawable/button_borders"
                 android:onClick="onClickNewClient"
                 android:text="@string/work_order_new_client"
-                android:textSize="10sp" />
+                android:textSize="10sp"
+                android:layout_marginRight="10sp"/>
 
             <Button
                 android:id="@+id/work_order_existing_client"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
+                android:background="@drawable/button_borders"
                 android:onClick="onClickExistingClient"
                 android:text="@string/work_order_existing_client"
                 android:textSize="10sp" />
@@ -104,24 +107,26 @@
 
     <LinearLayout
         android:id="@+id/LinearLayout4"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10sp"
         android:layout_below="@id/LinearLayout3"
-        android:layout_centerHorizontal="true"
         android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:textStyle="bold"
             android:text="@string/work_order_address_title"
             android:textSize="20sp" />
 
         <EditText
             android:id="@+id/work_order_address_edit_text"
-            android:layout_width="300dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="1234 4th st Fort Myers, Fl" />
+            android:layout_marginLeft="10sp"
+            android:layout_marginRight="20sp"
+            android:hint="5555 Maple ST. Fort Myers, Fl" />
     </LinearLayout>
 
     <LinearLayout
@@ -129,13 +134,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/LinearLayout4"
-        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="10sp"
         android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:textStyle="bold"
             android:text="@string/work_order_job_type_title"
             android:textSize="20sp" />
 
@@ -152,23 +157,24 @@
 
     <LinearLayout
         android:id="@+id/LinearLayout6"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10sp"
         android:layout_below="@id/LinearLayout5"
-        android:layout_centerHorizontal="true"
         android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:textStyle="bold"
             android:text="@string/work_order_description_title"
             android:textSize="20sp" />
 
         <EditText
             android:id="@+id/work_order_description_eidt_text"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20sp"/>
 
 
     </LinearLayout>
