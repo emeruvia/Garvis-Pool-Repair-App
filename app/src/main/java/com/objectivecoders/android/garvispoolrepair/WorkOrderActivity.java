@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import com.objectivecoders.android.garvispoolrepair.DataObjects.Client;
@@ -16,6 +17,7 @@ import com.objectivecoders.android.garvispoolrepair.Fragments.ClientCardViewFrag
 public class WorkOrderActivity extends AppCompatActivity {
 
     Intent workOrderIntent;
+    Intent clientIntent;
     TextView address;
     TextView jobType;
     TextView date;
@@ -40,6 +42,17 @@ public class WorkOrderActivity extends AppCompatActivity {
         fragment.setArguments(getIntent().getExtras());
         android.support.v4.app.FragmentManager manager = getSupportFragmentManager();
         manager.beginTransaction().replace(R.id.work_order_client_cardview,fragment,fragment.getTag()).commit();
+        clientCardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clientIntent = new Intent(WorkOrderActivity.this,ClientActivity.class);
+                clientIntent.putExtra("FirstName", getIntent().getExtras().getString("FirstName"));
+                clientIntent.putExtra("LastName", getIntent().getExtras().getString("LastName"));
+                clientIntent.putExtra("Email", getIntent().getExtras().getString("Email"));
+                clientIntent.putExtra("Address", getIntent().getExtras().getString("Address"));
+                startActivity(clientIntent);
+            }
+        });
 
         address.setText(workOrderIntent.getStringExtra("Address"));
         jobType.setText(workOrderIntent.getStringExtra("JobType"));

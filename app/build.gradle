@@ -44,6 +44,9 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 
+    //For line charts
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
+
     // Mobile Client for initializing the SDK
     implementation('com.amazonaws:aws-android-sdk-mobile-client:2.6.+@aar') { transitive = true; }
 
