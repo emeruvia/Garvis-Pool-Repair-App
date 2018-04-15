@@ -36,7 +36,6 @@ public class MapContainerFragment extends Fragment implements OnMapReadyCallback
         // Required empty public constructor
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -56,9 +55,9 @@ public class MapContainerFragment extends Fragment implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         map = googleMap;
-
-        // Add a marker in Sydney and move the camera
+        // Zooms in fort myers area
         LatLng FortMyers = new LatLng(26.6406,-81.8723);
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(FortMyers, 11));
+        //TODO add markers to the addresses from the customers in the databse
     }
 }

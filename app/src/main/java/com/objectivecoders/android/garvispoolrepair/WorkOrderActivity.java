@@ -14,6 +14,7 @@ import com.objectivecoders.android.garvispoolrepair.DataObjects.WorkOrderDate;
 import com.objectivecoders.android.garvispoolrepair.Fragments.ClientCardViewFragment;
 
 public class WorkOrderActivity extends AppCompatActivity {
+
     Intent workOrderIntent;
     TextView address;
     TextView jobType;
@@ -21,8 +22,6 @@ public class WorkOrderActivity extends AppCompatActivity {
     TextView orderNumber;
     TextView description;
     CardView clientCardView;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,8 +46,8 @@ public class WorkOrderActivity extends AppCompatActivity {
         date.setText(workOrderIntent.getStringExtra("Date"));
         orderNumber.setText(workOrderIntent.getStringExtra("OrderNumber"));
         description.setText(workOrderIntent.getStringExtra("Description"));
-
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.edit_item, menu);

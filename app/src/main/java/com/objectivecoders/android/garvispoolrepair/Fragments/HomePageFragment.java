@@ -27,6 +27,7 @@ public class HomePageFragment extends android.support.v4.app.Fragment {
     CalendarView calendarView;
 
     public HomePageFragment() {
+        //Needed for HomePage Activity, don't delete
     }
 
     @Override
@@ -43,7 +44,6 @@ public class HomePageFragment extends android.support.v4.app.Fragment {
         calendarView.setDate(System.currentTimeMillis());
 
         if(getArguments() != null && getArguments().getString("ToShow").equals("Date")){
-
             calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
                 @Override
                 public void onSelectedDayChange(@NonNull CalendarView calendarView, int i, int i1, int i2) {
@@ -53,7 +53,6 @@ public class HomePageFragment extends android.support.v4.app.Fragment {
                 }
 
             });
-
         }
         else{
             calendarView.setPadding(0,90,0,0);
@@ -68,7 +67,6 @@ public class HomePageFragment extends android.support.v4.app.Fragment {
                     startActivity(workOrdersIntent);
                 }
             });
-
         }
         return rootView;
     }

@@ -16,10 +16,12 @@ import com.objectivecoders.android.garvispoolrepair.R;
  */
 
 public class ClientCardViewFragment extends android.support.v4.app.Fragment {
+
     TextView firstNameTextView;
     TextView lastNameTextView;
     TextView addressTextView;
     TextView emailTextView;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
@@ -33,7 +35,6 @@ public class ClientCardViewFragment extends android.support.v4.app.Fragment {
         lastNameTextView.setText("Last Name: " + getArguments().getString("LastName"));
         addressTextView.setText("Address: " + getArguments().getString("ClientAddress"));
         emailTextView.setText("Email: " + getArguments().getString("Email"));
-
 
         return rootView;
     }

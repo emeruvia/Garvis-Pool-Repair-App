@@ -163,7 +163,6 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
         @Override
         public void onSearchTextChanged(String oldQuery, String newQuery) {
             //get suggestions based on newQuery
-
             //pass them on to the search view
             mSearchView.swapSuggestions(list);
         }

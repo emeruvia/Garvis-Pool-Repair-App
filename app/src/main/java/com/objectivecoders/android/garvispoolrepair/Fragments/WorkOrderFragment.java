@@ -38,7 +38,6 @@ public class WorkOrderFragment extends Fragment implements RecyclerViewOnClick {
     private WorkOrder workOrder;
     private WorkOrderRecyclerView workOrderRecyclerView;
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -68,7 +67,6 @@ public class WorkOrderFragment extends Fragment implements RecyclerViewOnClick {
         String month = convertMonth(date.toString().substring(4,7));
         String day = date.toString().substring(8,10);
         String year = date.toString().substring(24,28);
-
 
         TextView textView = rootView.findViewById(R.id.work_order_date_textview);
         textView.setText(month +"-"+day+"-"+year);

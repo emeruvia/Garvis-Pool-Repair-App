@@ -15,7 +15,7 @@ public class AuthenticatorActivity extends Activity {
     @Override
 protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-
+    //TODO get rid of this class after implementing firebase
     AWSMobileClient.getInstance().initialize(this, new AWSStartupHandler() {
         @Override
         public void onComplete(AWSStartupResult awsStartupResult) {

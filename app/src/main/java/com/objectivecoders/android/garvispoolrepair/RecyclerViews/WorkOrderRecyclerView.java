@@ -33,13 +33,9 @@ public class WorkOrderRecyclerView extends RecyclerView.Adapter<WorkOrderRecycle
     @Override
     public WorkOrderRecyclerView.WorkOrderRecyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         Context context = parent.getContext();
-
         int layoutIdForListItem = R.layout.fragment_work_order_list_item;
-
         LayoutInflater inflater = LayoutInflater.from(context);
-
         boolean shouldAttachToParentImmediately = false;
-
         View view = inflater.inflate(layoutIdForListItem, parent, shouldAttachToParentImmediately);
         return new WorkOrderRecyclerViewHolder(view);
     }
@@ -53,7 +49,6 @@ public class WorkOrderRecyclerView extends RecyclerView.Adapter<WorkOrderRecycle
         //TODO Link to database if a work order is complete or not
         //defaulted to false
         holder.completionCheckBox.setChecked(false);
-
 
         holder.workOrderIcon.setImageResource(R.drawable.ic_work_order);
         holder.itemView.setOnClickListener(new View.OnClickListener() {

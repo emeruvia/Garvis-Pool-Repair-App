@@ -44,7 +44,6 @@ public class AuxiliaryFragmentHolderActivity extends AppCompatActivity {
                 android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
                 fragmentManager.beginTransaction().replace(R.id.mini_layout, fragment, fragment.getTag()).commit();
             }
-
         }
         else{
             android.support.v4.app.Fragment fragment = new WorkOrderFragment();

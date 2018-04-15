@@ -53,7 +53,6 @@ public class ClientFragment extends Fragment implements RecyclerViewOnClick{
         clientList.add(new Client("Edgar", "Meruvia", "2366 Crystal Drive",
                 "emeruvia@gmail.com"));
 
-
         LinearLayoutManager layoutManager = new LinearLayoutManager(fragmentActivity);
         clientRecyclerView = new ClientRecyclerView(clientList,this);
         RecyclerView recyclerView = rootView.findViewById(R.id.client_list);
@@ -63,7 +62,6 @@ public class ClientFragment extends Fragment implements RecyclerViewOnClick{
 
         return rootView;
     }
-
 
     @Override
     public void rowSelected(int row) {
@@ -84,9 +82,7 @@ public class ClientFragment extends Fragment implements RecyclerViewOnClick{
             clientIntent.putExtra("Email", clientList.get(row).getEmail());
             clientIntent.putExtra("Address", clientList.get(row).getAddress());
             startActivity(clientIntent);
-
         }
-
     }
 
     //Accounts for bundle in CreateWorkOrderActivity having data in it
