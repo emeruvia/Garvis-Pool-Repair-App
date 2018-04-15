@@ -10,7 +10,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="04-13-2018"
-        android:textAlignment="center"
         android:textSize="32sp" />
 
     <android.support.v7.widget.RecyclerView

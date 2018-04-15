@@ -26,7 +26,7 @@ public class CreateWorkOrderActivity extends AppCompatActivity {
     private LinearLayout clientLayout;
 
     private static Bundle bundle = new Bundle();
-    public static String date = "01-01-2001";
+    public static String date = "Select Date...";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
