@@ -11,6 +11,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.objectivecoders.android.garvispoolrepair.AuxiliaryFragmentHolderActivity;
 import com.objectivecoders.android.garvispoolrepair.ClientActivity;
 import com.objectivecoders.android.garvispoolrepair.CreateWorkOrderActivity;
@@ -29,12 +34,15 @@ import java.util.List;
 
 public class ClientFragment extends Fragment implements RecyclerViewOnClick{
 
+
     private List<Client> clientList = new ArrayList<>();
     private Client client;
     private ClientRecyclerView clientRecyclerView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
+
+
 
         View rootView = inflater.inflate(R.layout.fragment_client_list, container, false);
         final FragmentActivity fragmentActivity = getActivity();
@@ -43,15 +51,7 @@ public class ClientFragment extends Fragment implements RecyclerViewOnClick{
            rootView.setPadding(0,100,0,0);
         }
 
-        //TODO Get rid of the dummy data once the database is impleted
-        clientList.add(new Client("1","Juan", "Gomez", "123 address",
-                "jgomez@gmail.com"));
-        clientList.add(new Client("2","Jeffey", "Fleurent", "123 IDK",
-                "jfleurent@gmail.com"));
-        clientList.add(new Client("3","Haley", "Ovenhouse", "123 IDK", "IDKEITHER@gmail.com"));
-        clientList.add(new Client("4","David", "Murad", "1234 IDK", "IDKEITHER2@gmail.com"));
-        clientList.add(new Client("5","Edgar", "Meruvia", "2366 Crystal Drive",
-                "emeruvia@gmail.com"));
+        loadClientData();
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(fragmentActivity);
         clientRecyclerView = new ClientRecyclerView(clientList,this);
@@ -60,7 +60,34 @@ public class ClientFragment extends Fragment implements RecyclerViewOnClick{
         recyclerView.setAdapter(clientRecyclerView);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
+
+
         return rootView;
+    }
+
+    private void loadClientData() {
+        DatabaseReference  databaseClients = FirebaseDatabase.getInstance().getReference("clients");
+        databaseClients.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                clientList.clear();
+
+                for (DataSnapshot clientSnapshot : dataSnapshot.getChildren()) {
+                    Client client = clientSnapshot.getValue(Client.class);
+
+                    System.out.println(client);
+                    clientList.add(client);
+
+                }
+                clientRecyclerView.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 
     @Override
@@ -71,6 +98,10 @@ public class ClientFragment extends Fragment implements RecyclerViewOnClick{
             CreateWorkOrderActivity.getBundle().putString("LastName", clientList.get(row).getLastName());
             CreateWorkOrderActivity.getBundle().putString("Email", clientList.get(row).getEmail());
             CreateWorkOrderActivity.getBundle().putString("Address", clientList.get(row).getAddress());
+            CreateWorkOrderActivity.getBundle().putString("ClientID", clientList.get(row).getId());
+
+
+
             getActivity().finish();
         }
         //TODO make an Intent with extras as Strings that comprise the Client object based on the index
