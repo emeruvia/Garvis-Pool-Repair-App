@@ -15,17 +15,25 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.GenericTypeIndicator;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.objectivecoders.android.garvispoolrepair.DataObjects.Client;
 import com.objectivecoders.android.garvispoolrepair.DataObjects.WorkOrder;
 import com.objectivecoders.android.garvispoolrepair.DataObjects.WorkOrderDate;
 import com.objectivecoders.android.garvispoolrepair.Fragments.ClientCardViewFragment;
 
 import java.time.Month;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class CreateWorkOrderActivity extends AppCompatActivity {
@@ -51,6 +59,8 @@ public class CreateWorkOrderActivity extends AppCompatActivity {
     private LinearLayout clientLayout;
 
     Calendar calendar = Calendar.getInstance();
+
+
 
     private static Bundle bundle = new Bundle();
     public static String date = "Select Date...";
@@ -120,6 +130,44 @@ public class CreateWorkOrderActivity extends AppCompatActivity {
 
     public void createWorkOrder() {
 
+        final List<WorkOrder> workOrderList = new ArrayList<WorkOrder>();
+
+        Query databaseClients = FirebaseDatabase.getInstance().getReference("clients/" + client.getId() + "/workOrders");
+       databaseClients.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+               // System.out.println("test1");
+
+                for (DataSnapshot clientSnapshot : dataSnapshot.getChildren()) {
+
+                    //   GenericTypeIndicator<ArrayList<WorkOrder>> typeIndicator = new GenericTypeIndicator<ArrayList<WorkOrder>>();
+
+                    // workOrders = clientSnapshot.getValue(typeIndicator);
+
+                    WorkOrder workOrderQuery = clientSnapshot.getValue(WorkOrder.class);
+
+                    workOrderList.add(workOrderQuery);
+
+
+                    System.out.println(workOrderQuery.getJobType());
+
+                //    workOrders.add(workOrder);
+
+                }
+
+               // System.out.println(Arrays.asList(workOrders));
+
+            //    clientRecyclerView.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
         String orderId = "one";
         String date = workOrderDateTextView.getText().toString().trim();
         String jobNotes = descriptionEditText.getText().toString().trim();
@@ -128,14 +176,19 @@ public class CreateWorkOrderActivity extends AppCompatActivity {
 
         WorkOrder workOrder = new WorkOrder(orderId,date,jobNotes,jobType,completed);
 
-        Map<String,WorkOrder> workOrders = new HashMap<String,WorkOrder>();
 
-        workOrders.put("" + orderId,workOrder);
 
-        client.setWorkOrders(workOrders);
+        workOrderList.add(workOrder);
 
+        for(WorkOrder w : workOrderList) {
+            System.out.println(w.getJobType());
+        }
+
+        client.setWorkOrders(workOrderList);
+
+        DatabaseReference  databaseClientsRef = FirebaseDatabase.getInstance().getReference("clients");
         String id = client.getId();
-        databaseClients.child(id).setValue(client);
+        databaseClientsRef.child(id).setValue(client);
         Toast.makeText(this, "Client added", Toast.LENGTH_LONG).show();
 
     }

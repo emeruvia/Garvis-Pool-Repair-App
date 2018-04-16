@@ -76,7 +76,7 @@ public class ClientFragment extends Fragment implements RecyclerViewOnClick{
                 for (DataSnapshot clientSnapshot : dataSnapshot.getChildren()) {
                     Client client = clientSnapshot.getValue(Client.class);
 
-                    System.out.println(client);
+                  //  System.out.println(client);
                     clientList.add(client);
 
                 }
