@@ -22,6 +22,7 @@ public class ClientCardViewFragment extends android.support.v4.app.Fragment {
     TextView addressTextView;
     TextView emailTextView;
 
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
@@ -31,11 +32,15 @@ public class ClientCardViewFragment extends android.support.v4.app.Fragment {
         addressTextView = rootView.findViewById(R.id.clientAddressTextView);
         emailTextView = rootView.findViewById(R.id.clientEmailTextView);
 
+
+
+
         firstNameTextView.setText("First Name: " + getArguments().getString("FirstName"));
         lastNameTextView.setText("Last Name: " + getArguments().getString("LastName"));
-        addressTextView.setText("Address: " + getArguments().getString("ClientAddress"));
+        addressTextView.setText("Address: " + getArguments().getString("Address"));
         emailTextView.setText("Email: " + getArguments().getString("Email"));
 
         return rootView;
     }
+
 }

@@ -21,6 +21,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.SearchView;
+import android.widget.Toast;
 
 import com.arlib.floatingsearchview.FloatingSearchView;
 import com.arlib.floatingsearchview.suggestions.model.SearchSuggestion;
@@ -36,6 +37,8 @@ import java.util.List;
 public class HomePage extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     public static Fragment fragment;
     FloatingSearchView mSearchView;
+
+    FloatingActionButton fab;
     final List list = new ArrayList<SearchSuggestion>();
 
     @Override
@@ -45,7 +48,7 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
         setContentView(R.layout.activity_home_page);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        FloatingActionButton fab = findViewById(R.id.fab);
+        fab = findViewById(R.id.fab);
 
         //Connect a fragment to the layout in activity_home_page.xml
         if (fragment == null) {
@@ -87,7 +90,7 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
             Intent workOrderIntent = new Intent(this, CreateWorkOrderActivity.class);
             startActivity(workOrderIntent);
         } else {
-
+            
         }
     }
 
@@ -95,6 +98,7 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.search, menu);
+        //getMenuInflater().inflate(R.menu.menu, menu);
         // Associate searchable configuration with the SearchView
         SearchManager searchManager =
                 (SearchManager) getSystemService(Context.SEARCH_SERVICE);
@@ -103,12 +107,22 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
         searchView.setSearchableInfo(
                 searchManager.getSearchableInfo(getComponentName()));
         return true;
+
+
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.search) {
+            Toast toast = Toast.makeText(getApplicationContext(),"test1", Toast.LENGTH_SHORT);
+            toast.show();
+            return true;
+        }
+
+        if (id == R.id.menuMainLogout) {
+            Toast toast = Toast.makeText(getApplicationContext(),"test2", Toast.LENGTH_SHORT);
+            toast.show();
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -151,6 +165,10 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
             fragment = new MapContainerFragment();
             FragmentManager fragmentManager = getSupportFragmentManager();
             fragmentManager.beginTransaction().replace(R.id.fragment, fragment, fragment.getTag()).commit();
+        }
+        else if(id == R.id.nav_logout){
+            Intent intent = new Intent(this,MapsActivity.class);
+            finish();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

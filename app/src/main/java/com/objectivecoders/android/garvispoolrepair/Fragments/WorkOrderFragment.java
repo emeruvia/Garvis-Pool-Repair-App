@@ -13,6 +13,11 @@ import android.view.ViewGroup;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.objectivecoders.android.garvispoolrepair.CreateWorkOrderActivity;
 import com.objectivecoders.android.garvispoolrepair.DataObjects.Client;
 import com.objectivecoders.android.garvispoolrepair.DataObjects.WorkOrder;
@@ -35,7 +40,6 @@ import java.util.List;
 public class WorkOrderFragment extends Fragment implements RecyclerViewOnClick {
 
     private List<WorkOrder> workOrderList = new ArrayList<>();
-    private WorkOrder workOrder;
     private WorkOrderRecyclerView workOrderRecyclerView;
 
     @Override
@@ -47,27 +51,31 @@ public class WorkOrderFragment extends Fragment implements RecyclerViewOnClick {
             rootView.setPadding(0,100,0,0);
         }
 
+        loadWorkOrderData();
+
         //TODO Get rid of the dummy data once the database is impleted
                     ///Dummy Data///
         /////////////////////////////////////
-        workOrderList.add(new WorkOrder(12312,new WorkOrderDate(System.currentTimeMillis()),
-                "3412 20th st w Fort Myers, Fl","Do the job","Replace Filter"
-        ,new Client("Juan", "Gomez", "123 address",
-                "jgomez@gmail.com")));
-        workOrderList.add(new WorkOrder(12313,new WorkOrderDate(System.currentTimeMillis()),
-                "3412 20th st w Fort Myers, Fl","Do the job","Fix Pump"
-                ,new Client("Jeffey", "Fleurent", "123 IDK",
-                "jfleurent@gmail.com")));
-        workOrderList.add(new WorkOrder(12314,new WorkOrderDate(System.currentTimeMillis()),
-                "3412 20th st w Fort Myers, Fl","Do the job","Clean Pool",
-        new Client("Haley", "Ovenhouse", "123 IDK", "IDKEITHER@gmail.com")));
+//      workOrderList.add(new WorkOrder("12312","1",
+//              "Do the job","Replace Filter"
+//     , false));
+//      workOrderList.add(new WorkOrder("12313","1", "Do the job","Fix Pump",false));
+////        workOrderList.add(new WorkOrder("12314",new WorkOrderDate(System.currentTimeMillis()),
+////                "3412 20th st w Fort Myers, Fl","Do the job","Clean Pool",
+////        new Client("3","Haley", "Ovenhouse", "123 IDK", "IDKEITHER@gmail.com")));
         /////////////////////////////////////
 
-        WorkOrderDate date = new WorkOrderDate(System.currentTimeMillis());
+
+        for (WorkOrder w : workOrderList) {
+
+            System.out.println(w.getJobType());
+
+        }
+      //  WorkOrderDate date = new WorkOrderDate(System.currentTimeMillis());
 
 
         TextView textView = rootView.findViewById(R.id.work_order_date_textview);
-        textView.setText(date.toString());
+        textView.setText("1");
         if(getArguments() != null){
             textView.setText(getArguments().getString("Date"));
         }
@@ -82,18 +90,94 @@ public class WorkOrderFragment extends Fragment implements RecyclerViewOnClick {
         return rootView;
     }
 
+    public void loadWorkOrderData() {
+
+        Query databaseClients = FirebaseDatabase.getInstance().getReference("clients");
+        databaseClients.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                workOrderList.clear();
+                // System.out.println("test1");
+
+                for (DataSnapshot clientSnapshot : dataSnapshot.getChildren()) {
+
+                    //   GenericTypeIndicator<ArrayList<WorkOrder>> typeIndicator = new GenericTypeIndicator<ArrayList<WorkOrder>>();
+
+                    //   System.out.println(clientSnapshot.getKey());
+
+                    String clientKey = clientSnapshot.getKey();
+
+                    Query databaseWorkOrder = FirebaseDatabase.getInstance().getReference("clients/" + clientKey + "/workOrders");
+                    databaseWorkOrder.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+
+                            // System.out.println("test1");
+
+
+                            for (DataSnapshot workOrderSnapshot : dataSnapshot.getChildren()) {
+
+                                //   GenericTypeIndicator<ArrayList<WorkOrder>> typeIndicator = new GenericTypeIndicator<ArrayList<WorkOrder>>();
+
+                                //   System.out.println(clientSnapshot.getKey());
+
+                                WorkOrder workOrderQuery = workOrderSnapshot.getValue(WorkOrder.class);
+
+                                System.out.println(workOrderQuery.isCompleted());
+                                System.out.println(workOrderQuery.getJobType());
+
+                                if (workOrderQuery.isCompleted()==false) {
+                                    System.out.println("test");
+                                    workOrderList.add(workOrderQuery);
+                                }
+
+                                workOrderRecyclerView.notifyDataSetChanged();
+
+                                //   System.out.println(workOrderQuery.getJobType());
+
+                                //    workOrders.add(workOrder);
+
+                            }
+
+                            // System.out.println(Arrays.asList(workOrders));
+
+                            //    clientRecyclerView.notifyDataSetChanged();
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
+
+
+                }
+
+                // System.out.println(Arrays.asList(workOrders));
+
+                //    clientRecyclerView.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
+    }
+
     @Override
     public void rowSelected(int row) {
         Intent workOrderIntent = new Intent(getActivity(), WorkOrderActivity.class);
         workOrderIntent.putExtra("Date", workOrderList.get(row).getDate().toString());
         workOrderIntent.putExtra("OrderNumber", String.valueOf(workOrderList.get(row).getOrderNumber()));
         workOrderIntent.putExtra("Description", workOrderList.get(row).getDescription());
-        workOrderIntent.putExtra("Address", workOrderList.get(row).getAddress());
         workOrderIntent.putExtra("JobType", workOrderList.get(row).getJobType());
-        workOrderIntent.putExtra("FirstName",workOrderList.get(row).getClient().getFirstName());
-        workOrderIntent.putExtra("LastName",workOrderList.get(row).getClient().getLastName());
-        workOrderIntent.putExtra("Email",workOrderList.get(row).getClient().getEmail());
-        workOrderIntent.putExtra("ClientAddress",workOrderList.get(row).getClient().getAddress());
+//        workOrderIntent.putExtra("FirstName",workOrderList.get(row).getClient().getFirstName());
+//        workOrderIntent.putExtra("LastName",workOrderList.get(row).getClient().getLastName());
+//        workOrderIntent.putExtra("Email",workOrderList.get(row).getClient().getEmail());
+//        workOrderIntent.putExtra("Address",workOrderList.get(row).getClient().getAddress());
 
         startActivity(workOrderIntent);
     }

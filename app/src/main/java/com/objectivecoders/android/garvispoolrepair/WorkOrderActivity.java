@@ -18,7 +18,6 @@ public class WorkOrderActivity extends AppCompatActivity {
 
     Intent workOrderIntent;
     Intent clientIntent;
-    TextView address;
     TextView jobType;
     TextView date;
     TextView orderNumber;
@@ -30,7 +29,6 @@ public class WorkOrderActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         workOrderIntent = getIntent();
         setContentView(R.layout.activity_work_order);
-        address = findViewById(R.id.work_order_address_textview);
         jobType = findViewById(R.id.work_order_job_type_textview);
         date = findViewById(R.id.work_order_date_textview);
         orderNumber = findViewById(R.id.work_order_number_textview);
@@ -42,6 +40,8 @@ public class WorkOrderActivity extends AppCompatActivity {
         fragment.setArguments(getIntent().getExtras());
         android.support.v4.app.FragmentManager manager = getSupportFragmentManager();
         manager.beginTransaction().replace(R.id.work_order_client_cardview,fragment,fragment.getTag()).commit();
+        String name = fragment.getArguments().getString("FirstName");
+        System.out.println(name);
         clientCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,11 +50,11 @@ public class WorkOrderActivity extends AppCompatActivity {
                 clientIntent.putExtra("LastName", getIntent().getExtras().getString("LastName"));
                 clientIntent.putExtra("Email", getIntent().getExtras().getString("Email"));
                 clientIntent.putExtra("Address", getIntent().getExtras().getString("Address"));
+
                 startActivity(clientIntent);
             }
         });
 
-        address.setText(workOrderIntent.getStringExtra("Address"));
         jobType.setText(workOrderIntent.getStringExtra("JobType"));
         date.setText(workOrderIntent.getStringExtra("Date"));
         orderNumber.setText(workOrderIntent.getStringExtra("OrderNumber"));

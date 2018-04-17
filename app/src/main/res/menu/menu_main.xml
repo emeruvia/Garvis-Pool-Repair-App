@@ -6,4 +6,8 @@
     app:showAsAction="always">
 
 </item>
+
+    <item
+        android:id="@+id/menuMainLogout"
+        android:title="Logout" />
 </menu>
