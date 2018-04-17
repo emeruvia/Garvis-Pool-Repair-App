@@ -13,6 +13,9 @@ import android.widget.CalendarView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.series.DataPoint;
+import com.jjoe64.graphview.series.LineGraphSeries;
 import com.objectivecoders.android.garvispoolrepair.AuxiliaryFragmentHolderActivity;
 import com.objectivecoders.android.garvispoolrepair.CreateWorkOrderActivity;
 import com.objectivecoders.android.garvispoolrepair.DataObjects.WorkOrderDate;
@@ -20,6 +23,7 @@ import com.objectivecoders.android.garvispoolrepair.HomePage;
 import com.objectivecoders.android.garvispoolrepair.R;
 
 import java.sql.Date;
+import java.util.ArrayList;
 
 /**
  * Created by jeffr on 3/3/2018.
@@ -28,7 +32,7 @@ import java.sql.Date;
 public class HomePageFragment extends android.support.v4.app.Fragment {
 
     CalendarView calendarView;
-
+    GraphView graph;
     public HomePageFragment() {
         //Needed for HomePage Activity, don't delete
     }
@@ -45,6 +49,10 @@ public class HomePageFragment extends android.support.v4.app.Fragment {
 
         calendarView = rootView.findViewById(R.id.calendarView);
         calendarView.setDate(System.currentTimeMillis());
+
+        graph = (GraphView) rootView.findViewById(R.id.graph);
+        createGraph();
+
 
         if(getArguments() != null && getArguments().getString("ToShow").equals("Date")){
             calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
@@ -79,5 +87,34 @@ public class HomePageFragment extends android.support.v4.app.Fragment {
     public void onResume() {
         CreateWorkOrderActivity.getBundle().clear();
         super.onResume();
+    }
+
+    //Creates the graph
+    public void createGraph(){
+        LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[] {
+                new DataPoint(0, 10),
+                new DataPoint(1, 12),
+                new DataPoint(2, 3),
+                new DataPoint(3, 2),
+                new DataPoint(4, 6),
+                new DataPoint(5, 9),
+                new DataPoint(6, 12),
+                new DataPoint(7, 20),
+                new DataPoint(8, 35),
+                new DataPoint(9, 12),
+                new DataPoint(10, 7),
+                new DataPoint(11, 8)
+        });
+        graph.addSeries(series);
+    }
+
+    public ArrayList fetchWorkOrderCount(){
+        ArrayList<Double> woCount = new ArrayList<>();
+        double adding = 0;
+        for(int i=0; i<12;i++){
+            adding = i;
+            woCount.add(adding);
+        }
+        return woCount;
     }
 }
