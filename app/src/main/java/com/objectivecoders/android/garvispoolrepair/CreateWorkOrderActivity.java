@@ -131,8 +131,10 @@ public class CreateWorkOrderActivity extends AppCompatActivity {
     public void createWorkOrder() {
 
         final List<WorkOrder> workOrderList = new ArrayList<WorkOrder>();
+        final List<WorkOrder> workOrderIDList = new ArrayList<WorkOrder>();
 
-        Query databaseClients = FirebaseDatabase.getInstance().getReference("clients/" + client.getId() + "/workOrders");
+
+       Query databaseClients = FirebaseDatabase.getInstance().getReference("clients/" + client.getId() + "/workOrders");
        databaseClients.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -143,13 +145,13 @@ public class CreateWorkOrderActivity extends AppCompatActivity {
 
                     //   GenericTypeIndicator<ArrayList<WorkOrder>> typeIndicator = new GenericTypeIndicator<ArrayList<WorkOrder>>();
 
-                    // workOrders = clientSnapshot.getValue(typeIndicator);
+                 //   System.out.println(clientSnapshot.getKey());
 
                     WorkOrder workOrderQuery = clientSnapshot.getValue(WorkOrder.class);
 
                     workOrderList.add(workOrderQuery);
 
-                    System.out.println(workOrderQuery.getJobType());
+                 //   System.out.println(workOrderQuery.getJobType());
 
                 //    workOrders.add(workOrder);
 
@@ -166,42 +168,8 @@ public class CreateWorkOrderActivity extends AppCompatActivity {
             }
         });
 
-        Query databaseClientsWorkID = FirebaseDatabase.getInstance().getReference("clients");
-        databaseClientsWorkID.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
 
-                // System.out.println("test1");
-
-                for (DataSnapshot clientSnapshot : dataSnapshot.getChildren()) {
-
-                    //   GenericTypeIndicator<ArrayList<WorkOrder>> typeIndicator = new GenericTypeIndicator<ArrayList<WorkOrder>>();
-
-                    // workOrders = clientSnapshot.getValue(typeIndicator);
-
-                    WorkOrder workOrderQuery = clientSnapshot.getValue(WorkOrder.class);
-
-                    workOrderList.add(workOrderQuery);
-
-                    System.out.println(workOrderQuery.getJobType());
-
-                    //    workOrders.add(workOrder);
-
-                }
-
-                // System.out.println(Arrays.asList(workOrders));
-
-                //    clientRecyclerView.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
-
-        int orderIdInt = 0;
+        int orderIdInt = 1;
         String orderId = Integer.toString(orderIdInt);
         String date = workOrderDateTextView.getText().toString().trim();
         String jobNotes = descriptionEditText.getText().toString().trim();
