@@ -27,11 +27,12 @@ public class CreateClientActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_client);
 
-      editTextFirstName =  findViewById(R.id.editTextFirstName);
+        editTextFirstName =  findViewById(R.id.editTextFirstName);
         editTextLastName =  findViewById(R.id.editTextLastName);
         editTextEmail =  findViewById(R.id.editTextEmail);
         editTextAddress =  findViewById(R.id.editTextAddress);
         createClientButton =  findViewById(R.id.createClientButton);
+
         databaseClients = FirebaseDatabase.getInstance().getReference("clients");
 
         createClientButton.setOnClickListener(new View.OnClickListener() {

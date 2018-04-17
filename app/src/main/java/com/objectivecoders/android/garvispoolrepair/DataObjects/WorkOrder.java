@@ -8,35 +8,31 @@ import java.util.Date;
 
 public class WorkOrder {
 
-    private int orderNumber;
-    private Date date;
-    private String address;
+    private String orderId;
+    private String date;
     private String description;
     private String jobType;
-    private Client client;
+    private boolean completed;
 
-    public WorkOrder(int orderNumber,Date date, String address,String description, String jobType,Client client){
-        this.client = client;
-        this.address = address;
+
+    public WorkOrder(){
+
+    }
+
+    public WorkOrder(String orderId, String date, String description, String jobType, boolean completed){
+        this.completed = completed;
         this.date = date;
         this.description = description;
         this.jobType = jobType;
-        this.orderNumber = orderNumber;
+        this.orderId = orderId;
     }
 
-    public String getAddress() {
-        return address;
-    }
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
@@ -56,19 +52,16 @@ public class WorkOrder {
         this.jobType = jobType;
     }
 
-    public int getOrderNumber() {
-        return orderNumber;
+    public String getOrderNumber() {
+        return orderId;
     }
 
-    public void setOrderNumber(int orderNumber) {
-        this.orderNumber = orderNumber;
+    public void setOrderNumber(String orderNumber) {
+        this.orderId = orderNumber;
     }
 
-    public Client getClient() {
-        return client;
-    }
+    public boolean isCompleted() { return completed; }
 
-    public void setClient(Client client) {
-        this.client = client;
-    }
+    public void setCompleted(boolean completed) { this.completed = completed; }
+
 }

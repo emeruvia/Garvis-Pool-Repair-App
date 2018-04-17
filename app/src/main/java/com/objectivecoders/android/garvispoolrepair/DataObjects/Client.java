@@ -1,5 +1,9 @@
 package com.objectivecoders.android.garvispoolrepair.DataObjects;
 
+
+import java.util.List;
+import java.util.Map;
+
 /**
  * Created by emeruvia on 3/4/2018.
  */
@@ -11,6 +15,7 @@ public class Client {
     String lastName;
     String address;
     String email;
+    List<WorkOrder> workOrders;
 
     public Client() {
 
@@ -22,6 +27,15 @@ public class Client {
         this.lastName = lastName;
         this.address = address;
         this.email = email;
+    }
+
+    public Client(String id, String firstName, String lastName, String address, String email,List<WorkOrder> workOrders) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address = address;
+        this.email = email;
+        this.workOrders = workOrders;
     }
 
     public String getId() { return id; }
@@ -59,4 +73,13 @@ public class Client {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public List<WorkOrder> getWorkOrders() {
+        return workOrders;
+    }
+
+    public void setWorkOrders(List<WorkOrder> workOrderMap) {
+        this.workOrders = workOrderMap;
+    }
 }
+
