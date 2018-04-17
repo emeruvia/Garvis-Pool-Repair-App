@@ -27,7 +27,6 @@ public class WorkOrder {
         this.orderId = orderId;
     }
 
-
     public String getDate() {
         return date;
     }
