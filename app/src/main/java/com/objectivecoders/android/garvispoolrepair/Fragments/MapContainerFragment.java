@@ -1,7 +1,10 @@
 package com.objectivecoders.android.garvispoolrepair.Fragments;
 
 
+import android.content.Context;
 import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
@@ -21,6 +24,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.objectivecoders.android.garvispoolrepair.MainActivity;
 import com.objectivecoders.android.garvispoolrepair.R;
+
+import java.util.List;
 
 
 /**
@@ -52,10 +57,37 @@ public class MapContainerFragment extends Fragment implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
     }
 
+    public LatLng getLocationFromAddress(Context context, String address) {
+
+        Geocoder coder = new Geocoder(getContext());
+        List<Address> addresslist;
+        LatLng latLng = null;
+        try {
+            addresslist = coder.getFromLocationName(address, 5);
+            if (addresslist == null) {
+                return null;
+            }
+            Address location = addresslist.get(0);
+            location.getLatitude();
+            location.getLongitude();
+            latLng = new LatLng(location.getLatitude(), location.getLongitude());
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return latLng;
+    }
+
     @Override
     public void onMapReady(GoogleMap googleMap) {
         map = googleMap;
         // Zooms in fort myers area
+
+        //TODO get the addresses from the database
+        String address = "2366 Crystal Drive, FortMyers";
+        LatLng latLngAddress = getLocationFromAddress(getContext(), address);
+        map.addMarker(new MarkerOptions().position(latLngAddress).title(address));
+
         LatLng FortMyers = new LatLng(26.6406,-81.8723);
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(FortMyers, 11));
         //TODO add markers to the addresses from the customers in the databse
