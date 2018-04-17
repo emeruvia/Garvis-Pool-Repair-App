@@ -131,9 +131,11 @@ public class CreateWorkOrderActivity extends AppCompatActivity {
     public void createWorkOrder() {
 
         final List<WorkOrder> workOrderList = new ArrayList<WorkOrder>();
+        final List<WorkOrder> workOrderIDList = new ArrayList<WorkOrder>();
 
-        Query databaseClients = FirebaseDatabase.getInstance().getReference("clients/" + client.getId() + "/workOrders");
-       databaseClients.addValueEventListener(new ValueEventListener() {
+
+       Query databaseClients = FirebaseDatabase.getInstance().getReference("clients/" + client.getId() + "/workOrders");
+       databaseClients.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
@@ -143,14 +145,13 @@ public class CreateWorkOrderActivity extends AppCompatActivity {
 
                     //   GenericTypeIndicator<ArrayList<WorkOrder>> typeIndicator = new GenericTypeIndicator<ArrayList<WorkOrder>>();
 
-                    // workOrders = clientSnapshot.getValue(typeIndicator);
+                 //   System.out.println(clientSnapshot.getKey());
 
                     WorkOrder workOrderQuery = clientSnapshot.getValue(WorkOrder.class);
 
                     workOrderList.add(workOrderQuery);
 
-
-                    System.out.println(workOrderQuery.getJobType());
+                 //   System.out.println(workOrderQuery.getJobType());
 
                 //    workOrders.add(workOrder);
 
@@ -168,7 +169,8 @@ public class CreateWorkOrderActivity extends AppCompatActivity {
         });
 
 
-        String orderId = "one";
+        int orderIdInt = 1;
+        String orderId = Integer.toString(orderIdInt);
         String date = workOrderDateTextView.getText().toString().trim();
         String jobNotes = descriptionEditText.getText().toString().trim();
         String jobType = jobTypeSpinner.getSelectedItem().toString().trim();
@@ -176,19 +178,15 @@ public class CreateWorkOrderActivity extends AppCompatActivity {
 
         WorkOrder workOrder = new WorkOrder(orderId,date,jobNotes,jobType,completed);
 
-
-
         workOrderList.add(workOrder);
-
-        for(WorkOrder w : workOrderList) {
-            System.out.println(w.getJobType());
-        }
 
         client.setWorkOrders(workOrderList);
 
         DatabaseReference  databaseClientsRef = FirebaseDatabase.getInstance().getReference("clients");
         String id = client.getId();
-        databaseClientsRef.child(id).setValue(client);
+        for(WorkOrder w : workOrderList) {
+            databaseClientsRef.child(id).child("workOrders").child(orderId).setValue(w);
+        }
         Toast.makeText(this, "Client added", Toast.LENGTH_LONG).show();
 
     }
