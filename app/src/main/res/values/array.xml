@@ -2,6 +2,7 @@
 <resources>
     <string-array name="job_types">
         <item>Select...</item>
+        <item>Leak Detection</item>
         <item>Test Water</item>
         <item>Replace Filter</item>
         <item>Repair Pumps</item>
