@@ -47,10 +47,10 @@
     <string name="client_email">Email: </string>
 
     <!--Strings for creating a new client-->
-    <string name="edit_first_name">Enter First Name</string>
-    <string name="edit_last_name">Enter Last Name</string>
-    <string name="edit_address">Enter Address</string>
-    <string name="edit_email">Enter Email</string>
+    <string name="edit_first_name"><i>Enter First Name</i></string>
+    <string name="edit_last_name"><i>Enter Last Name</i></string>
+    <string name="edit_address"><i>Enter Address</i></string>
+    <string name="edit_email"><i>Enter Email</i></string>
 
 
     <!-- String for the search menu-->
