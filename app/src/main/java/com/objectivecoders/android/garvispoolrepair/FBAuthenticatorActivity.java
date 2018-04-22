@@ -58,26 +58,12 @@ public class FBAuthenticatorActivity extends AppCompatActivity {
        // Toolbar toolbar = findViewById(R.id.toolbar);
       //  setSupportActionBar(toolbar);
 
-        editText = (EditText) findViewById(R.id.editTextDisplayName);
+
         imageView = (ImageView) findViewById(R.id.imageView);
         progressBar = (ProgressBar) findViewById(R.id.progressbar);
         textView = (TextView) findViewById(R.id.textViewVerified);
 
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showImageChooser();
-            }
-        });
-
-        loadUserInformation();
-
-        findViewById(R.id.buttonSave).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                saveUserInformation();
-            }
-        });
+        ;
 
         findViewById(R.id.buttonContinue).setOnClickListener(new View.OnClickListener() {
             @Override

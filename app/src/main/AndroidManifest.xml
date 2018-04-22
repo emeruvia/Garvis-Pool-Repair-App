@@ -51,9 +51,6 @@
             android:name=".AuxiliaryFragmentHolderActivity"
             android:parentActivityName=".CreateWorkOrderActivity" />
         <activity
-            android:name=".AuthenticatorActivity"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".CreateClientActivity"
             android:parentActivityName=".CreateWorkOrderActivity"
             android:screenOrientation="portrait" />

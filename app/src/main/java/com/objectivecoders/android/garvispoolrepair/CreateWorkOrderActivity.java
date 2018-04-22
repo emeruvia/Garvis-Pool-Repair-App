@@ -182,8 +182,8 @@ public class CreateWorkOrderActivity extends AppCompatActivity {
             }
         });
 
-
-        int orderIdInt = 1;
+        int listId = 0;
+        int orderIdInt = 4;
         String orderId = Integer.toString(orderIdInt);
         String date = workOrderDateTextView.getText().toString().trim();
         String jobNotes = descriptionEditText.getText().toString().trim();
@@ -199,13 +199,14 @@ public class CreateWorkOrderActivity extends AppCompatActivity {
         DatabaseReference  databaseClientsRef = FirebaseDatabase.getInstance().getReference("clients");
         String id = client.getId();
         for(WorkOrder w : workOrderList) {
-            databaseClientsRef.child(id).child("workOrders").child(orderId).setValue(w);
+            databaseClientsRef.child(id).child("workOrders").child(Integer.toString(listId)).setValue(w);
+        listId++;
         }
+
         Toast.makeText(this, "Client added", Toast.LENGTH_LONG).show();
 
     }
 
-    //TODO Create code to create new WorkOrder object
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
