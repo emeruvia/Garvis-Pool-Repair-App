@@ -26,6 +26,7 @@ import com.objectivecoders.android.garvispoolrepair.DataObjects.Client;
 import com.objectivecoders.android.garvispoolrepair.DataObjects.WorkOrder;
 import com.objectivecoders.android.garvispoolrepair.DataObjects.WorkOrderDate;
 import com.objectivecoders.android.garvispoolrepair.Fragments.ClientCardViewFragment;
+import com.objectivecoders.android.garvispoolrepair.Fragments.WorkOrderFragment;
 
 import java.time.Month;
 import java.util.ArrayList;
@@ -93,10 +94,23 @@ public class CreateWorkOrderActivity extends AppCompatActivity {
                 month = calendar.get(Calendar.MONTH);
                 year = calendar.get(Calendar.YEAR);
 
-                DatePickerDialog workOrderDatePicker = new DatePickerDialog(CreateWorkOrderActivity.this, new DatePickerDialog.OnDateSetListener() {
+                final DatePickerDialog workOrderDatePicker = new DatePickerDialog(CreateWorkOrderActivity.this,
+                        new DatePickerDialog.OnDateSetListener() {
                 @Override
                 public void onDateSet(DatePicker datepicker, int y, int m, int d) {
-                    workOrderDateTextView.setText(new WorkOrderDate(d,m,y).toString());
+                    if(y < year){
+                        Toast.makeText(CreateWorkOrderActivity.this,"Can't choose past date",Toast.LENGTH_LONG).show();
+                    }
+                    else if(m < month && y <= year){
+                        Toast.makeText(CreateWorkOrderActivity.this,"Can't choose past date",Toast.LENGTH_LONG).show();
+                    }
+                    else if(d < day && m <= month && y <= year){
+                        Toast.makeText(CreateWorkOrderActivity.this,"Can't choose past date",Toast.LENGTH_LONG).show();
+                    }
+                    else{
+                        workOrderDateTextView.setText(new WorkOrderDate(d,m,y).toString());
+                    }
+
                 }
         }, year, month, day);
                 workOrderDatePicker.show();
@@ -196,10 +210,7 @@ public class CreateWorkOrderActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if(id == R.id.create_work_order){
-
         createWorkOrder();
-
-
             Toast.makeText(this,"Work Order Created",Toast.LENGTH_LONG).show();
         }
         return super.onOptionsItemSelected(item);
