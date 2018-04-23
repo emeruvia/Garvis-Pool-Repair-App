@@ -19,6 +19,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.objectivecoders.android.garvispoolrepair.CreateWorkOrderActivity;
 import com.objectivecoders.android.garvispoolrepair.DataObjects.WorkOrder;
+import com.objectivecoders.android.garvispoolrepair.DataObjects.WorkOrderDate;
 import com.objectivecoders.android.garvispoolrepair.HomePage;
 import com.objectivecoders.android.garvispoolrepair.R;
 import com.objectivecoders.android.garvispoolrepair.RecyclerViews.RecyclerViewOnClick;
@@ -54,7 +55,7 @@ public class WorkOrderFragment extends Fragment implements RecyclerViewOnClick {
         }
 
         TextView textView = rootView.findViewById(R.id.work_order_date_textview);
-        textView.setText("1");
+        textView.setText(new WorkOrderDate(System.currentTimeMillis()).getString());
         if(getArguments() != null){
             textView.setText(getArguments().getString("Date"));
         }
@@ -80,6 +81,7 @@ public class WorkOrderFragment extends Fragment implements RecyclerViewOnClick {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 workOrderList.clear();
 
+
                 for (DataSnapshot clientSnapshot : dataSnapshot.getChildren()) {
                     String clientKey = clientSnapshot.getKey();
 
@@ -87,12 +89,21 @@ public class WorkOrderFragment extends Fragment implements RecyclerViewOnClick {
                     databaseWorkOrder.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
+                            String date = "";
+                            if(getActivity().getIntent().getExtras() != null){
+                                date = getActivity().getIntent().getExtras().getString("Date");
+                            }
+                            else{
+                                date = new WorkOrderDate(System.currentTimeMillis()).getString();
+                            }
                             for (DataSnapshot workOrderSnapshot : dataSnapshot.getChildren()) {
                                 WorkOrder workOrderQuery = workOrderSnapshot.getValue(WorkOrder.class);
 
                                 if (workOrderQuery.isCompleted()==false) {
-                                    System.out.println("test");
-                                    workOrderList.add(workOrderQuery);
+                                    if(workOrderQuery.getDate().equals(date)){
+                                        workOrderList.add(workOrderQuery);
+                                    }
+
                                 }
 
                                 workOrderRecyclerView.notifyDataSetChanged();

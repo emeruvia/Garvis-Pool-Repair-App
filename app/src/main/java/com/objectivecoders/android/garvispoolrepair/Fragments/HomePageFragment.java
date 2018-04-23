@@ -13,17 +13,26 @@ import android.widget.CalendarView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 import com.objectivecoders.android.garvispoolrepair.AuxiliaryFragmentHolderActivity;
 import com.objectivecoders.android.garvispoolrepair.CreateWorkOrderActivity;
+import com.objectivecoders.android.garvispoolrepair.DataObjects.Client;
+import com.objectivecoders.android.garvispoolrepair.DataObjects.WorkOrder;
 import com.objectivecoders.android.garvispoolrepair.DataObjects.WorkOrderDate;
 import com.objectivecoders.android.garvispoolrepair.HomePage;
 import com.objectivecoders.android.garvispoolrepair.R;
 
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by jeffr on 3/3/2018.
@@ -33,6 +42,8 @@ public class HomePageFragment extends android.support.v4.app.Fragment {
 
     CalendarView calendarView;
     GraphView graph;
+    List<Client> clientList = new ArrayList<>();
+
     public HomePageFragment() {
         //Needed for HomePage Activity, don't delete
     }
@@ -53,32 +64,22 @@ public class HomePageFragment extends android.support.v4.app.Fragment {
         graph = (GraphView) rootView.findViewById(R.id.graph);
         createGraph();
 
-
-        if(getArguments() != null && getArguments().getString("ToShow").equals("Date")){
-            calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
-                @Override
-                public void onSelectedDayChange(@NonNull CalendarView calendarView, int i, int i1, int i2) {
-                    String month = i1+1 >= 10 ? String.valueOf(i1+1) : ""+ String.valueOf(i1+1);
-                    String day = i2 > 10 ? String.valueOf(i2) : ""+ String.valueOf(i2);
-                        CreateWorkOrderActivity.date  = month+"-"+day+"-"+String.valueOf(i);
-                }
-
-            });
-        }
-        else{
             calendarView.setPadding(0,90,0,0);
             calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
                 @Override
                 public void onSelectedDayChange(@NonNull CalendarView calendarView, int i, int i1, int i2) {
                     Intent workOrdersIntent = new Intent(getActivity(), AuxiliaryFragmentHolderActivity.class);
+
                     String month = i1+1 >= 10 ? String.valueOf(i1+1) : ""+ String.valueOf(i1+1);
                     String day = i2 > 10 ? String.valueOf(i2) : ""+ String.valueOf(i2);
                     workOrdersIntent.putExtra("ToShow","WorkOrderOfTheDay");
-                    workOrdersIntent.putExtra("Date", month+"-"+day+"-"+String.valueOf(i));
+                    String date = month+"-"+day+"-"+String.valueOf(i);
+                    workOrdersIntent.putExtra("Date",date);
                     startActivity(workOrdersIntent);
                 }
             });
-        }
+
+
         return rootView;
     }
 
@@ -117,4 +118,6 @@ public class HomePageFragment extends android.support.v4.app.Fragment {
         }
         return woCount;
     }
+
+
 }
