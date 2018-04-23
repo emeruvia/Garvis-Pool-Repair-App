@@ -58,17 +58,18 @@ public class CreateClientActivity extends AppCompatActivity {
         } else if (TextUtils.isEmpty(clientAddress)) {
             Toast.makeText(this, "Enter Address", Toast.LENGTH_LONG).show();
         } else {
-            String id = databaseClients.push().getKey();
-            Client client = new Client (id, clientFirstName, clientLastName, clientAddress, clientEmail);
-            databaseClients.child(id).setValue(client);
-            Toast.makeText(this, "Client added", Toast.LENGTH_LONG).show();
+
+            if(getIntent().getExtras() != null){
+                //TODO Add code to overwite the client in the database
+            }
+            else{
+                String id = databaseClients.push().getKey();
+                Client client = new Client (id, clientFirstName, clientLastName, clientAddress, clientEmail);
+                databaseClients.child(id).setValue(client);
+                Toast.makeText(this, "Client added", Toast.LENGTH_LONG).show();
+            }
+
         }
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.create_client_menu, menu);
-        return true;
     }
 }

@@ -40,6 +40,7 @@ public class ClientActivity extends AppCompatActivity {
         int id = item.getItemId();
         if(id == R.id.edit_entity){
             Intent editClientIntent = new Intent(this,CreateClientActivity.class);
+            editClientIntent.putExtra("Editing",true);
             startActivity(editClientIntent);
         }
         return super.onOptionsItemSelected(item);
