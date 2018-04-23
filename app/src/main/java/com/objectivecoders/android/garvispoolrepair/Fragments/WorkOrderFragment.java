@@ -10,7 +10,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Switch;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -19,18 +18,14 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.objectivecoders.android.garvispoolrepair.CreateWorkOrderActivity;
-import com.objectivecoders.android.garvispoolrepair.DataObjects.Client;
 import com.objectivecoders.android.garvispoolrepair.DataObjects.WorkOrder;
-import com.objectivecoders.android.garvispoolrepair.DataObjects.WorkOrderDate;
 import com.objectivecoders.android.garvispoolrepair.HomePage;
 import com.objectivecoders.android.garvispoolrepair.R;
 import com.objectivecoders.android.garvispoolrepair.RecyclerViews.RecyclerViewOnClick;
 import com.objectivecoders.android.garvispoolrepair.RecyclerViews.WorkOrderRecyclerView;
 import com.objectivecoders.android.garvispoolrepair.WorkOrderActivity;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -38,7 +33,6 @@ import java.util.List;
  */
 
 public class WorkOrderFragment extends Fragment implements RecyclerViewOnClick {
-
     private List<WorkOrder> workOrderList = new ArrayList<>();
     private WorkOrderRecyclerView workOrderRecyclerView;
 
@@ -53,17 +47,7 @@ public class WorkOrderFragment extends Fragment implements RecyclerViewOnClick {
 
         loadWorkOrderData();
 
-        //TODO Get rid of the dummy data once the database is impleted
-                    ///Dummy Data///
-        /////////////////////////////////////
-//      workOrderList.add(new WorkOrder("12312","1",
-//              "Do the job","Replace Filter"
-//     , false));
-//      workOrderList.add(new WorkOrder("12313","1", "Do the job","Fix Pump",false));
-////        workOrderList.add(new WorkOrder("12314",new WorkOrderDate(System.currentTimeMillis()),
-////                "3412 20th st w Fort Myers, Fl","Do the job","Clean Pool",
-////        new Client("3","Haley", "Ovenhouse", "123 IDK", "IDKEITHER@gmail.com")));
-        /////////////////////////////////////
+
 
 
         for (WorkOrder w : workOrderList) {
@@ -83,9 +67,12 @@ public class WorkOrderFragment extends Fragment implements RecyclerViewOnClick {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(fragmentActivity);
         workOrderRecyclerView = new WorkOrderRecyclerView(workOrderList,this);
         RecyclerView r = rootView.findViewById(R.id.work_order_list);
+
         r.setLayoutManager(linearLayoutManager);
         r.setAdapter(workOrderRecyclerView);
         r.setItemAnimator(new DefaultItemAnimator());
+
+
 
         return rootView;
     }
@@ -190,4 +177,6 @@ public class WorkOrderFragment extends Fragment implements RecyclerViewOnClick {
     }
 
 
+
 }
+

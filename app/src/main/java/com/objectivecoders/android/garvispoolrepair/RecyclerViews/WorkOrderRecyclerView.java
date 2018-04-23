@@ -52,7 +52,6 @@ public class WorkOrderRecyclerView extends RecyclerView.Adapter<WorkOrderRecycle
         holder.completionCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                //TODO Link to database if a work order is complete or not
 
             }
         });

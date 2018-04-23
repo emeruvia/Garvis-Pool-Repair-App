@@ -14,7 +14,7 @@ public class GarvisSearchSuggestions implements SearchSuggestion {
 
     @Override
     public String getBody() {
-        return "BoB";
+        return "";
     }
 
     @Override
