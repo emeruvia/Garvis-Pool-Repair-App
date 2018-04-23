@@ -160,15 +160,9 @@ public class CreateWorkOrderActivity extends AppCompatActivity {
 
                     workOrderList.add(workOrderQuery);
 
-                 //   System.out.println(workOrderQuery.getJobType());
-
-                //    workOrders.add(workOrder);
-
                 }
 
-               // System.out.println(Arrays.asList(workOrders));
 
-            //    clientRecyclerView.notifyDataSetChanged();
             }
 
             @Override
