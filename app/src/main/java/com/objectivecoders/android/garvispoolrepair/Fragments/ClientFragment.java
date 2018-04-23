@@ -112,6 +112,7 @@ public class ClientFragment extends Fragment implements RecyclerViewOnClick{
             clientIntent.putExtra("LastName", clientList.get(row).getLastName());
             clientIntent.putExtra("Email", clientList.get(row).getEmail());
             clientIntent.putExtra("Address", clientList.get(row).getAddress());
+            clientIntent.putExtra("ClientID",clientList.get(row).getId());
             startActivity(clientIntent);
         }
     }

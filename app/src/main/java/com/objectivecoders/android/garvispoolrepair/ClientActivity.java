@@ -14,9 +14,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.firebase.database.DatabaseReference;
 import com.objectivecoders.android.garvispoolrepair.Fragments.DeleteClientFragment;
 
 public class ClientActivity extends AppCompatActivity {
+
     private Button deleteButton;
     private TextView firstName;
     private TextView lastName;
@@ -45,6 +47,7 @@ public class ClientActivity extends AppCompatActivity {
             public void onClick(View v) {
                 DeleteClientFragment deleteClientFragment = new DeleteClientFragment();
                 deleteClientFragment.show(fragmentManager,"ok");
+                deleteClientFragment.setArguments(getIntent().getExtras());
             }
         });
 
