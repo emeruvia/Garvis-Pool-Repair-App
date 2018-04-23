@@ -36,6 +36,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 public class CreateWorkOrderActivity extends AppCompatActivity {
 
@@ -153,13 +154,7 @@ public class CreateWorkOrderActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-               // System.out.println("test1");
-
                 for (DataSnapshot clientSnapshot : dataSnapshot.getChildren()) {
-
-                    //   GenericTypeIndicator<ArrayList<WorkOrder>> typeIndicator = new GenericTypeIndicator<ArrayList<WorkOrder>>();
-
-                 //   System.out.println(clientSnapshot.getKey());
 
                     WorkOrder workOrderQuery = clientSnapshot.getValue(WorkOrder.class);
 
@@ -184,7 +179,11 @@ public class CreateWorkOrderActivity extends AppCompatActivity {
 
         int listId = 0;
         int orderIdInt = 4;
-        String orderId = Integer.toString(orderIdInt);
+        Random random = new Random();
+        int num1 = random.nextInt(9999)+1000;
+        int num2 = random.nextInt(9999)+1000;
+        int num3 = random.nextInt(9999)+1000;
+        String orderId = ""+num1+"-"+num2+"-"+num3;
         String date = workOrderDateTextView.getText().toString().trim();
         String jobNotes = descriptionEditText.getText().toString().trim();
         String jobType = jobTypeSpinner.getSelectedItem().toString().trim();
@@ -197,6 +196,7 @@ public class CreateWorkOrderActivity extends AppCompatActivity {
         client.setWorkOrders(workOrderList);
 
         DatabaseReference  databaseClientsRef = FirebaseDatabase.getInstance().getReference("clients");
+
         String id = client.getId();
         for(WorkOrder w : workOrderList) {
             databaseClientsRef.child(id).child("workOrders").child(Integer.toString(listId)).setValue(w);

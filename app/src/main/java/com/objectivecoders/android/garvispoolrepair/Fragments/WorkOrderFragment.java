@@ -47,16 +47,11 @@ public class WorkOrderFragment extends Fragment implements RecyclerViewOnClick {
 
         loadWorkOrderData();
 
-
-
-
         for (WorkOrder w : workOrderList) {
 
             System.out.println(w.getJobType());
 
         }
-      //  WorkOrderDate date = new WorkOrderDate(System.currentTimeMillis());
-
 
         TextView textView = rootView.findViewById(R.id.work_order_date_textview);
         textView.setText("1");
@@ -84,34 +79,16 @@ public class WorkOrderFragment extends Fragment implements RecyclerViewOnClick {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 workOrderList.clear();
-                // System.out.println("test1");
 
                 for (DataSnapshot clientSnapshot : dataSnapshot.getChildren()) {
-
-                    //   GenericTypeIndicator<ArrayList<WorkOrder>> typeIndicator = new GenericTypeIndicator<ArrayList<WorkOrder>>();
-
-                    //   System.out.println(clientSnapshot.getKey());
-
                     String clientKey = clientSnapshot.getKey();
 
                     Query databaseWorkOrder = FirebaseDatabase.getInstance().getReference("clients/" + clientKey + "/workOrders");
                     databaseWorkOrder.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
-
-                            // System.out.println("test1");
-
-
                             for (DataSnapshot workOrderSnapshot : dataSnapshot.getChildren()) {
-
-                                //   GenericTypeIndicator<ArrayList<WorkOrder>> typeIndicator = new GenericTypeIndicator<ArrayList<WorkOrder>>();
-
-                                //   System.out.println(clientSnapshot.getKey());
-
                                 WorkOrder workOrderQuery = workOrderSnapshot.getValue(WorkOrder.class);
-
-                                System.out.println(workOrderQuery.isCompleted());
-                                System.out.println(workOrderQuery.getJobType());
 
                                 if (workOrderQuery.isCompleted()==false) {
                                     System.out.println("test");
@@ -120,15 +97,8 @@ public class WorkOrderFragment extends Fragment implements RecyclerViewOnClick {
 
                                 workOrderRecyclerView.notifyDataSetChanged();
 
-                                //   System.out.println(workOrderQuery.getJobType());
-
-                                //    workOrders.add(workOrder);
-
                             }
 
-                            // System.out.println(Arrays.asList(workOrders));
-
-                            //    clientRecyclerView.notifyDataSetChanged();
                         }
 
                         @Override
@@ -139,10 +109,6 @@ public class WorkOrderFragment extends Fragment implements RecyclerViewOnClick {
 
 
                 }
-
-                // System.out.println(Arrays.asList(workOrders));
-
-                //    clientRecyclerView.notifyDataSetChanged();
             }
 
             @Override
@@ -161,11 +127,7 @@ public class WorkOrderFragment extends Fragment implements RecyclerViewOnClick {
         workOrderIntent.putExtra("OrderNumber", String.valueOf(workOrderList.get(row).getOrderNumber()));
         workOrderIntent.putExtra("Description", workOrderList.get(row).getDescription());
         workOrderIntent.putExtra("JobType", workOrderList.get(row).getJobType());
-//        workOrderIntent.putExtra("FirstName",workOrderList.get(row).getClient().getFirstName());
-//        workOrderIntent.putExtra("LastName",workOrderList.get(row).getClient().getLastName());
-//        workOrderIntent.putExtra("Email",workOrderList.get(row).getClient().getEmail());
-//        workOrderIntent.putExtra("Address",workOrderList.get(row).getClient().getAddress());
-
+        workOrderIntent.putExtra("OrderID",workOrderList.get(row).getOrderId());
         startActivity(workOrderIntent);
     }
 

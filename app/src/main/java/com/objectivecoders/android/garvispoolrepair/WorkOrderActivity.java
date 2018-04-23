@@ -71,8 +71,10 @@ public class WorkOrderActivity extends AppCompatActivity {
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DeleteWorkOrderFragment deleteClientFragment = new DeleteWorkOrderFragment();
-                deleteClientFragment.show(fragmentManager,"ok");
+                DeleteWorkOrderFragment deleteWorkOrderFragment = new DeleteWorkOrderFragment();
+                deleteWorkOrderFragment.show(fragmentManager,"ok");
+                deleteWorkOrderFragment.setArguments(getIntent().getExtras());
+
             }
         });
 

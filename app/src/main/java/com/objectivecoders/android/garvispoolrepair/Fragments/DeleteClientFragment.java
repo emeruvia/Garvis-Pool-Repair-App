@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.objectivecoders.android.garvispoolrepair.HomePage;
 
 /**
@@ -14,15 +16,17 @@ import com.objectivecoders.android.garvispoolrepair.HomePage;
  */
 
 public class DeleteClientFragment extends DialogFragment {
+    DatabaseReference databaseClients;
+
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-
+        databaseClients = FirebaseDatabase.getInstance().getReference("clients");
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setMessage("Delete Client?")
                 .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         //TODO Firebase code
-                        Intent intent = new Intent(getActivity(), HomePage.class);
+                        databaseClients.child(getArguments().getString("ClientID")).removeValue();
                         getActivity().finish();
                     }
                 })

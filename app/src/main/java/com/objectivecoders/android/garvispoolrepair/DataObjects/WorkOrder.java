@@ -63,4 +63,11 @@ public class WorkOrder {
 
     public void setCompleted(boolean completed) { this.completed = completed; }
 
+    public String getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
+    }
 }
