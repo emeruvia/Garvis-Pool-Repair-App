@@ -11,7 +11,7 @@ The Garvis Repair application is a mobile application which allows employees, ma
 * [Google Maps API](https://developers.google.com/maps/) - Maps, Location
 * [Gradle](https://gradle.org/) - Built System
 ## Authors
-* **Jeffrey Fleurent** - [GitHub](https://github.com/jfleurent)
+* **Jeffrey Fleurent** - [GitHub](https://github.com/jfleurent) ![jeffrey](https://github.com/emeruvia/Garvis-Pool-Repair-App/blob/dev/pictures/Jeffrey.jpg)
 * **Juan Gomez** - [GitHub](https://github.com/Jgomez95)
 * **Edgar Meruvia** - [GitHub](https://github.com/emeruvia)
 * **David Murad** - [GitHub](https://github.com/Ember778)
