@@ -18,12 +18,12 @@ The Garvis Repair application is a mobile application which allows employees, ma
 * [Java](https://www.oracle.com/java/index.html) - Main programming language
 ## Authors
 * **Jeffrey Fleurent** - [GitHub](https://github.com/jfleurent)<br/>
-![jeffrey](https://github.com/emeruvia/Garvis-Pool-Repair-App/blob/dev/pictures/Jeffrey.jpg)
+![jeffrey](https://github.com/emeruvia/Garvis-Pool-Repair-App/blob/master/pictures/Jeffrey.jpg)
 * **Juan Gomez** - [GitHub](https://github.com/Jgomez95)<br/>
-![juan](https://github.com/emeruvia/Garvis-Pool-Repair-App/blob/dev/pictures/juan.jpg)
+![juan](https://github.com/emeruvia/Garvis-Pool-Repair-App/blob/master/pictures/juan.jpg)
 * **Edgar Meruvia** - [GitHub](https://github.com/emeruvia)<br/>
-![edgar](https://github.com/emeruvia/Garvis-Pool-Repair-App/blob/dev/pictures/edgar.jpg)
+![edgar](https://github.com/emeruvia/Garvis-Pool-Repair-App/blob/master/pictures/edgar.jpg)
 * **David Murad** - [GitHub](https://github.com/Ember778)<br/>
-![david](https://github.com/emeruvia/Garvis-Pool-Repair-App/blob/dev/pictures/david.JPG)
+![david](https://github.com/emeruvia/Garvis-Pool-Repair-App/blob/master/pictures/david.JPG)
 * **Haley Ovenhouse** - [GitHub](https://github.com/hovenhouse7675)<br/>
-![haley](https://github.com/emeruvia/Garvis-Pool-Repair-App/blob/dev/pictures/haley.jpg)
+![haley](https://github.com/emeruvia/Garvis-Pool-Repair-App/blob/master/pictures/haley.jpg)
