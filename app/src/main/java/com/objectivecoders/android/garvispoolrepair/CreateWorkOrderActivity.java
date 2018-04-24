@@ -113,7 +113,7 @@ public class CreateWorkOrderActivity extends AppCompatActivity {
                     else{
                         workOrderDateTextView.setText(new WorkOrderDate(d,m,y).toString());
                     }
-                    
+
                 }
         }, year, month, day);
                 workOrderDatePicker.show();
@@ -163,8 +163,6 @@ public class CreateWorkOrderActivity extends AppCompatActivity {
                     workOrderList.add(workOrderQuery);
 
                 }
-
-
             }
 
             @Override
