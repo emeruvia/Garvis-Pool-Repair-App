@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -46,9 +47,14 @@ public class WorkOrderRecyclerView extends RecyclerView.Adapter<WorkOrderRecycle
         holder.workOrderJob.setText(workOrderList.get(position).getJobType());
         holder.workOrderDate.setText(workOrderList.get(position).getDate().toString());
 
-        //TODO Link to database if a work order is complete or not
         //defaulted to false
         holder.completionCheckBox.setChecked(false);
+        holder.completionCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+            }
+        });
 
         holder.workOrderIcon.setImageResource(R.drawable.ic_work_order);
         holder.itemView.setOnClickListener(new View.OnClickListener() {

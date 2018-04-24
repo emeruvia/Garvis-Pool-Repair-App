@@ -10,11 +10,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Switch;
 import android.widget.TextView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.objectivecoders.android.garvispoolrepair.CreateWorkOrderActivity;
-import com.objectivecoders.android.garvispoolrepair.DataObjects.Client;
 import com.objectivecoders.android.garvispoolrepair.DataObjects.WorkOrder;
 import com.objectivecoders.android.garvispoolrepair.DataObjects.WorkOrderDate;
 import com.objectivecoders.android.garvispoolrepair.HomePage;
@@ -23,9 +26,7 @@ import com.objectivecoders.android.garvispoolrepair.RecyclerViews.RecyclerViewOn
 import com.objectivecoders.android.garvispoolrepair.RecyclerViews.WorkOrderRecyclerView;
 import com.objectivecoders.android.garvispoolrepair.WorkOrderActivity;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -33,9 +34,7 @@ import java.util.List;
  */
 
 public class WorkOrderFragment extends Fragment implements RecyclerViewOnClick {
-
     private List<WorkOrder> workOrderList = new ArrayList<>();
-    private WorkOrder workOrder;
     private WorkOrderRecyclerView workOrderRecyclerView;
 
     @Override
@@ -47,27 +46,16 @@ public class WorkOrderFragment extends Fragment implements RecyclerViewOnClick {
             rootView.setPadding(0,100,0,0);
         }
 
-        //TODO Get rid of the dummy data once the database is impleted
-                    ///Dummy Data///
-        /////////////////////////////////////
-//        workOrderList.add(new WorkOrder("12312","1",
-//                "3412 20th st w Fort Myers, Fl","Do the job","Replace Filter"
-//        ,new Client("1","Juan", "Gomez", "123 address",
-//                "jgomez@gmail.com"), false));
-//        workOrderList.add(new WorkOrder("12313",new WorkOrderDate(System.currentTimeMillis()),
-//                "3412 20th st w Fort Myers, Fl","Do the job","Fix Pump"
-//                ,new Client("2","Jeffey", "Fleurent", "123 IDK",
-//                "jfleurent@gmail.com")));
-//        workOrderList.add(new WorkOrder("12314",new WorkOrderDate(System.currentTimeMillis()),
-//                "3412 20th st w Fort Myers, Fl","Do the job","Clean Pool",
-//        new Client("3","Haley", "Ovenhouse", "123 IDK", "IDKEITHER@gmail.com")));
-        /////////////////////////////////////
+        loadWorkOrderData();
 
-      //  WorkOrderDate date = new WorkOrderDate(System.currentTimeMillis());
+        for (WorkOrder w : workOrderList) {
 
+            System.out.println(w.getJobType());
+
+        }
 
         TextView textView = rootView.findViewById(R.id.work_order_date_textview);
-        textView.setText("1");
+        textView.setText(new WorkOrderDate(System.currentTimeMillis()).getString());
         if(getArguments() != null){
             textView.setText(getArguments().getString("Date"));
         }
@@ -75,11 +63,72 @@ public class WorkOrderFragment extends Fragment implements RecyclerViewOnClick {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(fragmentActivity);
         workOrderRecyclerView = new WorkOrderRecyclerView(workOrderList,this);
         RecyclerView r = rootView.findViewById(R.id.work_order_list);
+
         r.setLayoutManager(linearLayoutManager);
         r.setAdapter(workOrderRecyclerView);
         r.setItemAnimator(new DefaultItemAnimator());
 
+
+
         return rootView;
+    }
+
+    public void loadWorkOrderData() {
+
+        Query databaseClients = FirebaseDatabase.getInstance().getReference("clients");
+        databaseClients.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                workOrderList.clear();
+
+
+                for (DataSnapshot clientSnapshot : dataSnapshot.getChildren()) {
+                    String clientKey = clientSnapshot.getKey();
+
+                    Query databaseWorkOrder = FirebaseDatabase.getInstance().getReference("clients/" + clientKey + "/workOrders");
+                    databaseWorkOrder.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            String date = "";
+                            if(getActivity().getIntent().getExtras() != null){
+                                date = getActivity().getIntent().getExtras().getString("Date");
+                            }
+                            else{
+                                date = new WorkOrderDate(System.currentTimeMillis()).getString();
+                            }
+                            for (DataSnapshot workOrderSnapshot : dataSnapshot.getChildren()) {
+                                WorkOrder workOrderQuery = workOrderSnapshot.getValue(WorkOrder.class);
+
+                                if (workOrderQuery.isCompleted()==false) {
+                                    if(workOrderQuery.getDate().equals(date)){
+                                        workOrderList.add(workOrderQuery);
+                                    }
+
+                                }
+
+                                workOrderRecyclerView.notifyDataSetChanged();
+
+                            }
+
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
+
+
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
     }
 
     @Override
@@ -89,11 +138,7 @@ public class WorkOrderFragment extends Fragment implements RecyclerViewOnClick {
         workOrderIntent.putExtra("OrderNumber", String.valueOf(workOrderList.get(row).getOrderNumber()));
         workOrderIntent.putExtra("Description", workOrderList.get(row).getDescription());
         workOrderIntent.putExtra("JobType", workOrderList.get(row).getJobType());
-//        workOrderIntent.putExtra("FirstName",workOrderList.get(row).getClient().getFirstName());
-//        workOrderIntent.putExtra("LastName",workOrderList.get(row).getClient().getLastName());
-//        workOrderIntent.putExtra("Email",workOrderList.get(row).getClient().getEmail());
-//        workOrderIntent.putExtra("Address",workOrderList.get(row).getClient().getAddress());
-
+        workOrderIntent.putExtra("OrderID",workOrderList.get(row).getOrderId());
         startActivity(workOrderIntent);
     }
 
@@ -105,4 +150,6 @@ public class WorkOrderFragment extends Fragment implements RecyclerViewOnClick {
     }
 
 
+
 }
+

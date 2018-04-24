@@ -84,4 +84,14 @@
         android:layout_marginLeft="20dp"
         android:textSize="20dp" />
 
+    <Button
+        android:id="@+id/delete_client_button"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:text="Delete"
+        android:textColor="@color/colorAccent" />
+
 </RelativeLayout>

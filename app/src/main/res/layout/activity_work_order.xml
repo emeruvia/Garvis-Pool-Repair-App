@@ -27,7 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="1234"
-            android:textSize="40sp"/>
+            android:textSize="30sp"/>
     </LinearLayout>
 
     <LinearLayout
@@ -132,5 +132,15 @@
 
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/delete_client_button"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:text="Delete"
+        android:textColor="@color/colorAccent" />
 
 </RelativeLayout>

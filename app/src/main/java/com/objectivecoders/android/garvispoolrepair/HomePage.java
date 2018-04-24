@@ -25,6 +25,7 @@ import android.widget.Toast;
 
 import com.arlib.floatingsearchview.FloatingSearchView;
 import com.arlib.floatingsearchview.suggestions.model.SearchSuggestion;
+import com.google.firebase.auth.FirebaseAuth;
 import com.objectivecoders.android.garvispoolrepair.DataObjects.GarvisSearchSuggestions;
 import com.objectivecoders.android.garvispoolrepair.Fragments.ClientFragment;
 import com.objectivecoders.android.garvispoolrepair.Fragments.HomePageFragment;
@@ -90,7 +91,8 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
             Intent workOrderIntent = new Intent(this, CreateWorkOrderActivity.class);
             startActivity(workOrderIntent);
         } else {
-            
+            Intent workOrderIntent = new Intent(this, CreateWorkOrderActivity.class);
+            startActivity(workOrderIntent);
         }
     }
 
@@ -167,8 +169,11 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
             fragmentManager.beginTransaction().replace(R.id.fragment, fragment, fragment.getTag()).commit();
         }
         else if(id == R.id.nav_logout){
-            Intent intent = new Intent(this,MapsActivity.class);
+
+            FirebaseAuth.getInstance().signOut();
             finish();
+            startActivity(new Intent(this, MainActivity.class));
+
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

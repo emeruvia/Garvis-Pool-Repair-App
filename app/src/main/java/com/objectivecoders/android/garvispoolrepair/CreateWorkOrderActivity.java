@@ -26,6 +26,7 @@ import com.objectivecoders.android.garvispoolrepair.DataObjects.Client;
 import com.objectivecoders.android.garvispoolrepair.DataObjects.WorkOrder;
 import com.objectivecoders.android.garvispoolrepair.DataObjects.WorkOrderDate;
 import com.objectivecoders.android.garvispoolrepair.Fragments.ClientCardViewFragment;
+import com.objectivecoders.android.garvispoolrepair.Fragments.WorkOrderFragment;
 
 import java.time.Month;
 import java.util.ArrayList;
@@ -35,6 +36,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 public class CreateWorkOrderActivity extends AppCompatActivity {
 
@@ -93,10 +95,25 @@ public class CreateWorkOrderActivity extends AppCompatActivity {
                 month = calendar.get(Calendar.MONTH);
                 year = calendar.get(Calendar.YEAR);
 
-                DatePickerDialog workOrderDatePicker = new DatePickerDialog(CreateWorkOrderActivity.this, new DatePickerDialog.OnDateSetListener() {
+                final DatePickerDialog workOrderDatePicker = new DatePickerDialog(CreateWorkOrderActivity.this,
+                        new DatePickerDialog.OnDateSetListener() {
                 @Override
                 public void onDateSet(DatePicker datepicker, int y, int m, int d) {
                     workOrderDateTextView.setText(new WorkOrderDate(d,m = m < 12 ? m +1 : 1,y).toString());
+
+                    if(y < year){
+                        Toast.makeText(CreateWorkOrderActivity.this,"Can't choose past date",Toast.LENGTH_LONG).show();
+                    }
+                    else if(m < month && y <= year){
+                        Toast.makeText(CreateWorkOrderActivity.this,"Can't choose past date",Toast.LENGTH_LONG).show();
+                    }
+                    else if(d < day && m <= month && y <= year){
+                        Toast.makeText(CreateWorkOrderActivity.this,"Can't choose past date",Toast.LENGTH_LONG).show();
+                    }
+                    else{
+                        workOrderDateTextView.setText(new WorkOrderDate(d,m,y).toString());
+                    }
+                    
                 }
         }, year, month, day);
                 workOrderDatePicker.show();
@@ -131,34 +148,23 @@ public class CreateWorkOrderActivity extends AppCompatActivity {
     public void createWorkOrder() {
 
         final List<WorkOrder> workOrderList = new ArrayList<WorkOrder>();
+        final List<WorkOrder> workOrderIDList = new ArrayList<WorkOrder>();
 
-        Query databaseClients = FirebaseDatabase.getInstance().getReference("clients/" + client.getId() + "/workOrders");
-       databaseClients.addValueEventListener(new ValueEventListener() {
+
+       Query databaseClients = FirebaseDatabase.getInstance().getReference("clients/" + client.getId() + "/workOrders");
+       databaseClients.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-               // System.out.println("test1");
-
                 for (DataSnapshot clientSnapshot : dataSnapshot.getChildren()) {
-
-                    //   GenericTypeIndicator<ArrayList<WorkOrder>> typeIndicator = new GenericTypeIndicator<ArrayList<WorkOrder>>();
-
-                    // workOrders = clientSnapshot.getValue(typeIndicator);
 
                     WorkOrder workOrderQuery = clientSnapshot.getValue(WorkOrder.class);
 
                     workOrderList.add(workOrderQuery);
 
-
-                    System.out.println(workOrderQuery.getJobType());
-
-                //    workOrders.add(workOrder);
-
                 }
 
-               // System.out.println(Arrays.asList(workOrders));
 
-            //    clientRecyclerView.notifyDataSetChanged();
             }
 
             @Override
@@ -167,8 +173,13 @@ public class CreateWorkOrderActivity extends AppCompatActivity {
             }
         });
 
-
-        String orderId = "one";
+        int listId = 0;
+        int orderIdInt = 4;
+        Random random = new Random();
+        int num1 = random.nextInt(9999)+1000;
+        int num2 = random.nextInt(9999)+1000;
+        int num3 = random.nextInt(9999)+1000;
+        String orderId = ""+num1+"-"+num2+"-"+num3;
         String date = workOrderDateTextView.getText().toString().trim();
         String jobNotes = descriptionEditText.getText().toString().trim();
         String jobType = jobTypeSpinner.getSelectedItem().toString().trim();
@@ -176,32 +187,27 @@ public class CreateWorkOrderActivity extends AppCompatActivity {
 
         WorkOrder workOrder = new WorkOrder(orderId,date,jobNotes,jobType,completed);
 
-
-
         workOrderList.add(workOrder);
-
-        for(WorkOrder w : workOrderList) {
-            System.out.println(w.getJobType());
-        }
 
         client.setWorkOrders(workOrderList);
 
         DatabaseReference  databaseClientsRef = FirebaseDatabase.getInstance().getReference("clients");
+
         String id = client.getId();
-        databaseClientsRef.child(id).setValue(client);
+        for(WorkOrder w : workOrderList) {
+            databaseClientsRef.child(id).child("workOrders").child(Integer.toString(listId)).setValue(w);
+        listId++;
+        }
+
         Toast.makeText(this, "Client added", Toast.LENGTH_LONG).show();
 
     }
 
-    //TODO Create code to create new WorkOrder object
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if(id == R.id.create_work_order){
-
         createWorkOrder();
-
-
             Toast.makeText(this,"Work Order Created",Toast.LENGTH_LONG).show();
         }
         return super.onOptionsItemSelected(item);
