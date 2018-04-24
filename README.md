@@ -16,7 +16,7 @@ The Garvis Repair application is a mobile application which allows employees, ma
 * **Juan Gomez** - [GitHub](https://github.com/Jgomez95)<br/>
 ![juan](https://github.com/emeruvia/Garvis-Pool-Repair-App/blob/dev/pictures/juan.jpg)
 * **Edgar Meruvia** - [GitHub](https://github.com/emeruvia)<br/>
-![edgar](https://github.com/emeruvia/Garvis-Pool-Repair-App/blob/dev/pictures/edgar.jpeg)
+![edgar](https://github.com/emeruvia/Garvis-Pool-Repair-App/blob/dev/pictures/edgar.jpg)
 * **David Murad** - [GitHub](https://github.com/Ember778)<br/>
 ![david](https://github.com/emeruvia/Garvis-Pool-Repair-App/blob/dev/pictures/david.JPG)
 * **Haley Ovenhouse** - [GitHub](https://github.com/hovenhouse7675)<br/>
