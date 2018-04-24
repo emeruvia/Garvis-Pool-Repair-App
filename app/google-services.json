@@ -1,0 +1,63 @@
+{
+  "project_info": {
+    "project_number": "694030184244",
+    "firebase_url": "https://garvis-repair-pool.firebaseio.com",
+    "project_id": "garvis-repair-pool",
+    "storage_bucket": "garvis-repair-pool.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:694030184244:android:a48ed8de8afdde47",
+        "android_client_info": {
+          "package_name": "com.objectivecoders.android.garvispoolrepair"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "694030184244-kt69h74a73asv899vus0eqmnd9s8nfdd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.objectivecoders.android.garvispoolrepair",
+            "certificate_hash": "119f1050a72e7f22a56481554723d8b173cfc412"
+          }
+        },
+        {
+          "client_id": "694030184244-b8img7j480visok713kpavgjg8p1ao80.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.objectivecoders.android.garvispoolrepair",
+            "certificate_hash": "c524c61223fc00123a9906acf1b9defefe3c129b"
+          }
+        },
+        {
+          "client_id": "694030184244-epnk20iia44ct0maa5d174bnujbsavl1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDQlaW0HSOE_hzTgp4g2WcZxsOuX7Vaz0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "694030184244-epnk20iia44ct0maa5d174bnujbsavl1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

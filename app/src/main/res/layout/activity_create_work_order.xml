@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CreateWorkOrderActivity">
+
+    <TextView
+        android:id="@+id/create_work_order_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Create Work Order"
+        android:textSize="30sp" />
+
+    <LinearLayout
+        android:id="@+id/LinearLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10sp"
+        android:layout_below="@id/create_work_order_title"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/work_order_number_title"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:layout_marginRight="10sp"/>
+
+        <TextView
+            android:id="@+id/work_order_number_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1234"
+            android:textSize="25sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/LinearLayout2"
+        android:layout_width="304dp"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/create_work_order_title"
+        android:layout_marginLeft="10sp"
+        android:layout_below="@+id/LinearLayout1"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textViewDate"
+                android:layout_width="103dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Date:"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textViewWorkOrderDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text=" "
+                android:textSize="20sp"
+                android:textStyle="bold"
+                tools:text=" " />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/edit_date_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_borders"
+            android:text="03-10-2018"
+            android:textSize="10sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/LinearLayout3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10sp"
+        android:layout_below="@id/LinearLayout2"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="@string/work_order_client_title"
+            android:textSize="20sp" />
+
+        <LinearLayout
+            android:id="@+id/client_linear_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/work_order_new_client"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_borders"
+                android:onClick="onClickNewClient"
+                android:text="@string/work_order_new_client"
+                android:textSize="10sp"
+                android:layout_marginRight="10sp"/>
+
+            <Button
+                android:id="@+id/work_order_existing_client"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_borders"
+                android:onClick="onClickExistingClient"
+                android:text="@string/work_order_existing_client"
+                android:textSize="10sp" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/LinearLayout4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10sp"
+        android:layout_below="@id/LinearLayout3"
+        android:orientation="vertical">
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/LinearLayout5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/LinearLayout4"
+        android:layout_marginLeft="10sp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="@string/work_order_job_type_title"
+            android:textSize="20sp" />
+
+        <Spinner
+            android:id="@+id/work_order_job_type_spinner"
+            android:layout_width="180dp"
+            android:layout_height="50dp"
+            android:background="@android:drawable/btn_dropdown"
+            android:entries="@array/job_types"
+            android:spinnerMode="dropdown" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/LinearLayout6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10sp"
+        android:layout_below="@id/LinearLayout5"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="@string/work_order_description_title"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/work_order_description_eidt_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20sp" />
+
+
+    </LinearLayout>
+
+</RelativeLayout>

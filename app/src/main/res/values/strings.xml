@@ -14,12 +14,51 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
-    <string name="title_activity_main2">Main2Activity</string>
 
+    <!-- Strings related to navigation drawer -->
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-
     <string name="action_settings">Settings</string>
+
+    <!-- Strings related to the homepage -->
     <string name="title_activity_home_page">HomePage</string>
-    <string name="section_format">Hello World from section: %1$d</string>
+
+    <!-- Strings related to work orders -->
+    <string name="work_order_number_title">Order # :  </string>
+    <string name="work_order_job_type_title">Job:  </string>
+    <string name="work_order_address_title">Address:  </string>
+    <string name="work_order_description_title">Notes:  </string>
+    <string name="work_order_existing_client">Existing Client  </string>
+    <string name="work_order_new_client">New Client  </string>
+    <string name="work_order_client_title">Client Information:  </string>
+    <string name="create_work_order">Create Work Order  </string>
+
+
+    <!-- Strings related to clients -->
+    <string name="client_name_title">Name:  </string>
+    <string name="client_phone_title">Phone Number:  </string>
+    <string name="client_address_title">Address:  </string>
+    <string name="client_email_title">Email:  </string>
+
+    <!-- String for the client fragment-->
+    <string name="client_first_name">First Name: </string>
+    <string name="client_last_name">Last Name: </string>
+    <string name="client_address">Address: </string>
+    <string name="client_email">Email: </string>
+
+    <!--Strings for creating a new client-->
+    <string name="edit_first_name"><i>Enter First Name</i></string>
+    <string name="edit_last_name"><i>Enter Last Name</i></string>
+    <string name="edit_address"><i>Enter Address</i></string>
+    <string name="edit_email"><i>Enter Email</i></string>
+
+
+    <!-- String for the search menu-->
+    <string name="search_title">Search </string>
+
+    <!--Google Maps-->
+    <string name="title_activity_maps">Map</string>
+
+
+
 </resources>
