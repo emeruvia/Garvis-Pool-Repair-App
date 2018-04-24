@@ -4,13 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/side_nav_bar"
     tools:context="com.objectivecoders.android.garvispoolrepair.WorkOrderActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary" />
+        android:layout_height="wrap_content"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -18,8 +18,8 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="170dp"
-            android:layout_height="170dp"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
             android:layout_centerHorizontal="true"
             android:layout_margin="20dp"
             android:background="@drawable/garvis_logo"
@@ -37,8 +37,10 @@
 
     <TextView
         android:id="@+id/textViewVerified"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        android:layout_gravity="center"
         android:text="Verified"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
 
@@ -50,6 +52,7 @@
         android:layout_marginTop="25dp"
         android:paddingLeft="55dp"
         android:paddingRight="55dp"
+        android:textColor="#FFFFFF"
         android:text="Home"
         android:textAllCaps="false" />
 
