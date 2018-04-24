@@ -70,4 +70,10 @@ public class WorkOrder {
     public void setOrderId(String orderId) {
         this.orderId = orderId;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        WorkOrder workOrder = (WorkOrder) obj;
+        return this.orderId.equals(workOrder.orderId);
+    }
 }

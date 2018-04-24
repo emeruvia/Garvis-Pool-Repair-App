@@ -83,7 +83,7 @@ public class CreateWorkOrderActivity extends AppCompatActivity {
         jobTypeSpinner = findViewById(R.id.work_order_job_type_spinner);
         workOrderDateTextView = findViewById(R.id.textViewWorkOrderDate);
         clientLayout = findViewById(R.id.client_linear_layout);
-        workOrderDateTextView.setText(new WorkOrderDate(calendar.get(Calendar.DAY_OF_MONTH),calendar.get(Calendar.MONTH),calendar.get(Calendar.YEAR)).toString());
+        workOrderDateTextView.setText(new WorkOrderDate(System.currentTimeMillis()).getString());
 
         dateButton.setText(date);
 
@@ -99,6 +99,8 @@ public class CreateWorkOrderActivity extends AppCompatActivity {
                         new DatePickerDialog.OnDateSetListener() {
                 @Override
                 public void onDateSet(DatePicker datepicker, int y, int m, int d) {
+                    workOrderDateTextView.setText(new WorkOrderDate(d,m = m < 12 ? m +1 : 1,y).toString());
+
                     if(y < year){
                         Toast.makeText(CreateWorkOrderActivity.this,"Can't choose past date",Toast.LENGTH_LONG).show();
                     }
@@ -161,8 +163,6 @@ public class CreateWorkOrderActivity extends AppCompatActivity {
                     workOrderList.add(workOrderQuery);
 
                 }
-
-
             }
 
             @Override

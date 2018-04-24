@@ -14,10 +14,12 @@ import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.objectivecoders.android.garvispoolrepair.CreateWorkOrderActivity;
+import com.objectivecoders.android.garvispoolrepair.DataObjects.Client;
 import com.objectivecoders.android.garvispoolrepair.DataObjects.WorkOrder;
 import com.objectivecoders.android.garvispoolrepair.DataObjects.WorkOrderDate;
 import com.objectivecoders.android.garvispoolrepair.HomePage;
@@ -34,6 +36,7 @@ import java.util.List;
  */
 
 public class WorkOrderFragment extends Fragment implements RecyclerViewOnClick {
+    private List<Client> clientList = new ArrayList<>();
     private List<WorkOrder> workOrderList = new ArrayList<>();
     private WorkOrderRecyclerView workOrderRecyclerView;
 
@@ -47,6 +50,7 @@ public class WorkOrderFragment extends Fragment implements RecyclerViewOnClick {
         }
 
         loadWorkOrderData();
+        loadClientData();
 
         for (WorkOrder w : workOrderList) {
 
@@ -131,14 +135,56 @@ public class WorkOrderFragment extends Fragment implements RecyclerViewOnClick {
 
     }
 
+    private void loadClientData() {
+        DatabaseReference databaseClients = FirebaseDatabase.getInstance().getReference("clients");
+        databaseClients.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                clientList.clear();
+
+                for (DataSnapshot clientSnapshot : dataSnapshot.getChildren()) {
+                    Client client = clientSnapshot.getValue(Client.class);
+
+                    //  System.out.println(client);
+                    clientList.add(client);
+
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+
     @Override
     public void rowSelected(int row) {
+        Client rowClient = null;
         Intent workOrderIntent = new Intent(getActivity(), WorkOrderActivity.class);
+        for(Client client : clientList){
+            if(client.getWorkOrders() != null){
+                for (WorkOrder workOrder : client.getWorkOrders()){
+                    if(workOrder.equals(workOrderList.get(row))){
+                        rowClient=client;
+                        break;
+                    }
+                }
+            }
+
+        }
+
         workOrderIntent.putExtra("Date", workOrderList.get(row).getDate().toString());
         workOrderIntent.putExtra("OrderNumber", String.valueOf(workOrderList.get(row).getOrderNumber()));
         workOrderIntent.putExtra("Description", workOrderList.get(row).getDescription());
         workOrderIntent.putExtra("JobType", workOrderList.get(row).getJobType());
         workOrderIntent.putExtra("OrderID",workOrderList.get(row).getOrderId());
+        workOrderIntent.putExtra("FirstName",rowClient.getFirstName());
+        workOrderIntent.putExtra("LasttName",rowClient.getLastName());
+        workOrderIntent.putExtra("Address",rowClient.getAddress());
+        workOrderIntent.putExtra("Email",rowClient.getEmail());
         startActivity(workOrderIntent);
     }
 

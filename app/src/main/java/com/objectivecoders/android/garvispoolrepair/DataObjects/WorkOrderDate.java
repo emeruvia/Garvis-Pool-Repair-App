@@ -21,25 +21,25 @@ public class WorkOrderDate extends Date {
 
     }
     public WorkOrderDate(Long date){
-             super(date);
-        }
+        super(date);
+    }
 
 
-        public String getString(){
-            String s = super.toString();
-            month = Integer.valueOf(convertMonth(s.substring(4,7)));
-            day = Integer.valueOf(s.substring(8,10));
-            year = Integer.valueOf(s.toString().substring(24,28));
-            return month+"-"+day+"-"+year;
-        }
+    public String getString(){
+        String s = super.toString();
+        month = Integer.valueOf(convertMonth(s.substring(4,7)));
+        day = Integer.valueOf(s.substring(8,10));
+        year = Integer.valueOf(s.toString().substring(24,28));
+        return month+"-"+day+"-"+year;
+    }
 
-        public String toString() {
-            return "" + month + "-" + day + "-" + year;
-        }
+    public String toString() {
+        return "" + month + "-" + day + "-" + year;
+    }
 
-        public int getMonth2(){
-         return this.month;
-        }
+    public int getMonth2(){
+        return this.month;
+    }
 
     private String convertMonth(String month){
         switch(month){
@@ -67,10 +67,10 @@ public class WorkOrderDate extends Date {
                 return "11";
             case "Dec":
                 return "12";
-            }
+        }
         return "" ;
     }
-    }
+}
 
 
 
