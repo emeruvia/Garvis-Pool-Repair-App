@@ -9,3 +9,6 @@
 /build
 /captures
 .externalNativeBuild
+awsconfiguration.json
+google-services.json
+.idea/misc.xml
